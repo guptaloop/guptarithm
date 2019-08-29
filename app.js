@@ -4,6 +4,13 @@ const express = require("express");
 const app = express();
 // imports mongo cluster key
 const db = require('./config/keys').mongoURI;
+// imports routes from "<url>"
+const users = require("./routes/api/users");
+const accounts = require("./routes/api/accounts");
+// parse JSON
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 mongoose
 	.connect(db, { useNewUrlParser: true })
@@ -11,6 +18,9 @@ mongoose
 	.catch(err => console.log(err));
 
 app.get("/", (req, res) => res.send("Hello Roman"));
+// initial routes here, tries to match first arg, then will send the objects we are importing above from the routes/api folder
+app.use("/api/users", users);
+app.use("/api/accounts", accounts);
 // app will run on Heroku || localhost:5000
 const port = process.env.PORT || 5000;
 
