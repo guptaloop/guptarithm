@@ -11,13 +11,16 @@ const accounts = require("./routes/api/accounts");
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+// authenticate web tokens for user auth
+const passport = require('passport');
 
 mongoose
 	.connect(db, { useNewUrlParser: true })
 	.then(() => console.log("Connected to MongoDB successfully"))
 	.catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send("Hello Roman"));
+app.use(passport.initialize());
+require('./config/passport')(passport);
 // initial routes here, tries to match first arg, then will send the objects we are importing above from the routes/api folder
 app.use("/api/users", users);
 app.use("/api/accounts", accounts);

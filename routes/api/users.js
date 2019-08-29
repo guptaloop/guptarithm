@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 // allow users to sign in and access protected routes
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 // import the secretOrKey session token
 const keys = require('../../config/keys');
 // custom validations
@@ -41,12 +42,12 @@ router.post('/register', (req, res) => {
 							.then(user => {
 								const payload = { id: user.id, handle: user.handle };
 
-								jwt.sign(
-									payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
-									res.json({
-										success: true,
-										token: "Bearer " + token
-									});
+								jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, 
+									(err, token) => {
+										res.json({
+											success: true,
+											token: "Bearer " + token
+										});
 								});
 							})
 							.catch(err => console.log(err));
@@ -93,9 +94,16 @@ router.post("/login", (req, res) => {
 	});
 });
 
-// {
-// 	"success": true,
-// 		"token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjg0ODI5YzZjNGY2NDllMmEyYmU4YSIsImVtYWlsIjoiZ3VwM0BndXAuY29tIiwiaWF0IjoxNTY3MTE1NTY0LCJleHAiOjE1NjcxMTkxNjR9.c93_ZtO7V4_olgddaU8zuWDN9_ayfHvT_gnzhxOLWKk"
-// }
+
+// get current user 
+router.get('/current',
+	passport.authenticate('jwt', { session: false }), (req, res) => {
+		res.json({ 
+			id: req.user.id,
+			handle: req.user.handle,
+			email: req.user.email,
+		});
+	}
+);
 
 module.exports = router;
