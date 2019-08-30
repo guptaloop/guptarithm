@@ -9,15 +9,17 @@ const users = require("./routes/api/users");
 const accounts = require("./routes/api/accounts");
 // parse JSON
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 // authenticate web tokens for user auth
 const passport = require('passport');
 
 mongoose
-	.connect(db, { useNewUrlParser: true })
-	.then(() => console.log("Connected to MongoDB successfully"))
-	.catch(err => console.log(err));
+.connect(db, { useNewUrlParser: true })
+.then(() => console.log("Connected to MongoDB successfully"))
+.catch(err => console.log(err));
+
+// urlencoded allows us to parse external requests (e.g. Postman)
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(passport.initialize());
 require('./config/passport')(passport);

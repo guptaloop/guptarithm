@@ -11,7 +11,7 @@ const keys = require('../../config/keys');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-// sign up route
+// sign up & register route
 router.post('/register', (req, res) => {
 
 	// Validations
@@ -93,7 +93,6 @@ router.post("/login", (req, res) => {
 		});
 	});
 });
-
 
 // get current user 
 router.get('/current',
