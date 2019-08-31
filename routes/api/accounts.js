@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 		}));
 });
 
-// how do you set the 'user' field? 
 router.get('/user/:user_id', (req, res) => {
 	Account.find({ user: req.params.user_id })
 		.then(accounts => res.json(accounts))
