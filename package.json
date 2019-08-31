@@ -4,20 +4,20 @@
   "description": "free investment algorithm",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "server:debug": "nodemon --inspect app.js",
-    "server": "nodemon app.js",
-    "start": "node app.js"
+    "server": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/madhu.git"
+    "url": "git+https://github.com/guptaloop/madhu.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/madhu/issues"
+    "url": "https://github.com/guptaloop/madhu/issues"
   },
-  "homepage": "https://github.com/madhu#readme",
+  "homepage": "https://github.com/guptaloop/madhu#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
