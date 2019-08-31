@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import SesssionFormContainer from '../session/session_form_container';
+import SessionFormContainer from '../session/session_form_container';
 import { withRouter } from 'react-router-dom';
 
 function Modal({ modal, closeModal }) {
@@ -9,12 +9,15 @@ function Modal({ modal, closeModal }) {
 		return null;
 	}
 	let component;
+
 	switch (modal) {
 		case 'login':
-			component = <SesssionFormContainer closeModal={closeModal} formType="login" />;
+			component = <SessionFormContainer 
+									 closeModal={closeModal} formType="login" />;
 			break;
 		case 'signup':
-			component = <SesssionFormContainer closeModal={closeModal} formType="signup" />;
+			component = <SessionFormContainer 
+									 closeModal={closeModal} formType="signup" />;
 			break;
 		default:
 			return null;
