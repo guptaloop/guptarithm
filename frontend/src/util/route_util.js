@@ -11,7 +11,7 @@ const mapStateToProps = state => (
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
   <Route path={path} exact={exact} render={props =>
 		// Redirect to the tweets page if the user is authenticated
-    !loggedIn ? (<Component {...props} />) : (<Redirect to="/tweets" />)
+    !loggedIn ? (<Component {...props} />) : (<Redirect to="/accounts" />)
 	}/>
 );
 
