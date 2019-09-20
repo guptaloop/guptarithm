@@ -20,7 +20,6 @@ class LoginForm extends React.Component {
 		if (nextProps.currentUser === true) {
 			this.props.history.push('/tweets');
 		}
-
 		// Set or clear errors
 		this.setState({ errors: nextProps.errors });
 	}

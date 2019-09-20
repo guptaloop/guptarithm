@@ -40,7 +40,6 @@ class SessionForm extends React.Component {
 			this.checkFormType();
 			this.props.clearErrors();
 		}
-
 	}
 
 	handleUpdate(field) {
@@ -96,13 +95,14 @@ class SessionForm extends React.Component {
 
 
 	render() {
-		const altButtonStyle = this.props.formType === 'login' ? { top: '320px' } : { top: '390px' }
+		const altButtonStyle = this.props.formType === 'login' ? 
+			{ top: '320px' } : { top: '390px' }
 
 		return (
 			<>
 				<div className="session-form-container flex">
-					<form className="flex" onSubmit={this.state.formType === "Signup" ? this.handleSignup : this.handleLogin}>
-						<Animated animationIn="bounceInLeft" animationOut="rubberBand" isVisible={true}>
+					<form className="flex" onSubmit={this.state.formType === "Signup" ? 	this.handleSignup : this.handleLogin}>
+						<Animated animationIn="bounceInLeft" animationOut="rubberBand" 			isVisible={true}>
 							<div className="session-form flex">
 								{this.state.formType === "Signup" ? (
 									<input type="text"

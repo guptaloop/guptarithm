@@ -31,7 +31,11 @@ class NavBar extends React.Component {
 						onClick={() => this.props.openModal('signup')}>
 						Signup
 					</button>
-					<Link className="navbar-dropdown-link" to={'/login'}>Login</Link>
+					<button 
+						className="navbar-dropdown-link" 
+						onClick={() => this.props.openModal('login')}>
+						Login
+					</button>
 				</div>
 			);
 		}
