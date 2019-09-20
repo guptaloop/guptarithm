@@ -4,19 +4,19 @@ const validText = require('./valid-text');
 module.exports = function validateLoginInput(data) {
 	let errors = {};
 
-	data.email = validText(data.email) ? data.email : '';
+	data.username = validText(data.username) ? data.username : '';
 	data.password = validText(data.password) ? data.password : '';
 
-	if (!Validator.isEmail(data.email)) {
-		errors.email = 'Email is invalid';
+	if (Validator.isEmail(data.username)) {
+		errors.username = 'Username is invalid - email not allowed';
 	}
 
-	if (Validator.isEmpty(data.email)) {
-		errors.email = 'Email is required';
+	if (Validator.isEmpty(data.username)) {
+		errors.username = 'Username cannot be empty';
 	}
 
 	if (Validator.isEmpty(data.password)) {
-		errors.password = "Password is required";
+		errors.password = "Password cannot be empty";
 	}
 
 	return {

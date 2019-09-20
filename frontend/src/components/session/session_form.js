@@ -1,13 +1,11 @@
 import React from 'react';
-import { Animated } from "react-animated-css";
 import 'react-awesome-button/dist/styles.css';
 
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
-			email: '',
+			username: '',
 			password: '',
 			formType: '',
 			errors: {}
@@ -23,9 +21,9 @@ class SessionForm extends React.Component {
 		this.checkFormType();
 	}
 
-	// componentWillReceiveProps(nextProps) {
-	// 	this.setState({ errors: nextProps.errors });
-	// }
+	componentWillReceiveProps(nextProps) {
+		this.setState({ errors: nextProps.errors });
+	}
 
 	checkFormType() {
 		if (this.props.formType === 'login') {
@@ -52,8 +50,7 @@ class SessionForm extends React.Component {
 		e.preventDefault();
 
 		let user = {
-			name: this.state.name,
-			email: this.state.email,
+			username: this.state.username,
 			password: this.state.password,
 		};
 
@@ -69,7 +66,7 @@ class SessionForm extends React.Component {
 		e.preventDefault();
 
 		let user = {
-			email: this.state.email,
+			username: this.state.username,
 			password: this.state.password,
 		};
 
@@ -96,55 +93,40 @@ class SessionForm extends React.Component {
 
 	render() {
 		const altButtonStyle = this.props.formType === 'login' ? 
-			{ top: '320px' } : { top: '390px' }
+			{ top: '320px' } : { top: '320px' }
 
 		return (
 			<>
 				<div className="session-form-container flex">
 					<form className="flex" onSubmit={this.state.formType === "Signup" ? 	this.handleSignup : this.handleLogin}>
-						<Animated animationIn="bounceInLeft" animationOut="rubberBand" 			isVisible={true}>
-							<div className="session-form flex">
-								{this.state.formType === "Signup" ? (
-									<input type="text"
-										value={this.state.name}
-										onChange={this.handleUpdate('name')}
-										placeholder="Name"
-									/>
-								) : ("")
-								}
-								<input type="text"
-									value={this.state.email}
-									onChange={this.handleUpdate('email')}
-									placeholder="Email"
-								/>
-								<input type="password"
-									value={this.state.password}
-									onChange={this.handleUpdate('password')}
-									placeholder="Password"
-								/>
-								<input className="input-submit" type="submit" value="Submit" />
-								{/* <button onClick={() => this.props.openModal('login')}>Login</button> */}
-
-							</div>
-						</Animated>
+						<div className="session-form flex">
+							<input type="text"
+								value={this.state.username}
+								onChange={this.handleUpdate('username')}
+								placeholder="Username"
+							/>
+							<input type="password"
+								value={this.state.password}
+								onChange={this.handleUpdate('password')}
+								placeholder="Password"
+							/>
+							<input className="input-submit" type="submit" value="Submit" />
+						</div>
 					</form>
-					<div className="session-img">
-						<img src="https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" alt="session" />
-					</div>
 				</div>
 				<div className="alternate-buttons" style={altButtonStyle}>
 					{this.props.formType === 'signup' ?
 						<>
-							<span>Already a member?</span>
+							<span>Already have an account?</span>
 							<button onClick={this.props.openLoginModal}>Login</button>
 						</>
 						:
 						<>
-							<span>New to <span role="img" aria-label="flexing-emoji">️💪</span> Invest?</span>
-							<button onClick={this.props.openSignupModal}>Sign Up</button>
+							<span>Don't have an account?</span>
+							<button onClick={this.props.openSignupModal}>Signup</button>
 						</>
 					}
-					<span>{this.renderErrors()}</span>
+					<span className='session-errors'>{this.renderErrors()}</span>
 				</div>
 			</>
 		);

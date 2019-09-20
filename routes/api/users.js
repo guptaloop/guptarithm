@@ -29,7 +29,7 @@ router.post('/register', (req, res) => {
 				// Otherwise create a new user from the User model
 				const newUser = new User({
 					handle: req.body.handle,
-					email: req.body.email,
+					username: req.body.username,
 					password: req.body.password
 				});
 				// salt and hash the password before saving to the db
@@ -66,18 +66,18 @@ router.post("/login", (req, res) => {
 		return res.status(400).json(errors);
 	}
 
-	const email = req.body.email;
+	const username = req.body.username;
 	const password = req.body.password;
 
-	User.findOne({ email }).then(user => {
+	User.findOne({ username }).then(user => {
 		if (!user) {
-			errors.email = "This user does not exist";
+			errors.username = "This user does not exist";
 			return res.status(400).json(errors);
 		}
 
 		bcrypt.compare(password, user.password).then(isMatch => {
 			if (isMatch) {
-				const payload = { id: user.id, email: user.email };
+				const payload = { id: user.id, username: user.username };
 
 				jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, 
 					(err, token) => {
@@ -100,7 +100,7 @@ router.get('/current',
 		res.json({ 
 			id: req.user.id,
 			handle: req.user.handle,
-			email: req.user.email,
+			username: req.user.username,
 		});
 	}
 );
