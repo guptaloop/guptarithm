@@ -11,3 +11,8 @@ export const fetchAccounts = userId => dispatch => (
 	APIUtil.fetchAccounts(userId)
 		.then((accounts) => dispatch(receiveAccounts(accounts)))
 );
+
+export const createAccount = account => dispatch => (
+	APIUtil.createAccount(account)
+		// .then((accounts) => dispatch(receiveAccounts(accounts)))
+);
