@@ -17,25 +17,15 @@ class NavBar extends React.Component {
 		if (this.props.loggedIn) {
 			return (
 				<div>
-					<Link to={'/accounts'}>All Accounts</Link>
-					<Link to={'/profile'}>Profile</Link>
-					<Link to={'/new_account'}>Create a new Account</Link>
-					<button onClick={this.logoutUser}>Logout</button>
+					<button className="navbar-link" onClick={this.logoutUser}>
+						Logout</button>
 				</div>
 			);
 		} else {
 			return (
 				<div>
-					<button 
-						className="navbar-dropdown-link" 
-						onClick={() => this.props.openModal('signup')}>
-						Signup
-					</button>
-					<button 
-						className="navbar-dropdown-link" 
-						onClick={() => this.props.openModal('login')}>
-						Login
-					</button>
+					<button className="navbar-link" onClick={() => this.props.openModal			('signup')}>Signup</button>
+					<button className="navbar-link" onClick={() => this.props.openModal			('login')}>Login</button>
 				</div>
 			);
 		}
@@ -44,6 +34,9 @@ class NavBar extends React.Component {
 	render() {
 		return (
 			<div className="navbar-container">
+				<button>
+					<Link to={'/'} className="navbar-home-link">MADHU</Link>
+				</button>
 				{this.getLinks()}
 			</div>
 		);

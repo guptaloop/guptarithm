@@ -7,17 +7,17 @@ const Account = require('../../models/Account');
 const validateAccountInput = require('../../validation/accounts');
 
 // delete this one -- never need to get ALL accounts
-router.get('/', (req, res) => {
-	Account.find()
-		.sort({ date: -1 })
-		.then(accounts => res.json(accounts))
-		.catch(err => res.status(404).json({
-			noaccountsfound: 'No accounts found'
-		}));
-});
+// router.get('/', (req, res) => {
+// 	Account.find()
+// 		.sort({ date: -1 })
+// 		.then(accounts => res.json(accounts))
+// 		.catch(err => res.status(404).json({
+// 			noaccountsfound: 'No accounts found'
+// 		}));
+// });
 
 router.get('/user/:user_id', (req, res) => {
-	Account.find({ user: req.params.user_id })
+	Account.find({ user: req.params.userId })
 		.then(accounts => res.json(accounts))
 		.catch(err => res.status(404).json({
 			noaccountsfound: 'No accounts found for this user'
