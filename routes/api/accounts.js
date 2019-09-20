@@ -17,7 +17,7 @@ const validateAccountInput = require('../../validation/accounts');
 // });
 
 router.get('/user/:user_id', (req, res) => {
-	Account.find({ user: req.params.userId })
+	Account.find({ user: req.params.user_id })
 		.then(accounts => res.json(accounts))
 		.catch(err => res.status(404).json({
 			noaccountsfound: 'No accounts found for this user'
