@@ -12,12 +12,12 @@ const App = () => (
 			<NavBarContainer />
 		</header>
 		<main>
-		<Switch>
-			<AuthRoute exact path="/" component={MainPage} />
-		</Switch>
+			<Switch>
+				<AuthRoute exact path="/" component={MainPage} />
+			</Switch>
 		</main>
 		<footer>
-			
+			{/* FOOTER */}
 		</footer>
 	</div>
 );

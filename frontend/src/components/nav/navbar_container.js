@@ -5,6 +5,7 @@ import { openModal } from '../../actions/modal_actions';
 import NavBar from './navbar';
 
 const mapStateToProps = state => ({
+	user: state.session.user,
 	loggedIn: state.session.isAuthenticated
 });
 

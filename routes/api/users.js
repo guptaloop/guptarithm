@@ -21,14 +21,13 @@ router.post('/register', (req, res) => {
 	}
 
 	// Check to make sure nobody has already registered with a dupe handle
-	User.findOne({ handle: req.body.handle }).then(user => {
+	User.findOne({ username: req.body.username }).then(user => {
 			if (user) {
-				errors.handle = "User handle already exists";
+				errors.username = "Username already exists";
 				return res.status(400).json(errors);
 			} else {
 				// Otherwise create a new user from the User model
 				const newUser = new User({
-					handle: req.body.handle,
 					username: req.body.username,
 					password: req.body.password
 				});
