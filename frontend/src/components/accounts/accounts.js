@@ -4,9 +4,7 @@ class Accounts extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			accountName: '',
-			errors: {},
-			accounts: []
+			accoune: '',	accounts: []
 		};
 		this.handleNewAccount = this.handleNewAccount.bind(this);
 		this.fetchAccounts = this.fetchAccounts.bind(this);
@@ -15,10 +13,6 @@ class Accounts extends React.Component {
 	componentDidMount() {
 		this.fetchAccounts();
 	}
-	
-	// componentWillReceiveProps(nextProps) {
-	// 	this.setState({ errors: nextProps.errors });
-	// }
 
 	fetchAccounts() {
 		this.props.fetchAccounts(this.props.userId)
@@ -37,12 +31,8 @@ class Accounts extends React.Component {
 			name: this.state.accountName,
 			userId: this.props.userId
 		};
-		// console.log(account);
 		this.props.createAccount(account)
-			.then(() => {
-				// if (this.props.errors.length === 0) {	 }
-				this.fetchAccounts();
-			});
+			.then(() => {	this.fetchAccounts();	});
 	}
 
 	renderAccounts() {
