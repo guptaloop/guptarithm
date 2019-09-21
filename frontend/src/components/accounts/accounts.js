@@ -6,7 +6,7 @@ class Accounts extends React.Component {
 		this.state = {
 			accountName: '',
 			errors: {},
-
+			accounts: []
 		};
 		this.handleNewAccount = this.handleNewAccount.bind(this);
 		this.fetchAccounts = this.fetchAccounts.bind(this);
@@ -21,7 +21,8 @@ class Accounts extends React.Component {
 	// }
 
 	fetchAccounts() {
-		this.props.fetchAccounts(this.props.userId);
+		this.props.fetchAccounts(this.props.userId)
+			.then(() => this.setState({ accounts: this.props.accounts }));
 	}
 
 	handleUpdate(field) {
@@ -44,10 +45,21 @@ class Accounts extends React.Component {
 			});
 	}
 
+	renderAccounts() {
+		return (
+			<ul>
+				{(this.state.accounts).map(account => (
+					<li key={account._id}>
+						{(account.name)}
+					</li>
+				))}
+			</ul>
+		)
+	}
 
 	render() {
 		return (
-			<div>
+			<>
 				<form onSubmit={this.handleNewAccount}>Create New Account
 					<input
 						value={this.state.accountName}
@@ -55,7 +67,8 @@ class Accounts extends React.Component {
 						placeholder="Enter account name (don't use full account #)"
 					/>
 				</form>
-			</div>
+				<div>{this.renderAccounts()}</div>
+			</>
 		)
 	}
 }
