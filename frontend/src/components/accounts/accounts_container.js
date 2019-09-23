@@ -11,7 +11,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchAccounts: (userId) => dispatch(fetchAccounts(userId)),
-	createAccount: (account) => dispatch(createAccount(account))
+	createAccount: (account) => dispatch(createAccount(account)),
+	// deleteAccount: (accountId) => dispatch(deleteAccount(accountId)),
 });
 
 export default withRouter(connect(

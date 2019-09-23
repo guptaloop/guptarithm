@@ -15,3 +15,7 @@ export const fetchAccounts = userId => dispatch => (
 export const createAccount = account => (
 	APIUtil.createAccount(account)
 );
+
+// export const deleteAccount = accountId => (
+// 	APIUtil.deleteAccount(accountId)
+// );

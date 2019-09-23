@@ -39,8 +39,10 @@ class Accounts extends React.Component {
 		return (
 			<ul>
 				{(this.state.accounts).map(account => (
-					<li key={account._id}>
-						{(account.name)}
+					<li key={account._id}>{(account.name)}
+						{/* <button onClick={this.props.deleteAccount}>
+							DELETE
+						</button> */}
 					</li>
 				))}
 			</ul>

@@ -52,4 +52,12 @@ router.post('/',
 	}
 );
 
+router.delete('/:id', (req, res) => {
+	Account.findById(req.params.id)
+		.then(account => account.delete())
+		.catch(err => res.status(404).json({
+			noaccountfound: 'This account does not exist'
+		}));
+});
+
 module.exports = router;
