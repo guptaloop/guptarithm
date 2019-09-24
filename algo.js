@@ -215,7 +215,6 @@ const recBuyAmounts = (assetClass, diff, whitelist) => {
 	// console.log(assetClass, diff, whitelist);
 };
 
-
 const targetAls = { usStocks: 0.55, forStocks: 0.45 };
 const whitelist = [
 	{	usStocks: {	symbol: 'IVV', price: 150.86	}},
