@@ -4,17 +4,18 @@
 
 const holding_1 = {
 	// id: 1, // null false, unique with all foreign keys
+	account_id: 2, // null: false, f_key => account table, dupes allowed
 	name: 'S&P 500 Fund',	// null: false
 	symbol: 'IVV',	// null: false, unique with account_id
 	type: 'etf', // null: false => etf, mf, stock, other
-	exp_ratio: 0.0005, // FLOAT, null: false, always 0 for stocks or other
-	qty: 100.0,	// FLOAT null: false
-	pur_price: 100.00, // FLOAT, price per share (avg of tax lots)
-	cost_basis: 5000.0, // FLOAT, total
-	account_id: 2, // null: false, f_key => account table, dupes allowed
-	allocation_id: 1, // asset class hash?
-	cur_price: 150.86, // DO NOT include in database
+	exp_ratio: 0.0005, // NUMBER, null: false, enter as BP >> 1 BP = 0.01%
+	share_qty: 100.0,	// FLOAT null: false
+	allocation: [], // asset class hash?
+	// pur_price: 100.00, // FLOAT, price per share (avg of tax lots)
+	// cost_basis: 5000.0, // FLOAT, total
+	// cur_price: 150.86, // DO NOT include in database
 };
+
 const holding_2 = {
 	// id: 2, // null false, unique with all foreign keys
 	name: 'America Fund',	// null: false
@@ -28,6 +29,7 @@ const holding_2 = {
 	// allocation_id: 1, // asset class hash?
 	cur_price: 150.86, // DO NOT include in database
 };
+
 const holding_3 = {
 	// id: 1, // null false, unique with all foreign keys
 	name: 'Apple',	// null: false
