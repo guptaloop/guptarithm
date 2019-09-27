@@ -97,36 +97,37 @@ class SessionForm extends React.Component {
 
 		return (
 			<>
-				<div className="session-form-container flex">
-					<form className="flex" onSubmit={this.state.formType === "Signup" ? 	this.handleSignup : this.handleLogin}>
-						<div className="session-form flex">
+				<div className="session-form-container">
+					<form onSubmit={this.state.formType === "Signup" ? this.handleSignup : this.handleLogin} >
+						
+						<div className="session-form">
+							<p>Username</p>
 							<input type="text"
 								value={this.state.username}
 								onChange={this.handleUpdate('username')}
-								placeholder="Username"
 							/>
+							<p>Password</p>
 							<input type="password"
 								value={this.state.password}
 								onChange={this.handleUpdate('password')}
-								placeholder="Password"
 							/>
-							<input className="input-submit" type="submit" value="Submit" />
+							<br></br>
+							<input className="submit" type="submit" value={this.state.formType} />
+							<br></br>
+							<div className="alternate-buttons" style={altButtonStyle}>
+								{this.props.formType === 'signup' ?
+									<>
+										<span>Already have an account?</span>
+										<button onClick={this.props.openLoginModal}>Login</button>
+									</>	:	<>
+										<span>Don't have an account?</span>
+										<button onClick={this.props.openSignupModal}>Signup</button>
+									</>
+								}
+							</div>
+							<span className='session-errors'>{this.renderErrors()}</span>
 						</div>
 					</form>
-				</div>
-				<div className="alternate-buttons" style={altButtonStyle}>
-					{this.props.formType === 'signup' ?
-						<>
-							<span>Already have an account?</span>
-							<button onClick={this.props.openLoginModal}>Login</button>
-						</>
-						:
-						<>
-							<span>Don't have an account?</span>
-							<button onClick={this.props.openSignupModal}>Signup</button>
-						</>
-					}
-					<span className='session-errors'>{this.renderErrors()}</span>
 				</div>
 			</>
 		);

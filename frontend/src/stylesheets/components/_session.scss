@@ -1,83 +1,73 @@
 .session-form-container {
   width: 500px;
-  height: 500px;
-}
-
-.session-form-container > form {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  // background-image: radial-gradient(black, white);
-  background-image: linear-gradient(to right, darkgray, white);
+  height: 450px;
+  background-image: radial-gradient($fa-blue, $teal);
+  // background-image: linear-gradient(to bottom, $teal, $fa-blue);
+  
+  form {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .session-form {
+  display: flex;
   flex-direction: column;
-  align-content : center;
-  margin-top: 100px;
-}
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 
-.session-form input {
-  padding-left: 10px;
-  font-size: 16px;
-  height: 50px;
-  width: 300px;
-  margin-top: 15px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  padding-left: 10px;
-}
-
-.input-submit {
-  background: darkgray;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-}
-
-.input-submit:hover {
-  box-shadow: 5px 5px goldenrod;
-  cursor: pointer;
-}
-
-.session-form > input:hover { 
-  // color: peachpuff;
-  box-shadow: 5px 5px goldenrod;
+  p {
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+  input {
+    height: 50px;
+    width: 250px;
+    font-size: 16px;
+    border: 0px;
+    padding: 0px 0px 0px 6px;
+  }
+  .submit {
+    width: 256px;
+    font-weight: bold;
+    background: rgb(15, 180, 143);
+    color: white;
+    &:hover { 
+      background: $teal;
+    }
+  }
 }
 
 .alternate-buttons {
-  position: absolute;
-  // top: 390px;
-  width: 379px;
   text-align: center;
-}
-
-.alternate-buttons > span {
-  margin-right: 10px;
-  color: black;
-  font-size: 14px;
-}
-.alternate-buttons > button {
-  margin-left: 10px;
-  font-size: 13px;
-  background: cornflowerblue;
-  padding: 5px;
-  border: 1px solid cornflowerblue;
-  border-radius: 4px;
-  color: white;
-  font-weight: 600;
-}
-
-.alternate-buttons>span:nth-child(3) {
-  color: red;
-  font-size: 11px;
-  width: 300px;
-  line-height: 20px;
-  text-align: center;
-  margin-top: 15px;
+  
+  span {
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  button {
+    font-size: 14px;
+    font-weight: 600;
+    background: $dark-blue;
+    padding: 8px;
+    border-radius: 4px;
+    &:hover { 
+      background: $fa-blue;
+    }
+  }
 }
 
 .session-errors {
-	color: red;
-	font-size: 11px;
+  color: orange;
+  font-size: 14px;
+  font-weight: 800;
 }
