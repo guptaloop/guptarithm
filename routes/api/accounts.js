@@ -1,26 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Account = require('../../models/Account');
 const validateAccountInput = require('../../validation/accounts');
 
-// delete this one -- never need to get ALL accounts
-// router.get('/', (req, res) => {
-// 	Account.find()
-// 		.sort({ date: -1 })
-// 		.then(accounts => res.json(accounts))
-// 		.catch(err => res.status(404).json({
-// 			noaccountsfound: 'No accounts found'
-// 		}));
-// });
-
 router.get('/user/:user_id', (req, res) => {
 	Account.find({ user: req.params.user_id })
 		.then(accounts => res.json(accounts))
 		.catch(err => res.status(404).json({
-			noaccountsfound: 'No accounts found for this user'
+			json: err, noaccountsfound: 'No accounts found for this user'
 		}));
 });
 
@@ -28,7 +17,7 @@ router.get('/:id', (req, res) => {
 	Account.findById(req.params.id)
 		.then(account => res.json(account))
 		.catch(err => res.status(404).json({
-			noaccountfound: 'This account does not exist'
+			json: err, noaccountfound: 'This account does not exist'
 		}));
 });
 
@@ -56,7 +45,7 @@ router.delete('/:id', (req, res) => {
 	Account.findById(req.params.id)
 		.then(account => account.delete())
 		.catch(err => res.status(404).json({
-			noaccountfound: 'This account does not exist'
+			json: err, noaccountfound: 'This account does not exist'
 		}));
 });
 
