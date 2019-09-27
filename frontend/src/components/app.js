@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
 import Modal from './modal/modal';
 import NavBarContainer from './nav/navbar_container';
@@ -16,7 +16,7 @@ const App = () => (
 		<main>
 			<Switch>
 				<AuthRoute exact path="/" component={Splash} />
-				<Route exact path="/accounts" component={Accounts} />
+				<ProtectedRoute exact path="/accounts" component={Accounts} />
 			</Switch>
 		</main>
 		<footer>
