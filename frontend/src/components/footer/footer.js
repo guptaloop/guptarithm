@@ -7,7 +7,7 @@ class Footer extends React.Component {
 			<div className="footer">
 				{/* image links for LinkedIn, Github, Gmail */}
 				<footer className="disclaimer">
-					Disclaimer - this site is intended for educational purposes only!
+					This site is intended for educational purposes only!
         </footer>
 			</div>
 		);

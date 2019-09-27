@@ -1,14 +1,15 @@
 .footer {
 	font-family: $font-sans-serif;
-	height: 15px;
+	height: 30px;
 	width: 100%;
+	padding: 10px 20px;
+	background: $purple;
+	display: flex;
 	justify-content: center;
-	align-items: center;
-	padding: 20px;
-	background: mintcream;
 }
 
 .disclaimer {
 	font-family: $font-sans-serif;
 	font-size: 12px;
+	padding: 10px 5px;
 }
