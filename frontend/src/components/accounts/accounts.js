@@ -4,7 +4,7 @@ class Accounts extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			accoune: '',	accounts: []
+			accountName: '',	accounts: []
 		};
 		this.handleNewAccount = this.handleNewAccount.bind(this);
 		this.fetchAccounts = this.fetchAccounts.bind(this);
@@ -15,7 +15,7 @@ class Accounts extends React.Component {
 	}
 
 	fetchAccounts() {
-		this.props.fetchAccounts(this.props.userId)
+		this.props.fetchAccounts(this.props.user.id)
 			.then(() => this.setState({ accounts: this.props.accounts }));
 	}
 
@@ -29,7 +29,7 @@ class Accounts extends React.Component {
 		e.preventDefault();
 		let account = { 
 			name: this.state.accountName,
-			userId: this.props.userId
+			userId: this.props.user.id
 		};
 		this.props.createAccount(account)
 			.then(() => {	this.fetchAccounts();	});

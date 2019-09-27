@@ -3,23 +3,24 @@ import { AuthRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
 import Modal from './modal/modal';
 import NavBarContainer from './nav/navbar_container';
-import MainPage from './main/main_page';
+import Splash from './splash/splash';
 import Accounts from './accounts/accounts_container';
+import Footer from './footer/footer';
 
 const App = () => (
-	<div>
+	<div className="flex">
 		<Modal />
 		<header>
 			<NavBarContainer />
 		</header>
 		<main>
 			<Switch>
-				<AuthRoute exact path="/" component={MainPage} />
+				<AuthRoute exact path="/" component={Splash} />
 				<Route exact path="/accounts" component={Accounts} />
 			</Switch>
 		</main>
 		<footer>
-			{/* FOOTER */}
+			<Footer />
 		</footer>
 	</div>
 );

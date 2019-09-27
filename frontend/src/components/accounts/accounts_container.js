@@ -4,7 +4,7 @@ import { fetchAccounts, createAccount } from '../../actions/account_actions';
 import Accounts from './accounts';
 
 const mapStateToProps = (state) => ({
-	userId: state.session.user.id,
+	user: state.session.user,
 	accounts: state.entities.accounts,
 	// errors: state.errors.session
 });
