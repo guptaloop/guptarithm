@@ -31,12 +31,17 @@
         font-weight: 700;
         color: white;
         // margin-left: 300px;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
     h1 {
         font-size: 24px;
         font-weight: 700;
         color: white;
         margin-top: 12px;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
-
 }
