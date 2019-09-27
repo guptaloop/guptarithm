@@ -1,22 +1,11 @@
 .navbar-container {
     display: flex;
     font-family: $font-sans-serif;
-    background: $dark-purple;
+    background: $light-grey;
     height: 50px;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-
-    // .logo {
-    //     padding: 20px;
-    //     font-family: $logo-font;
-    //     text-decoration: none;
-    //     color: $white;
-    //     font-size: 18px;
-    //     &:hover {
-    //         transform: scale(1.1);
-    //     }
-    // }
 
     button {
         background: none;

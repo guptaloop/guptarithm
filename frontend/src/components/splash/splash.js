@@ -8,7 +8,14 @@ class Splash extends React.Component {
 				<div className="hero-banner">
 				</div>
 				<div className="hero-image">
-					<h1>Madhu - free investment algorithm</h1>
+					<p>
+						Welcome to Madhu
+						<br></br>
+						<br></br>
+						<br></br>
+						The free investment algorithm
+					</p>
+					{/* <p>The free investment algorithm</p> */}
 				</div>
 			</>
 		);
