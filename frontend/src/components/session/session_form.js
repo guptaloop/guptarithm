@@ -41,9 +41,7 @@ class SessionForm extends React.Component {
 	}
 
 	handleUpdate(field) {
-		return e => this.setState({
-			[field]: e.currentTarget.value
-		});
+		return e => this.setState({ [field]: e.currentTarget.value });
 	}
 
 	handleSignup(e) {

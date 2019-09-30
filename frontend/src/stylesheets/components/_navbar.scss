@@ -23,3 +23,25 @@
         padding: 12px 16px;
     }   
 }
+
+.navbar-authd {
+    display: flex;
+    font-family: $font-sans-serif;
+    background-color: $fa-blue;
+    height: 50px;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 30px;
+
+    button {
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 700;
+        color: $white;
+        background: none;
+        padding: 8px 12px;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
