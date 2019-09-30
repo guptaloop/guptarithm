@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport');
-const Account = require('../../models/Holding');
-const validateHoldingInput = require('../../validation/holdings');
+const Holding = require('../../models/Holding');
+const validateHoldingInput = require('../../validation/holding');
 
 // get all holdings for a user by userId
 router.get('/user/:user_id', (req, res) => {
@@ -44,12 +44,12 @@ router.post('/',
 		const newHolding = new Holding({
 			user: req.user.id,
 			account: req.body.account,
+			allocation: req.body.allocation,
 			symbol: req.body.symbol,
 			name: req.body.name,
 			type: req.body.type,
 			exp_ratio: req.body.exp_ratio,
 			shares: req.body.shares,
-			allocation: req.body.allocation,
 		});
 		// save the Holding and json the response
 		newHolding
