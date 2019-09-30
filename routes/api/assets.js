@@ -24,13 +24,19 @@ router.post('/',
 		}
 
 		const newAsset = new Asset({
-			usStocks: req.body.usStocks,
-			forStocks: req.body.forStocks,
-			eM: req.body.eM,
-			smallCap: req.body.smallCap,
-			indStocks: req.body.indStocks,
-			bonds: req.body.bonds,
-			other: req.body.other,
+			symbol: req.body.symbol,
+			name: req.body.name,
+			type: req.body.type,
+			exp_ratio: req.body.exp_ratio,
+			allocation: {
+				usStocks: req.body.usStocks,
+				forStocks: req.body.forStocks,
+				eM: req.body.eM,
+				smallCap: req.body.smallCap,
+				indStocks: req.body.indStocks,
+				bonds: req.body.bonds,
+				other: req.body.other,
+			},
 		});
 		// save the asset and json the response
 		newAsset

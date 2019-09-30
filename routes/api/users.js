@@ -8,14 +8,14 @@ const passport = require('passport');
 // import the secretOrKey session token
 const keys = require('../../config/keys');
 // custom validations
-const validateRegisterInput = require('../../validation/register');
+const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
 
-// sign up & register route
-router.post('/register', (req, res) => {
+// sign up & signup route
+router.post('/signup', (req, res) => {
 
 	// Validations
-	const { errors, isValid } = validateRegisterInput(req.body);
+	const { errors, isValid } = validateSignupInput(req.body);
 	if (!isValid) {
 		return res.status(400).json(errors);
 	}

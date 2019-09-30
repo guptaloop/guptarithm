@@ -45,10 +45,6 @@ router.post('/',
 			user: req.user.id,
 			account: req.body.account,
 			allocation: req.body.allocation,
-			symbol: req.body.symbol,
-			name: req.body.name,
-			type: req.body.type,
-			exp_ratio: req.body.exp_ratio,
 			shares: req.body.shares,
 		});
 		// save the Holding and json the response
