@@ -57,7 +57,7 @@ router.post('/signup', (req, res) => {
 });
 
 // login route
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
 
 	// Validations
 	const { errors, isValid } = validateLoginInput(req.body);
@@ -80,6 +80,9 @@ router.post("/login", (req, res) => {
 
 				jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, 
 					(err, token) => {
+						console.log('yay');
+						console.log(token);
+						console.log('yay');
 						res.json({
 							success: true,
 							token: "Bearer " + token

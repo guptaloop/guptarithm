@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport');
+
 const Asset = require('../../models/Asset');
 const validateAssetInput = require('../../validation/asset');
 

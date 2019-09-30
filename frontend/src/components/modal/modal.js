@@ -16,7 +16,7 @@ function Modal({ modal, closeModal }) {
 									 closeModal={closeModal} formType="login" />;
 			break;
 		case 'signup':
-			component = <SessionFormContainer 
+			component = <SessionFormContainer
 									 closeModal={closeModal} formType="signup" />;
 			break;
 		default:

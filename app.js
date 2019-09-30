@@ -7,6 +7,7 @@ const db = require('./config/keys').mongoURI;
 // imports routes from "<url>"
 const users = require("./routes/api/users");
 const accounts = require("./routes/api/accounts");
+const assets = require("./routes/api/assets");
 // parse JSON
 const bodyParser = require('body-parser');
 // authenticate web tokens for user auth
@@ -26,6 +27,7 @@ require('./config/passport')(passport);
 // initial routes here, tries to match first arg, then will send the objects we are importing above from the routes/api folder
 app.use("/api/users", users);
 app.use("/api/accounts", accounts);
+app.use("/api/assets", assets);
 // app will run on Heroku || localhost:5000
 const port = process.env.PORT || 5000;
 

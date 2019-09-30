@@ -6,7 +6,7 @@ const AssetSchema = new Schema({
 	name: { type: String, required: true, minlength: 3, maxlength: 50 },
 	type: { type: String, required: true,
 		enum: ['ETF', 'Mutual Fund', 'Stock', 'Other'] },
-	exp_ratio: { type: Number, required: true },
+	exp_ratio: { type: Number, required: true, min: 0, max: 1 },
 	allocation: {
 		usStocks: { type: Number, default: 0, min: 0, max: 100 },
 		forStocks: { type: Number, default: 0, min: 0, max: 100 },
