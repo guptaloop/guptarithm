@@ -8,13 +8,13 @@ const AssetSchema = new Schema({
 		enum: ['ETF', 'Mutual Fund', 'Stock', 'Other'] },
 	exp_ratio: { type: Number, required: true, min: 0, max: 1 },
 	allocation: {
-		usStocks: { type: Number, default: 0, min: 0, max: 100 },
-		forStocks: { type: Number, default: 0, min: 0, max: 100 },
-		eM: { type: Number, default: 0, min: 0, max: 100 },
-		smallCap: { type: Number, default: 0, min: 0, max: 100 },
-		indStocks: { type: Number, default: 0, min: 0, max: 100 },
-		bonds: { type: Number, default: 0, min: 0, max: 100 },
-		other: { type: Number, default: 0, min: 0, max: 100 },
+		usStocks: { type: Number, min: 0, max: 100 },
+		forStocks: { type: Number, min: 0, max: 100 },
+		eM: { type: Number, min: 0, max: 100 },
+		smallCap: { type: Number, min: 0, max: 100 },
+		indStocks: { type: Number, min: 0, max: 100 },
+		bonds: { type: Number, min: 0, max: 100 },
+		other: { type: Number, min: 0, max: 100 },
 	},
 	date: { type: Date, default: Date.now }
 });
