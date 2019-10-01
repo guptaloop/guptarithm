@@ -6,7 +6,7 @@ class Accounts extends React.Component {
 		this.state = {
 			accountName: '',	accounts: []
 		};
-		this.handleNewAccount = this.handleNewAccount.bind(this);
+		// this.handleNewAccount = this.handleNewAccount.bind(this);
 		this.fetchAccounts = this.fetchAccounts.bind(this);
 	}
 
@@ -19,21 +19,21 @@ class Accounts extends React.Component {
 			.then(() => this.setState({ accounts: this.props.accounts }));
 	}
 
-	handleUpdate(field) {
-		return e => this.setState({
-			[field]: e.currentTarget.value
-		});
-	}
+	// handleUpdate(field) {
+	// 	return e => this.setState({
+	// 		[field]: e.currentTarget.value
+	// 	});
+	// }
 
-	handleNewAccount(e) {
-		e.preventDefault();
-		let account = { 
-			name: this.state.accountName,
-			userId: this.props.user.id
-		};
-		this.props.createAccount(account)
-			.then(() => {	this.fetchAccounts();	});
-	}
+	// handleNewAccount(e) {
+	// 	e.preventDefault();
+	// 	let account = { 
+	// 		name: this.state.accountName,
+	// 		userId: this.props.user.id
+	// 	};
+	// 	this.props.createAccount(account)
+	// 		.then(() => {	this.fetchAccounts();	});
+	// }
 
 	renderAccounts() {
 		return (
@@ -52,13 +52,9 @@ class Accounts extends React.Component {
 	render() {
 		return (
 			<>
-				<form onSubmit={this.handleNewAccount}>Create New Account
-					<input
-						value={this.state.accountName}
-						onChange={this.handleUpdate('accountName')}
-						placeholder="Enter account name (don't use full account #)"
-					/>
-				</form>
+				<button onClick={() => this.props.openAccountModal('addAccount')}>
+					+ Add Account
+				</button>
 				<div>{this.renderAccounts()}</div>
 			</>
 		)
@@ -80,4 +76,4 @@ export default Accounts;
 // 		-- if asset exists, just toggle to an input field for shares
 // 		-- otherwise, open a modal with a form to fill in all info
 // columns to display in the accounts table
-// symbol, name, type, 
+// symbol, name, type,

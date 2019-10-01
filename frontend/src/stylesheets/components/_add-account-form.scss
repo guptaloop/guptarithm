@@ -1,0 +1,61 @@
+.add-account-form-container {
+  width: 500px;
+  height: 450px;
+  background-image: radial-gradient($fa-blue, $teal);
+  
+  form {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.add-account-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+	h1 {
+		width: 50%;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+	}
+  p {
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+  input {
+    height: 50px;
+    width: 250px;
+    font-size: 16px;
+    border: 0px;
+    padding: 0px 0px 0px 6px;
+  }
+  .submit {
+    width: 256px;
+    font-weight: bold;
+    background: rgb(15, 180, 143);
+    color: white;
+    &:hover { 
+      background: $teal;
+    }
+  }
+}
+
+.add-account-errors {
+  color: orange;
+  font-size: 14px;
+  font-weight: 800;
+}

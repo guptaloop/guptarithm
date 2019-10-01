@@ -1,0 +1,64 @@
+import React, { Component } from 'react';
+
+export default class AddAccountForm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
+			custodian: '',
+			type: '',
+			last4: '',
+		};
+		this.handleNewAccount = this.handleNewAccount.bind(this);
+	}
+	
+	handleUpdate(field) {
+		return e => this.setState({
+			[field]: e.currentTarget.value
+		});
+	}
+
+	handleNewAccount(e) {
+		e.preventDefault();
+		let account = {
+			userId: this.props.user.id,
+			custodian: this.state.custodian,
+			type: this.state.type,
+			last4: this.state.last4,
+		};
+		this.props.createAccount(account);
+			// .then(() => { this.fetchAccounts(); });
+	}
+
+	render() {
+		return (
+			<div className="add-account-form-container">
+				<form onSubmit={this.handleNewAccount}>
+					<div className="add-account-form">
+						<h1>Create Account Form</h1>
+						<p>Custodian</p>
+						<input
+							value={this.state.custodian}
+							onChange={this.handleUpdate('custodian')}
+							placeholder="e.g. Fidelity, Vanguard, Schwab"
+						/>
+						<p>Account Type</p>
+						<input
+							value={this.state.type}
+							onChange={this.handleUpdate('type')}
+							placeholder="e.g. Roth IRA, IRA"
+						/>
+						<p>Last 4 of Account #</p>
+						<input
+							value={this.state.last4}
+							onChange={this.handleUpdate('last4')}
+							placeholder="1234"
+						/>
+						<br></br>
+						<input className="submit" type="submit" 
+							value={this.state.formType} />
+					</div>
+				</form>
+			</div>
+		)
+	}
+}

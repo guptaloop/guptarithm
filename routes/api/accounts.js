@@ -31,8 +31,10 @@ router.post('/',
 		}
 
 		const newAccount = new Account({
-			name: req.body.name,
-			user: req.user.id
+			user: req.user.id,
+			custodian: req.body.custodian,
+			type: req.body.type,
+			last4: req.body.last4,
 		});
 		// save the account and json the response
 		newAccount
