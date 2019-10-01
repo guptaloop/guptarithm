@@ -25,8 +25,12 @@ export default class AddAccountForm extends Component {
 			type: this.state.type,
 			last4: this.state.last4,
 		};
-		this.props.createAccount(account);
-			// .then(() => { this.fetchAccounts(); });
+		this.props.createAccount(account, this.props.history)
+			.then(() => {
+				if (this.props.errors.length === 0) {
+					this.props.closeModal();
+				}
+			});
 	}
 
 	render() {
@@ -54,8 +58,7 @@ export default class AddAccountForm extends Component {
 							placeholder="1234"
 						/>
 						<br></br>
-						<input className="submit" type="submit" 
-							value={this.state.formType} />
+						<input className="submit" type="submit"/>
 					</div>
 				</form>
 			</div>

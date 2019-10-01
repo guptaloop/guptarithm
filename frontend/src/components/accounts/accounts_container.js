@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Accounts from './accounts';
 import { fetchAccounts, createAccount } from '../../actions/account_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import Accounts from './accounts';
 
 const mapStateToProps = (state) => ({
 	user: state.session.user,

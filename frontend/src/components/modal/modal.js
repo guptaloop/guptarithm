@@ -20,6 +20,7 @@ function Modal({ modal, closeModal }) {
 		case 'signup':
 			component = <SessionFormContainer
 									 closeModal={closeModal} formType="signup" />;
+			break;
 		case 'addAccount':
 			component = <AddAccountFormContainer
 									 closeModal={closeModal} formType="addAccount" />;

@@ -1,4 +1,6 @@
-import { RECEIVE_ALL_ACCOUNTS } from '../../actions/account_actions';
+import { 
+	RECEIVE_ALL_ACCOUNTS
+	} from '../../actions/account_actions';
 
 const AccountsReducer = (state = {}, action) => {
 	Object.freeze(state);

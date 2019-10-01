@@ -3,10 +3,7 @@ import React from 'react';
 class Accounts extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			accountName: '',	accounts: []
-		};
-		// this.handleNewAccount = this.handleNewAccount.bind(this);
+		this.state = { accounts: [] };
 		this.fetchAccounts = this.fetchAccounts.bind(this);
 	}
 
@@ -14,35 +11,24 @@ class Accounts extends React.Component {
 		this.fetchAccounts();
 	}
 
+	componentDidUpdate() {
+		const accounts = this.props.accounts;
+		if (accounts !== {} && accounts.length !== this.state.accounts.length) {
+			this.fetchAccounts(); 
+		}
+	}
+
 	fetchAccounts() {
 		this.props.fetchAccounts(this.props.user.id)
 			.then(() => this.setState({ accounts: this.props.accounts }));
 	}
 
-	// handleUpdate(field) {
-	// 	return e => this.setState({
-	// 		[field]: e.currentTarget.value
-	// 	});
-	// }
-
-	// handleNewAccount(e) {
-	// 	e.preventDefault();
-	// 	let account = { 
-	// 		name: this.state.accountName,
-	// 		userId: this.props.user.id
-	// 	};
-	// 	this.props.createAccount(account)
-	// 		.then(() => {	this.fetchAccounts();	});
-	// }
-
 	renderAccounts() {
 		return (
 			<ul>
 				{(this.state.accounts).map(account => (
-					<li key={account._id}>{(account.name)}
-						{/* <button onClick={this.props.deleteAccount}>
-							DELETE
-						</button> */}
+					<li key={account._id}>
+						{account.custodian} {account.type} - *{account.last4}
 					</li>
 				))}
 			</ul>

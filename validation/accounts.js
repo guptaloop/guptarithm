@@ -4,17 +4,28 @@ const validText = require('./valid-text');
 module.exports = function validateAccountInput(data) {
 	let errors = {};
 
-	data.name = validText(data.name) ? data.name : '';
+	data.custodian = validText(data.custodian) ? data.custodian : '';
+	data.type = validText(data.type) ? data.type : '';
+	data.last4 = validText(data.last4) ? data.last4 : '';
 
-	if (!Validator.isLength(data.name, { min: 3 })) {
-		errors.text = 'Account name must be at least 3 characters - e.g. Fidelity 401(k) or Roth IRA *6789';
+	// isLength
+	if (!Validator.isLength(data.custodian, { min: 3, max: 30 })) {
+		errors.text = 'Custodian must be between 3 - 30 characters';
+	}
+	if (!Validator.isLength(data.last4, {min: 4, max: 4})) {
+		errors.text = 'Last 4 must be 4 characters';
 	}
 
-	if (Validator.isEmpty(data.name)) {
-		errors.text = 'Account name is required - for your security, do NOT enter full account numbers';
+	// isEmpty
+	if (Validator.isEmpty(data.custodian)) {
+		errors.text = 'Custodian is required';
 	}
-	
-	// make sure there's no more than 4 numbers in the name, but how?
+	if (Validator.isEmpty(data.type)) {
+		errors.text = 'Account type is required';
+	}
+	if (Validator.isEmpty(data.last4)) {
+		errors.text = 'Last 4 of account # are required';
+	}
 
 	return {
 		errors,

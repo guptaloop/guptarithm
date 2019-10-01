@@ -31,7 +31,7 @@ router.post('/',
 		}
 
 		const newAccount = new Account({
-			user: req.user.id,
+			user: req.body.userId,
 			custodian: req.body.custodian,
 			type: req.body.type,
 			last4: req.body.last4,
