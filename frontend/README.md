@@ -4,3 +4,11 @@
 
  ## Asset Class API
  -- https://www.cloudquote.io/products/api/barchart-getETFDetails
+
+
+## Bugs
+ -- receiving session errors when flipping between session forms
+ -- 
+
+## Dive Deeper
+ -- 'react-router-dom' | 'react-redux' | 'react'
