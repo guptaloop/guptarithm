@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Root from './components/root';
 import './stylesheets/application.scss';
 import configureStore from './store/store';
@@ -32,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		store = configureStore({});
 	}
 	
+	window.axios = axios;
+
 	const root = document.getElementById('root');
 	ReactDOM.render(<Root store={store} />, root);
 });

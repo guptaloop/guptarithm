@@ -66,3 +66,18 @@ class Accounts extends React.Component {
 }
 
 export default Accounts;
+
+
+// Add Account
+//  button link that says "+ Add Account"
+//  when clicked, it turns into an input field for the account name, with a button "Submit",
+// 		-- dispatches the create account, and re-renders the component with the new account (no holdings)
+// 		-- turns the input field & submit back to "+ Add Account"
+
+// // Account View
+// 	account name - account value
+// 	button to add holding (brings up a modal if the asset DNE)
+// 		-- if asset exists, just toggle to an input field for shares
+// 		-- otherwise, open a modal with a form to fill in all info
+// columns to display in the accounts table
+// symbol, name, type, 
