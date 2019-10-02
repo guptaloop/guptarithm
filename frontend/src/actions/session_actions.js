@@ -6,13 +6,11 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
-// We'll dispatch this when our user signs up or logs in
 export const receiveCurrentUser = currentUser => ({
 	type: RECEIVE_CURRENT_USER,
 	currentUser
 });
 
-// We dispatch this one to show authentication errors on the frontend
 export const receiveErrors = errors => ({
 	type: RECEIVE_SESSION_ERRORS,
 	errors
@@ -22,18 +20,17 @@ export const clearErrors = () => ({
 	type: CLEAR_SESSION_ERRORS
 });
 
-// When our user is logged out, we will dispatch this action to set isAuthenticated to false
+// When our user is logged out, this action sets isAuthenticated to false
 export const logoutUser = () => ({
 	type: RECEIVE_USER_LOGOUT
 });
 
-// Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = user => dispatch => (
-	APIUtil.signup(user).then(() => (
-		dispatch(receiveCurrentUser())
-	), err => (
-		dispatch(receiveErrors(err.response.data))
-	))
+	APIUtil.signup(user)
+		.then(() => dispatch(login(user)))
+		.catch(err => {
+			dispatch(receiveErrors(err.response.data));	
+		})
 );
 
 export const login = user => dispatch => (
@@ -49,7 +46,6 @@ export const login = user => dispatch => (
 			dispatch(receiveErrors(err.response.data));
 		})
 );
-
 
 export const logout = () => dispatch => {
 	// Remove the token from local storage

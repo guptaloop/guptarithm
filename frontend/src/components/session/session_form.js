@@ -4,18 +4,11 @@ import 'react-awesome-button/dist/styles.css';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			username: '',
-			password: '',
-			formType: '',
-			errors: {}
-		};
-		this.handleSignup = this.handleSignup.bind(this);
-		this.handleLogin = this.handleLogin.bind(this);
+		this.state = { username: '', password: '', formType: '', errors: {} };
+		this.handleAuth = this.handleAuth.bind(this);
 		this.renderErrors = this.renderErrors.bind(this);
 		this.clearedErrors = false;
 	}
-
 
 	componentDidMount() {
 		this.checkFormType();
@@ -44,31 +37,17 @@ class SessionForm extends React.Component {
 		return e => this.setState({ [field]: e.currentTarget.value });
 	}
 
-	handleSignup(e) {
+	handleAuth(e) {
 		e.preventDefault();
+		const auth = this.state.formType === 'Signup' ? 
+			this.props.signup : this.props.login;
 
 		let user = {
 			username: this.state.username,
 			password: this.state.password,
 		};
 
-		this.props.signup(user, this.props.history)
-			.then(() => {
-				if (this.props.errors.length === 0) {
-					this.props.closeModal();
-				}
-			});
-	}
-
-	handleLogin(e) {
-		e.preventDefault();
-
-		let user = {
-			username: this.state.username,
-			password: this.state.password,
-		};
-
-		this.props.login(user)
+		auth(user, this.props.history)
 			.then(() => {
 				if (this.props.errors.length === 0) {
 					this.props.closeModal();
@@ -88,7 +67,6 @@ class SessionForm extends React.Component {
 		);
 	}
 
-
 	render() {
 		const altButtonStyle = this.props.formType === 'login' ? 
 			{ top: '320px' } : { top: '320px' }
@@ -96,7 +74,7 @@ class SessionForm extends React.Component {
 		return (
 			<>
 				<div className="session-form-container">
-					<form onSubmit={this.state.formType === "Signup" ? this.handleSignup : this.handleLogin} >
+					<form onSubmit={this.handleAuth} >
 						
 						<div className="session-form">
 							<p>Username</p>
@@ -130,10 +108,6 @@ class SessionForm extends React.Component {
 			</>
 		);
 	}
-
-
-
-
 }
 
 export default SessionForm;
