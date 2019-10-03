@@ -35,7 +35,7 @@ export default class AddAccountForm extends Component {
 
 	render() {
 		return (
-			<div className="add-account-form-container">
+			<div className="add-account-form-comp">
 				<form onSubmit={this.handleNewAccount}>
 					<div className="add-account-form">
 						<h1>Create Account Form</h1>

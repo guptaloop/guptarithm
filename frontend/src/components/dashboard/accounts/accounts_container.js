@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 	// deleteAccount: (accountId) => dispatch(deleteAccount(accountId)),
 	closeModal: () => dispatch(closeModal()),
 	openAccountModal: () => dispatch(openModal("addAccount")),
-	openHoldingModal: () => dispatch(openHoldingModal("addHolding")),
+	openHoldingModal: () => dispatch(openModal("addHolding")),
 });
 
 export default withRouter(connect(

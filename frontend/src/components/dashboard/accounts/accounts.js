@@ -32,7 +32,7 @@ class Accounts extends React.Component {
 						<div>{account.custodian} {account.type} - *{account.last4}</div>
 						<div>$(accountValue)</div>
 					</li>
-						<button onClick={() => this.props.openAccountModal('addAccount')}>
+						<button onClick={() => this.props.openHoldingModal('addAccount')}>
 							+ Create Holding</button>
 					</>
 				))}

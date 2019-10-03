@@ -2,7 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AddAccountForm from './add_account_form';
 import { createAccount } from '../../../actions/account_actions';
-import { openModal, closeModal } from '../../../actions/modal_actions';
+import { closeModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = (state) => ({
 	user: state.session.user,
@@ -12,7 +12,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
 	createAccount: account => dispatch(createAccount(account)),
 	closeModal: () => dispatch(closeModal()),
-	openAccountModal: () => dispatch(openModal("addAccount")),
 	// clearErrors: () => dispatch(clearErrors()),
 });
 

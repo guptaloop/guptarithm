@@ -1,6 +1,6 @@
-.add-account-form-comp {
-  width: 500px;
-  height: 450px;
+.add-holding-form-comp {
+  width: 800px;
+  height: 700x;
   background-image: radial-gradient($fa-blue, $teal);
   
   form {
@@ -9,7 +9,7 @@
   }
 }
 
-.add-account-form {
+.add-holding-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +54,7 @@
   }
 }
 
-.add-account-errors {
+.add-holding-errors {
   color: orange;
   font-size: 14px;
   font-weight: 800;
