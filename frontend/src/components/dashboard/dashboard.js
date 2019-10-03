@@ -14,8 +14,13 @@ export default class Dashboard extends React.Component {
 	render() {
 
 		return (
-			<div>
+			<div className="dashboard">
 				<Accounts />
+				{/* replace div below with components */}
+				<div className="placeholder">
+					<p>CHARTS</p>
+					<p>ALGO</p>
+				</div>
 			</div>
 		)
 	}

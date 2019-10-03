@@ -37,12 +37,12 @@ class Accounts extends React.Component {
 
 	render() {
 		return (
-			<>
+			<div className="accounts">
 				<button onClick={() => this.props.openAccountModal('addAccount')}>
 					+ Add Account
 				</button>
 				<div>{this.renderAccounts()}</div>
-			</>
+			</div>
 		)
 	}
 }

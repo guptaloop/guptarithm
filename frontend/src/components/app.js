@@ -5,7 +5,6 @@ import { Switch } from 'react-router-dom';
 import Modal from './modal/modal';
 import NavBarContainer from './nav/navbar_container';
 import Splash from './splash/splash';
-// import Accounts from './dashboard/accounts/accounts_container';
 import Dashboard from './dashboard/dashboard';
 import Footer from './footer/footer';
 
@@ -18,6 +17,7 @@ const App = () => (
 		<main>
 			<Switch>
 				<AuthRoute exact path="/" component={Splash} />
+				{/* update the route path below */}
 				<ProtectedRoute exact path="/accounts" component={Dashboard} />
 			</Switch>
 		</main>
