@@ -1,6 +1,21 @@
-.accounts {
+.accounts-comp {
 	display: flex;
 	flex-direction: column;
 	height: 85vh;
 	width: 50vw;
+
+	h1 {
+		font-size: 28px;
+		padding: 16px 0px 16px 16px; 
+	}
+}
+
+.account {
+	display: flex;
+	justify-content: space-between;
+	font-size: 22px;
+	font-weight: 500;
+	padding: 20px;
+	
+	
 }
