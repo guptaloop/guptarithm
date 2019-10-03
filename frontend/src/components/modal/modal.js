@@ -15,15 +15,19 @@ function Modal({ modal, closeModal }) {
 	switch (modal) {
 		case 'login':
 			component = <SessionFormContainer 
-									 closeModal={closeModal} formType="login" />;
+				closeModal={closeModal} formType="login" />;
 			break;
 		case 'signup':
 			component = <SessionFormContainer
-									 closeModal={closeModal} formType="signup" />;
+				closeModal={closeModal} formType="signup" />;
 			break;
 		case 'addAccount':
 			component = <AddAccountFormContainer
-									 closeModal={closeModal} formType="addAccount" />;
+				closeModal={closeModal} formType="addAccount" />;
+			break;
+		case 'addHolding':
+			component = <AddHoldingFormContainer
+				closeModal={closeModal} formType="addHolding" />;
 			break;
 		default:
 			return null;

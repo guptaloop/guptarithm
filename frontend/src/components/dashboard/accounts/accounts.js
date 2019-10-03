@@ -27,10 +27,14 @@ class Accounts extends React.Component {
 		return (
 			<ul>
 				{(this.state.accounts).map(account => (
+					<>
 					<li key={account._id} className="account">
 						<div>{account.custodian} {account.type} - *{account.last4}</div>
 						<div>$(accountValue)</div>
 					</li>
+						<button onClick={() => this.props.openAccountModal('addAccount')}>
+							+ Create Holding</button>
+					</>
 				))}
 			</ul>
 		)
