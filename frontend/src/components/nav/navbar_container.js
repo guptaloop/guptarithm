@@ -15,6 +15,5 @@ const mapDispatchToProps = dispatch => ({
 	openModal: (modal) => dispatch(openModal(modal))
 });
 
-
 export default withRouter(
 	connect(mapStateToProps, mapDispatchToProps)(NavBar));
