@@ -28,7 +28,8 @@ export default class AddHoldingForm extends Component {
 	handleSearch(e) {
 		e.preventDefault();
 		
-		
+		this.props.fetchAsset(this.state.symbol)
+			.then(res => console.log(res));
 	}
 
 	render() {
