@@ -1,6 +1,6 @@
 .add-holding-form-comp {
-  width: 800px;
-  height: 700x;
+  width: 850px;
+  height: 600px;
   background-image: radial-gradient($fa-blue, $teal);
   
   form {
@@ -18,39 +18,88 @@
   width: 100%;
 
 	h1 {
-		width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 20px;
     font-weight: 700;
-    color: white;
-    margin-bottom: 16px;
+		color: white;
+		padding: 16px 16px 16px 16px;
 	}
   p {
-    width: 50%;
+    width: 70%;
     display: flex;
-    justify-content: left;
+		justify-content: left;
+		align-items: center;
     font-size: 16px;
     font-weight: 700;
-    color: white;
-    margin-top: 16px;
-    margin-bottom: 6px;
-  }
-  input {
-    height: 50px;
-    width: 250px;
-    font-size: 16px;
-    border: 0px;
-    padding: 0px 0px 0px 6px;
+		color: white;
+		padding: 10px 14px 10px 0px;
   }
   .submit {
-    width: 256px;
+		width: 256px;
+		height: 50px;
+		font-size: 16px;
     font-weight: bold;
     background: rgb(15, 180, 143);
     color: white;
     &:hover { 
       background: $teal;
     }
+  }
+}
+
+.form-inputs {
+	display: flex;
+	justify-content: space-around;
+	width: 80%;
+	padding: 18px 0px 18px 0px;
+}
+
+.asset-holding {
+	display: flex;
+	flex-direction: column;
+	align-content: space-evenly;
+	width: 45%;
+	padding: 12px 12px 12px 12px;
+	
+	div {
+		display: flex;
+		padding: 10px 10px 10px 10px;
+	}
+	
+	input {
+    height: 30px;
+    width: 200px;
+    font-size: 14px;
+    border: 0px;
+	}
+	
+	select {
+		width: 200px;
+		height: 30px;
+		font-size: 14px;
+		border: 1px solid #a7a7a7;
+		border-radius: 5px;
+	}
+}
+
+
+.asset-allocation {
+	display: flex;
+	flex-direction: column;
+	align-content: space-evenly;
+	padding: 12px 12px 12px 12px;
+	
+	div {
+		display: flex;
+	}
+	
+	input {
+    height: 30px;
+    width: 50px;
+    font-size: 14px;
+    border: 0px;
+    padding: 0px 0px 0px 6px;
   }
 }
 
