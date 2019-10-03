@@ -6,8 +6,8 @@ const Asset = require('../../models/Asset');
 const validateAssetInput = require('../../validation/asset');
 
 // get a specific asset by its id
-router.get('/:id', (req, res) => {
-	Asset.findById(req.params.id)
+router.get('/:symbol', (req, res) => {
+	Asset.findOne({symbol: req.params.symbol })
 		.then(asset => res.json(asset))
 		.catch(err => res.status(404).json({
 			json: err, noassetfound: 'This asset does not exist'

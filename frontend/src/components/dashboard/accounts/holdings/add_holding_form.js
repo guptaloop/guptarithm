@@ -10,12 +10,11 @@ export default class AddHoldingForm extends Component {
 		};
 		this.handleNewAsset = this.handleNewAsset.bind(this);
 		this.handleNewHolding = this.handleNewHolding.bind(this);
+		this.handleSearch = this.handleSearch.bind(this);
 	}
 	
 	handleUpdate(field) {
-		return e => this.setState({
-			[field]: e.currentTarget.value
-		});
+		return e => this.setState({ [field]: e.currentTarget.value });
 	}
 
 	handleNewAsset(e) {
@@ -25,11 +24,30 @@ export default class AddHoldingForm extends Component {
 	handleNewHolding(e) {
 		e.preventDefault();
 	}
-
+	
+	handleSearch(e) {
+		e.preventDefault();
+		
+		
+	}
 
 	render() {
-		return (
-			<>
+		const assetSearch = (
+			<div className="asset-search-comp">
+				<form onSubmit={this.handleSearch}>
+					<div className="asset-search">
+						<h1>Asset Search</h1>
+						<input
+							value={this.state.symbol}
+							onChange={this.handleUpdate('symbol')}
+							placeholder="Enter Symbol"
+						/>
+						<input className="submit" type="submit" />
+					</div>
+				</form>
+			</div>
+		);
+		const fullForm = (
 			<div className="add-holding-form-comp">
 				{/* <form onSubmit={}> */}
 				<form>
@@ -37,6 +55,7 @@ export default class AddHoldingForm extends Component {
 						<h1>Create Holding Form</h1>
 						<div className="form-inputs">
 							<div className="asset-holding">
+								<h2>Asset Info</h2>
 								<div>
 									<p>Symbol</p>
 									<input
@@ -58,12 +77,13 @@ export default class AddHoldingForm extends Component {
 									<input
 										value={this.state.name}
 										onChange={this.handleUpdate('name')}
-										placeholder="Microsoft"
+										placeholder="Microsoft Inc."
 									/>
 								</div>
 								<div>
 									<p>Type</p>
 									<select onChange={this.handleUpdate('type')}>
+										<option value="0">-- select --</option>
 										<option value="Stock">Stock</option>
 										<option value="ETF">ETF</option>
 										<option value="Mutual Fund">Mutual Fund</option>
@@ -80,6 +100,7 @@ export default class AddHoldingForm extends Component {
 								</div>
 							</div>
 							<div className="asset-allocation">
+								<h2>Asset Allocation</h2>
 								<div>
 									<p>Individual Stocks</p>
 									<input
@@ -138,12 +159,16 @@ export default class AddHoldingForm extends Component {
 								</div>
 							</div>
 						</div>
-						
-						<br></br>
 						<input className="submit" type="submit" />
 					</div>
 				</form>
 			</div>
+		);
+
+		return (
+			<>
+				{assetSearch}
+				{/* {fullForm} */}
 			</>
 		)
 	}

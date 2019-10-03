@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
 	// 2 actions here: createAsset & createHolding
+	// fetchAsset: (symbol) => dispatch(fetchAsset(symbol)),
 	closeModal: () => dispatch(closeModal()),
 	// clearErrors: () => dispatch(clearErrors()),
 });

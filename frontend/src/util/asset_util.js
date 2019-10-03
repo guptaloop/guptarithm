@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const fetchAsset = (assetId) => {
-	return axios.get(`api/assets/${assetId}`, assetId);
+export const fetchAsset = (symbol) => {
+	return axios.get(`api/assets/${symbol}`, asset);
 };
 
 export const createAsset = (asset) => {

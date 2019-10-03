@@ -1,3 +1,49 @@
+.asset-search-comp {
+	width: 400px;
+	height: 250px;
+	background-image: radial-gradient($fa-blue, $teal);
+	
+	form {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.asset-search {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+
+	h1 {
+    font-size: 24px;
+    font-weight: 700;
+		color: white;
+		padding: 16px 16px 16px 16px;
+	}
+	input {
+    height: 30px;
+    width: 100px;
+		padding: 0px 8px 0px 8px;
+		margin: 18px 0px 18px 0px;
+		font-size: 14px;
+	}
+	.submit {
+		width: 150px;
+		height: 35px;
+		font-size: 14px;
+    font-weight: bold;
+    background: rgb(15, 180, 143);
+    color: white;
+    &:hover { 
+      background: $teal;
+		}
+	}
+}
+
+// fullForm to add holding (holding & asset info + asset allocation)
 .add-holding-form-comp {
   width: 850px;
   height: 600px;
@@ -20,7 +66,7 @@
 	h1 {
     display: flex;
     justify-content: flex-start;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
 		color: white;
 		padding: 16px 16px 16px 16px;
@@ -53,6 +99,14 @@
 	justify-content: space-around;
 	width: 80%;
 	padding: 18px 0px 18px 0px;
+	h2 {
+		display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+		color: white;
+		padding: 16px 16px 16px 16px;
+	}
 }
 
 .asset-holding {
@@ -69,9 +123,9 @@
 	
 	input {
     height: 30px;
-    width: 200px;
-    font-size: 14px;
-    border: 0px;
+    width: 150px;
+		padding: 0px 8px 0px 8px;
+		font-size: 14px;
 	}
 	
 	select {
@@ -95,11 +149,12 @@
 	}
 	
 	input {
-    height: 30px;
+		height: 30px;
     width: 50px;
     font-size: 14px;
     border: 0px;
-    padding: 0px 0px 0px 6px;
+    padding: 0px 8px 0px 8px;
+    margin: 0px 16px 0px 16px;
   }
 }
 
