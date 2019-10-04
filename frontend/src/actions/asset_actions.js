@@ -9,5 +9,11 @@ export const receiveAsset = asset => ({
 
 export const fetchAsset = symbol => dispatch => (
 	APIUtil.fetchAsset(symbol)
-		.then((asset) => dispatch(receiveAsset(asset)))
+		.then(asset => {
+			// only dispatch if the asset exists
+			if (asset.data) {
+				dispatch(receiveAsset(asset));
+				return;
+			}
+		})
 );

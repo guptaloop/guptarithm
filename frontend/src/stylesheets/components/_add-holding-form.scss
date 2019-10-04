@@ -1,5 +1,5 @@
 .asset-search-comp {
-	width: 400px;
+	width: 425px;
 	height: 250px;
 	background-image: radial-gradient($fa-blue, $teal);
 	
@@ -18,8 +18,8 @@
 	height: 100%;
 
 	h1 {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 400;
 		color: white;
 		padding: 16px 16px 16px 16px;
 	}
@@ -113,7 +113,7 @@
 	display: flex;
 	flex-direction: column;
 	align-content: space-evenly;
-	width: 45%;
+	width: 48%;
 	padding: 12px 12px 12px 12px;
 	
 	div {

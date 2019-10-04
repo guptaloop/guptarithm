@@ -7,6 +7,8 @@ import { closeModal } from '../../../../actions/modal_actions';
 const mapStateToProps = (state) => ({
 	user: state.session.user,
 	errors: state.errors.session,
+	assets: state.entities.assets,
+	
 });
 
 const mapDispatchToProps = dispatch => ({
