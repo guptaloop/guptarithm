@@ -4,7 +4,9 @@ import Accounts from './accounts';
 import {
 	fetchAccounts, createAccount
 } from '../../../actions/account_actions';
-import { openModal, closeModal } from '../../../actions/modal_actions';
+import { 
+	openModal, closeModal, openHoldingModal 
+} from '../../../actions/modal_actions';
 
 const mapStateToProps = (state) => ({
 	user: state.session.user,
@@ -18,7 +20,8 @@ const mapDispatchToProps = dispatch => ({
 	// deleteAccount: (accountId) => dispatch(deleteAccount(accountId)),
 	closeModal: () => dispatch(closeModal()),
 	openAccountModal: () => dispatch(openModal("addAccount")),
-	openHoldingModal: () => dispatch(openModal("addHolding")),
+	openHoldingModal: accountId => 
+		dispatch(openHoldingModal("addHolding", accountId)),
 });
 
 export default withRouter(connect(

@@ -30,6 +30,14 @@ export default class AddHoldingForm extends Component {
 
 	handleNewHolding(e) {
 		e.preventDefault();
+		console.log(this.props.user.id);
+
+		// let holding = {
+		// 	user: this.props.user.id,
+		// 	account: ,
+		// 	asset: ,
+		// 	shares: ,
+		// }
 	}
 	
 	handleSearch(e) {
@@ -49,6 +57,7 @@ export default class AddHoldingForm extends Component {
 	}
 
 	render() {
+		
 		let holdingOrAssetForm;
 		switch (this.state.formState) {
 			case 0:
@@ -208,7 +217,7 @@ export default class AddHoldingForm extends Component {
 					<h1>Something went wrong, please reload your page</h1> )
 					break;
 		}
-
+		
 		return (
 			<>
 				{holdingOrAssetForm}
