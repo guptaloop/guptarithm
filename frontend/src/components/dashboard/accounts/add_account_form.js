@@ -25,7 +25,8 @@ export default class AddAccountForm extends Component {
 			type: this.state.type,
 			last4: this.state.last4,
 		};
-		this.props.createAccount(account, this.props.history)
+		// this.props.createAccount(account, this.props.history)
+		this.props.createAccount(account)
 			.then(() => {
 				if (this.props.errors.length === 0) {
 					this.props.closeModal();

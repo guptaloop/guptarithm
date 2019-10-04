@@ -7,7 +7,7 @@ export default class AddHoldingForm extends Component {
 			 symbol: "", shares: "", name: "", type: "", expRatio: "",
 			 usStocks: "", forStocks: "", eM: "", smallCap: "",
 			 bonds: "", indStocks: "", other: "",
-			 formState: 0, assetId: ""
+			 formState: 0,
 		};
 		this.handleNewAsset = this.handleNewAsset.bind(this);
 		this.handleNewHolding = this.handleNewHolding.bind(this);
@@ -33,11 +33,16 @@ export default class AddHoldingForm extends Component {
 
 		let holding = {
 			account: this.props.accountId,
-			asset: this.state.assetId,
+			symbol: this.state.symbol,
 			shares: this.state.shares,
 		};
 
-		this.props.createHolding(holding);
+		this.props.createHolding(holding)
+			.then(() => {
+				if (this.props.errors.length === 0) {
+					this.props.closeModal();
+				}
+			});
 	}
 	
 	handleSearch(e) {
@@ -48,7 +53,7 @@ export default class AddHoldingForm extends Component {
 				res = this.props.assets[this.state.symbol];
 				// if asset exists in db, then user only enters share qty
 				if (res) {
-					this.setState({ formState: 1, assetId: res._id });
+					this.setState({ formState: 1 });
 				// else they will need to manually enter all asset info
 				} else {
 					this.setState({ formState: 2 });

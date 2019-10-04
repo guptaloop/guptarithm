@@ -1,4 +1,5 @@
 import React from 'react';
+import HoldingsContainer from './holdings/holdings_container';
 
 class Accounts extends React.Component {
 	constructor(props) {
@@ -32,10 +33,10 @@ class Accounts extends React.Component {
 						<div>{account.custodian} {account.type} - *{account.last4}</div>
 						<div>$(accountValue)</div>
 					</li>
-						<button onClick={() => 
-								this.props.openHoldingModal(account._id)}
-							>+ Create Holding
-						</button>
+					<HoldingsContainer account={account._id}/>
+					<button onClick={() => this.props.openHoldingModal(account._id)}>
+						+ Add Holding
+					</button>
 					</>
 				))}
 			</ul>

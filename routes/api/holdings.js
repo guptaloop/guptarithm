@@ -44,7 +44,7 @@ router.post('/',
 		const newHolding = new Holding({
 			user: req.user.id,
 			account: req.body.account,
-			asset: req.body.asset,
+			symbol: req.body.symbol,
 			shares: req.body.shares,
 		});
 		// save the Holding and json the response
