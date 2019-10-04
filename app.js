@@ -8,6 +8,7 @@ const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
 const accounts = require("./routes/api/accounts");
 const assets = require("./routes/api/assets");
+const holdings = require("./routes/api/holdings");
 // parse JSON
 const bodyParser = require('body-parser');
 // authenticate web tokens for user auth
@@ -28,6 +29,7 @@ require('./config/passport')(passport);
 app.use("/api/users", users);
 app.use("/api/accounts", accounts);
 app.use("/api/assets", assets);
+app.use("/api/holdings", holdings);
 // app will run on Heroku || localhost:5000
 const port = process.env.PORT || 5000;
 

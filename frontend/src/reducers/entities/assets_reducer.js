@@ -2,7 +2,7 @@ import {
 	RECEIVE_ASSET
 } from '../../actions/asset_actions';
 
-const AssetReducer = (state = {}, action) => {
+const AssetsReducer = (state = {}, action) => {
 	Object.freeze(state);
 	switch (action.type) {
 		case RECEIVE_ASSET:
@@ -13,4 +13,4 @@ const AssetReducer = (state = {}, action) => {
 	}
 };
 
-export default AssetReducer;
+export default AssetsReducer;
