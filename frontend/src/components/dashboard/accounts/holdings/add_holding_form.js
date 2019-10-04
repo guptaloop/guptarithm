@@ -15,7 +15,13 @@ export default class AddHoldingForm extends Component {
 	}
 	
 	handleUpdate(field) {
-		return e => this.setState({ [field]: e.currentTarget.value });
+		if (field === 'symbol') {
+			return e => this.setState({ 
+				[field]: e.currentTarget.value.toUpperCase()
+			});
+		} else {
+			return e => this.setState({ [field]: e.currentTarget.value });
+		}
 	}
 
 	handleNewAsset(e) {
@@ -28,7 +34,7 @@ export default class AddHoldingForm extends Component {
 	
 	handleSearch(e) {
 		e.preventDefault();
-		
+
 		this.props.fetchAsset(this.state.symbol)
 			.then(res => {
 				res = this.props.assets[this.state.symbol];
@@ -67,7 +73,7 @@ export default class AddHoldingForm extends Component {
 					<div className="asset-search-comp">
 						<form onSubmit={this.handleNewHolding}>
 							<div className="asset-search">
-								<h1>How many shares of VTSAX do you own?</h1>
+								<h1>How many shares of {this.state.symbol} do you own?</h1>
 								<input
 									value={this.state.shares}
 									onChange={this.handleUpdate('shares')}
