@@ -3,18 +3,76 @@
 	flex-direction: column;
 	height: 85vh;
 	width: 50vw;
+	padding-left: 20px;
 
+	span {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		button {
+			color: blue;
+			font-size: 14px;
+			font-weight: 600;
+			margin: 6px 50px 0px 0px;
+			&:hover { 
+				transform: scale(1.1);
+			}
+		}
+	}
 	h1 {
-		font-size: 28px;
-		padding: 16px 0px 16px 16px; 
+		display: flex;
+		justify-content: flex-start;
+		font-size: 26px;
+		font-weight: 700;
+		padding: 20px 0px 16px 0px; 
+	}
+	h2 {
+		font-size: 20px;
+		font-weight: 700;
+		padding: 16px 16px 16px 16px; 
 	}
 }
 
 .account {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
-	font-size: 22px;
-	font-weight: 500;
-	padding: 20px;
+	// padding: 16px;
 	
+	div {
+		justify-content: space-between; 
+		display: flex;
+		width: 65%;
+	}
+	div:nth-child(2) {
+		display: flex;
+		justify-content: space-between; 
+		width: 60%;
+		padding: 0px 16px 16px 24px;
+	}
+	h1 {
+		font-size: 18px;
+		font-weight: 700;
+		padding: 16px 16px 16px 16px; 
+	}
+	h2 {
+		color: green;
+		font-size: 18px;
+		font-weight: 700;
+		padding: 16px 16px 16px 16px; 
+	}
+	h3 {
+		font-size: 14px;
+		font-weight: 700;
+	}
+}
+
+.add-holding-btn {
+	font-size: 14px;
+	font-weight: 600;
+	color: blue;
+	margin: 20px 0px 20px 36px;
+	&:hover { 
+		transform: scale(1.1);
+	}
 }

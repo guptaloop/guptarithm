@@ -1,0 +1,32 @@
+.holdings-comp {
+	display: flex;
+	flex-direction: column;
+	height: 85vh;
+	width: 50vw;
+
+	h1 {
+		font-size: 28px;
+		padding: 16px 0px 16px 16px; 
+	}
+}
+
+.holding {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 20px;
+
+	div {
+		justify-content: space-between; 
+		display: flex;
+		width: 60%;
+		padding: 6px 16px 6px 16px;
+		border-left: 3px solid green;
+		border-top: 1px solid lightgray;
+		border-bottom: 1px solid lightgray;
+	}
+	h2 {
+		font-size: 14px;
+		font-weight: 500;
+		padding: 0px;
+	}
+}

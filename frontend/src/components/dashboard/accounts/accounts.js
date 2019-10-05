@@ -29,14 +29,23 @@ class Accounts extends React.Component {
 			<ul>
 				{(this.state.accounts).map(account => (
 					<>
-					<li key={account._id} className="account">
-						<div>{account.custodian} {account.type} - *{account.last4}</div>
-						<div>$(accountValue)</div>
-					</li>
-					<HoldingsContainer account={account._id}/>
-					<button onClick={() => this.props.openHoldingModal(account._id)}>
-						+ Add Holding
-					</button>
+						<li key={account._id} className="account">
+							<div>
+								<h1>{account.custodian} {account.type} - *{account.last4}</h1>
+								<h2>$400,000</h2>
+							</div>
+							<div>
+								<h3>Symbol</h3>
+								<h3>Shares</h3>
+								<h3>Price</h3>
+								<h3>Value</h3>
+							</div>
+						</li>
+						<HoldingsContainer account={account._id}/>
+						<button onClick={() => 
+								this.props.openHoldingModal(account._id)}
+								className="add-holding-btn"
+							>+ Add Holding</button>
 					</>
 				))}
 			</ul>
@@ -46,10 +55,12 @@ class Accounts extends React.Component {
 	render() {
 		return (
 			<div className="accounts-comp">
-				<h1>Retirement Portfolio - $(portValue)</h1>
+				<span>
+					<h1>Retirement Portfolio - $71,430</h1>
+					<button onClick={() =>
+						this.props.openAccountModal('addAccount')}>+ Add Account</button>
+				</span>
 				<div>{this.renderAccounts()}</div>
-				<button onClick={() => this.props.openAccountModal('addAccount')}>
-					+ Add Account</button>
 			</div>
 		)
 	}

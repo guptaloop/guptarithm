@@ -30,9 +30,13 @@ export default class Holdings extends Component {
 					if (holding.account === this.props.account) {
 						return (
 							<>
-							<li key={holding._id} className="account">
-								<div>{holding.symbol} {holding.account} - {holding.shares}</div>
-								<div>$(holdingValue)</div>
+							<li key={holding._id} className="holding">
+								<div>
+									<h2>{holding.symbol}</h2>
+									<h2>{holding.shares}</h2>
+									<h2>$50.85</h2>
+									<h2>$100</h2>
+								</div>
 							</li>
 							</>
 						)
