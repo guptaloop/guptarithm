@@ -2,6 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Holdings from './holdings';
 import { fetchHoldings } from "../../../../actions/holding_actions";
+import { fetchPrice } from '../../../../actions/price_api_actions';
 
 
 const mapStateToProps = (state) => ({
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchHoldings: (userId) => dispatch(fetchHoldings(userId)),
+	fetchPrice: (symbol) => dispatch(fetchPrice(symbol)),
 	// createAccount: (account) => dispatch(createAccount(account)),
 	// // deleteAccount: (accountId) => dispatch(deleteAccount(accountId)),
 	// closeModal: () => dispatch(closeModal()),

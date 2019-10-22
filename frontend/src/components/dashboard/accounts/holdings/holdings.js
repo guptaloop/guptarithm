@@ -5,12 +5,15 @@ export default class Holdings extends Component {
 		super(props);
 		this.state = {
 			 holdings: [],
+			 price: {},
 		};
 		this.fetchHoldings = this.fetchHoldings.bind(this);
+		this.fetchPrice = this.fetchPrice.bind(this);
 	}
 	
 	componentDidMount() {
-		this.fetchHoldings();
+		// this.fetchHoldings();
+		this.fetchPrice();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -20,6 +23,10 @@ export default class Holdings extends Component {
 	fetchHoldings() {
 		this.props.fetchHoldings(this.props.user.id)
 			.then(() => this.setState({ holdings: this.props.holdings }));
+		}
+		
+	fetchPrice() {
+		this.props.fetchPrice('IVV');
 	}
 
 	renderHoldings() {
@@ -40,6 +47,8 @@ export default class Holdings extends Component {
 							</li>
 							</>
 						)
+					} else {
+						return null;
 					}
 				})}
 			</ul>

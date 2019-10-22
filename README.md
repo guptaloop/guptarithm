@@ -5,10 +5,13 @@
  ## Asset Class API
  -- https://www.cloudquote.io/products/api/barchart-getETFDetails
 
+## Features
+ -- edit / delete holdings
+ 
 
 ## Bugs
  -- receiving session errors when flipping between session forms
- -- 
+ -- don't allow duplicate holdings in each account
 
 ## Dive Deeper
  -- 'react-router-dom' | 'react-redux' | 'react'
