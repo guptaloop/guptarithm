@@ -12,8 +12,8 @@ export default class Holdings extends Component {
 	}
 	
 	componentDidMount() {
-		// this.fetchHoldings();
-		this.fetchPrice();
+		this.fetchHoldings();
+		// this.fetchPrice();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -26,7 +26,7 @@ export default class Holdings extends Component {
 		}
 		
 	fetchPrice() {
-		this.props.fetchPrice('IVV');
+		this.props.fetchPrice();
 	}
 
 	renderHoldings() {
