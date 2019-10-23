@@ -5,32 +5,53 @@ export default class Holdings extends Component {
 		super(props);
 		this.state = {
 			 holdings: [],
-			 price: {},
+			 prices: {},
 		};
 		this.fetchHoldings = this.fetchHoldings.bind(this);
-		this.fetchPrice = this.fetchPrice.bind(this);
+		// this.fetchPrices = this.fetchPrices.bind(this);
 	}
 	
 	componentDidMount() {
 		this.fetchHoldings();
-		// this.fetchPrice();
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({ holdings: nextProps.holdings });
+		if (nextProps.holdings.length !== this.state.holdings.length) {
+			this.setState({ holdings: nextProps.holdings });
+		}
+		// let symbols = [];
+		// nextProps.holdings.forEach(holding => {
+		// 	const symbol = holding.symbol;
+		// 	if (this.props.prices[symbol] === undefined) {
+		// 		if (!symbols.includes(symbol)) {
+		// 			this.props.fetchPrice(symbol)
+		// 				.then(() => symbols.push(symbol));
+		// 		}
+		// 	}
+		// });
 	}
 
 	fetchHoldings() {
 		this.props.fetchHoldings(this.props.user.id)
 			.then(() => this.setState({ holdings: this.props.holdings }));
-		}
-		
-	fetchPrice() {
-		this.props.fetchPrice();
 	}
+		
+	// fetchPrices() {
+	// }
 
 	renderHoldings() {
 		// takes in the account id as a prop from Accounts and checks if it matches the account id attached to the holding
+		const prices = {};
+		if (this.state.holdings.length > 0) {
+			this.state.holdings.map(holding => {
+				if (!prices[holding.symbol]) {
+					prices[holding.symbol] = "$100";
+				}
+			});
+			// if (symbols.includes())
+		}
+		console.log(prices);
+
 		return (
 			<ul>
 				{(this.state.holdings).map(holding => {
