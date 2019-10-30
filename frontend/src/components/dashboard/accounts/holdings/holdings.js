@@ -50,7 +50,7 @@ export default class Holdings extends Component {
 			});
 			// if (symbols.includes())
 		}
-		console.log(prices);
+		// console.log(prices);
 
 		return (
 			<ul>
