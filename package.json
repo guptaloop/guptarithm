@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guptaloop/madhu.git"
+    "url": "git+https://github.com/guptaloop/guptarithm.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/guptaloop/madhu/issues"
+    "url": "https://github.com/guptaloop/guptarithm/issues"
   },
-  "homepage": "https://github.com/guptaloop/madhu#readme",
+  "homepage": "https://github.com/guptaloop/guptarithm#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
