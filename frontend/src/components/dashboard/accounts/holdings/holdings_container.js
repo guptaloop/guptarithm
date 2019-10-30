@@ -8,13 +8,12 @@ import { fetchPrice } from '../../../../actions/price_api_actions';
 const mapStateToProps = (state) => ({
 	user: state.session.user,
 	holdings: state.entities.holdings,
-	prices: state.entities.prices,
 	// errors: state.errors.session
 });
 
 const mapDispatchToProps = dispatch => ({
-	fetchHoldings: userId => dispatch(fetchHoldings(userId)),
-	fetchPrice: symbol => dispatch(fetchPrice(symbol)),
+	fetchHoldings: (userId) => dispatch(fetchHoldings(userId)),
+	fetchPrice: (symbol) => dispatch(fetchPrice(symbol)),
 	// createAccount: (account) => dispatch(createAccount(account)),
 	// // deleteAccount: (accountId) => dispatch(deleteAccount(accountId)),
 	// closeModal: () => dispatch(closeModal()),

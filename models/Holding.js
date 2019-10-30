@@ -6,7 +6,6 @@ const HoldingSchema = new Schema({
 	account: { type: Schema.Types.ObjectId,	ref: 'accounts', required: true	},
 	symbol: { type: String, required: true },
 	shares: {	type: Number,	required: true },
-	price: {	type: String, default: "",	required: false },
 	date: { type: Date,	default: Date.now	}
 });
 

@@ -7,15 +7,8 @@ export const receivePrice = data => ({
 	data
 });
 
-export const fetchPrice = symbol => (
+export const fetchPrice = symbol => dispatch => (
 	APIUtil.fetchPrice(symbol)
-		.then(res => {
-			// console.log(res.data["Global Quote"]);
-			if (res.data["Global Quote"] !== undefined) {
-				return res.data["Global Quote"]["05. price"];
-			} else {
-				return "";
-			}
-		})
+		.then(res => dispatch(receivePrice(res.data["Global Quote"])))
 	//.then(res => console.log(res.data["Global Quote"]["01. symbol"]))
 );
