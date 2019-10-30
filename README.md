@@ -13,5 +13,5 @@
  -- receiving session errors when flipping between session forms
  -- don't allow duplicate holdings in each account
 
-## Dive Deeper
+## Dive Deeper:
  -- 'react-router-dom' | 'react-redux' | 'react'
