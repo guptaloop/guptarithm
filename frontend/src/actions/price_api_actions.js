@@ -2,20 +2,15 @@ import * as APIUtil from '../util/price_api_util';
 
 export const RECEIVE_PRICE = "RECEIVE_PRICE";
 
-export const receivePrice = data => ({
+export const receivePrice = quote => ({
 	type: RECEIVE_PRICE,
-	data
+	quote
 });
 
-export const fetchPrice = symbol => (
+export const fetchPrice = symbol => dispatch => (
 	APIUtil.fetchPrice(symbol)
 		.then(res => {
-			// console.log(res.data["Global Quote"]);
-			if (res.data["Global Quote"] !== undefined) {
-				return res.data["Global Quote"]["05. price"];
-			} else {
-				return "";
-			}
+			const quote = res.data["Global Quote"];
+			dispatch(receivePrice(quote));
 		})
-	//.then(res => console.log(res.data["Global Quote"]["01. symbol"]))
 );
