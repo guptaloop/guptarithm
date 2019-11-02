@@ -10,26 +10,30 @@ export default class Holdings extends Component {
 	}	
 
 	renderHoldings() {
-		return (
-			<ul>
-				{(this.props.holdings).map(holding => {
-					if (holding.account === this.props.account) {
-						return (
-							<li key={holding._id} className="holding">
-								<div>
-									<h2>{holding.symbol}</h2>
-									<h2>{holding.shares}</h2>
-									<h2>$50.85</h2>
-									<h2>$100</h2>
-								</div>
-							</li>
-						)
-					} else {
-						return null;
-					}
-				})}
-			</ul>
-		)
+		if (this.props.holdings.length > 0) {
+			return (
+				<ul>
+					{(this.props.holdings).map(holding => {
+						if (holding.account === this.props.account) {
+							return (
+								<li className="holding">
+									<div>
+										<h2>{holding.symbol}</h2>
+										<h2>{holding.shares}</h2>
+										<h2>$50.85</h2>
+										<h2>$100</h2>
+									</div>
+								</li>
+							)
+						} else {
+							return null;
+						}
+					})}
+				</ul>
+			)
+		} else {
+			return null;
+		}
 	}
 
 	render() {
@@ -39,4 +43,4 @@ export default class Holdings extends Component {
 			</div>
 		)
 	}
-}	
+}
