@@ -12,13 +12,13 @@ export default class Dashboard extends React.Component {
 	componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id);
 		this.props.fetchHoldings(this.props.user.id)
-			// .then( () => this.getPrices() );
+			.then( () => this.getPrices() );
 	}
 
 	getPrices() {
 		const props = this.props;
-		// const symbols = uniqSymbols(this.props.holdings);
-		const symbols = ["IVV", "VXUS", "AAPL"];
+		const symbols = uniqSymbols(this.props.holdings);
+		// const symbols = ["AAPL"];
 		symbols.forEach(function(symbol) {
 			props.fetchPrice(symbol);
 		});

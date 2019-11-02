@@ -7,6 +7,7 @@ import { fetchPrice } from '../../../../actions/price_api_actions';
 const mapStateToProps = (state) => ({
 	user: state.session.user,
 	holdings: state.entities.holdings,
+	prices: state.entities.prices,
 });
 
 const mapDispatchToProps = dispatch => ({
