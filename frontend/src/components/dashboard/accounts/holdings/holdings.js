@@ -5,12 +5,13 @@ export default class Holdings extends Component {
 		super(props);
 		this.state = {
 			 holdings: [],
-			 prices: {},
+			//  prices: {'IVV': '12', 'VUG': '18' },
 		};
-	}	
+	}
 
 	renderHoldings() {
 		if (this.props.holdings.length > 0) {
+
 			return (
 				<ul>
 					{(this.props.holdings).map(holding => {

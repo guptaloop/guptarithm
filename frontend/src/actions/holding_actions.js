@@ -9,7 +9,10 @@ export const receiveAllHoldings = holdings => ({
 
 export const fetchHoldings = userId => dispatch => (
 	APIUtil.fetchHoldings(userId)
-		.then(holdings => dispatch(receiveAllHoldings(holdings)))
+		.then(holdings => {
+			APIUtil.uniqSymbols(holdings.data);
+			dispatch(receiveAllHoldings(holdings));
+		})
 );
 
 export const createHolding = holding => dispatch => (
