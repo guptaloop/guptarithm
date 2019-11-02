@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
 	componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id);
 		this.props.fetchHoldings(this.props.user.id)
-			.then( () => this.getPrices() );
+			// .then( () => this.getPrices() );
 	}
 
 	getPrices() {
