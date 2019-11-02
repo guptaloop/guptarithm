@@ -8,8 +8,8 @@ export default class Dashboard extends React.Component {
 	}
 	
 	componentWillMount() {
-		// this.props
 		this.props.fetchHoldings(this.props.user.id);
+		
 	}
 
 	render() {
