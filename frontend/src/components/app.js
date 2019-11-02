@@ -5,13 +5,13 @@ import { Switch } from 'react-router-dom';
 import Modal from './modal/modal';
 import NavBarContainer from './nav/navbar_container';
 import Splash from './splash/splash';
-import Dashboard from './dashboard/dashboard';
+import Dashboard from './dashboard/dashboard_container';
 import Footer from './footer/footer';
 
 const App = () => (
 	<div className="flex">
 		<Modal />
-		<header>
+		<header className="nav-header">
 			<NavBarContainer />
 		</header>
 		<main>

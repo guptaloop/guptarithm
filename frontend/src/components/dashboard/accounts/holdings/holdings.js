@@ -7,18 +7,18 @@ export default class Holdings extends Component {
 			 holdings: [],
 			 prices: {},
 		};
-		this.fetchHoldings = this.fetchHoldings.bind(this);
+		// this.fetchHoldings = this.fetchHoldings.bind(this);
 		// this.fetchPrices = this.fetchPrices.bind(this);
 	}
 	
-	componentDidMount() {
-		this.fetchHoldings();
-	}
+	// componentDidMount() {
+	// 	// this.fetchHoldings();
+	// }
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.holdings.length !== this.state.holdings.length) {
-			this.setState({ holdings: nextProps.holdings });
-		}
+	// componentWillReceiveProps(nextProps) {
+	// 	if (nextProps.holdings.length !== this.state.holdings.length) {
+	// 		this.setState({ holdings: nextProps.holdings });
+	// 	}
 		// let symbols = [];
 		// nextProps.holdings.forEach(holding => {
 		// 	const symbol = holding.symbol;
@@ -29,28 +29,28 @@ export default class Holdings extends Component {
 		// 		}
 		// 	}
 		// });
-	}
+	// }
 
-	fetchHoldings() {
-		this.props.fetchHoldings(this.props.user.id)
-			.then(() => this.setState({ holdings: this.props.holdings }));
-	}
+	// fetchHoldings() {
+	// 	this.props.fetchHoldings(this.props.user.id)
+	// 		.then(() => this.setState({ holdings: this.props.holdings }));
+	// }
 		
 	// fetchPrices() {
 	// }
 
 	renderHoldings() {
 		// takes in the account id as a prop from Accounts and checks if it matches the account id attached to the holding
-		const prices = {};
-		if (this.state.holdings.length > 0) {
-			this.state.holdings.map(holding => {
-				if (!prices[holding.symbol]) {
-					prices[holding.symbol] = "$100";
-				}
-			});
-			// if (symbols.includes())
-		}
-		// console.log(prices);
+		// const prices = {};
+		// if (this.state.holdings.length > 0) {
+		// 	this.state.holdings.map(holding => {
+		// 		if (!prices[holding.symbol]) {
+		// 			prices[holding.symbol] = "$100";
+		// 		}
+		// 	});
+		// 	// if (symbols.includes())
+		// }
+		// // console.log(prices);
 
 		return (
 			<ul>
@@ -83,4 +83,4 @@ export default class Holdings extends Component {
 			</div>
 		)
 	}
-}
+}	
