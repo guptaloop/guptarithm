@@ -5,8 +5,17 @@ const passport = require('passport');
 const Asset = require('../../models/Asset');
 const validateAssetInput = require('../../validation/asset');
 
-// get a specific asset by its id
+// get a specific asset by its symbol
 router.get('/:symbol', (req, res) => {
+	Asset.findOne({symbol: req.params.symbol })
+		.then(asset => res.json(asset))
+		.catch(err => res.status(404).json({
+			json: err, noassetfound: 'This asset does not exist'
+		}));
+});
+
+// get a specific asset's allocation by its symbol
+router.get('/al/:symbol', (req, res) => {
 	Asset.findOne({symbol: req.params.symbol })
 		.then(asset => res.json(asset))
 		.catch(err => res.status(404).json({

@@ -1,16 +1,34 @@
+import {fetchAssetAl} from '../util/asset_util';
+
+// this first method is called from the component, it loops through the holdings > calcs total PortValue and assigns other atts to the holding for easy use later.
 export const getPortfolioValue = (holdings, prices) => {
 	let portValue = 0;
 	if (holdings === undefined) {
 		return null;
 	}
 	for (let i = 0; i < holdings.length; i++) {
-		let sym = holdings[i].symbol;
+		let holding = holdings[i];
+		let sym = holding.symbol;
 		let price = prices[sym];
-		let shares = holdings[i].shares;
+		let shares = holding.shares;
 		portValue = portValue + (price * shares);
+			holding.price = parseFloat(price);
+			holding.value = price * shares;
+			setAllocation(holding);
 	}
+	// kicks off the next function, ultimately need to return this to the component
 	return getHoldingPercentages(
 		portValue, holdings, prices);
+};
+
+const setAllocation = (holding) => {
+	fetchAssetAl(holding.symbol)
+		.then(res => {
+			let allocation = res.data.allocation;
+			holding["allocation"] = allocation;
+		});
+		// returns to getPortfolioValue
+		return holding;
 };
 
 const getHoldingPercentages = (portValue, holdings, prices) => {
@@ -19,33 +37,11 @@ const getHoldingPercentages = (portValue, holdings, prices) => {
 		let sym = holding.symbol;
 		let price = prices[sym];
 		let shares = holding.shares;
-		holding.pct = (price * shares) / portValue;
+			holding.pct = (price * shares) / portValue;
 	}
-	console.log(holdings);
+	// get
 };
 
-// // this will be gathered from the API
-// const getHoldingAllocation = (holding) => {
-
-// 	if (holding.symbol === 'IVV') {
-// 		return ({ usStocks: 1.0 });
-// 	} 
-// 	if (holding.symbol === 'AAPL') {
-// 		return ({ indStocks: 1.0 });
-// 	} 
-// 	if (holding.symbol === 'BND') {
-// 		return ({ bonds: 1.0 });
-// 	} 
-// 	if (holding.symbol === 'AMRFX') {
-// 		return ({ 
-// 			bonds: 0.124,
-// 			usStocks: 0.841,
-// 			other: 0.035,
-// 		});
-// 	} else {
-// 		console.log('error in getHoldingAllocation');
-// 	}
-// };
 
 // const getCurrentAllocation = (...holdings) => {
 // 	let allocation = {
@@ -70,24 +66,24 @@ const getHoldingPercentages = (portValue, holdings, prices) => {
 // 			allocation[category] += (holdingAl * holdingPct);
 // 		}
 // 	}
-// 	//check your work
-// 	let pcts = Object.values(allocation);
-// 	let totalAllocation = 0.0;
-// 	for (let i = 0; i < pcts.length; i++) {
-// 		if (pcts[i] === 0 ) { 
-// 			continue;
-// 		} else if (pcts[i] < 0) {
-// 			break;// and raise an error
-// 		} else {
-// 			totalAllocation += pcts[i];
-// 		}
-// 	}
-// 	return ([allocation, totalAllocation]);
-// 	// if (Math.round(totalAllocation) === 100) {
-// 	// 	return allocation;
-// 	// } else {
-// 	// 	return totalAllocation;
-// 	// }
+	//check your work
+	// let pcts = Object.values(allocation);
+	// let totalAllocation = 0.0;
+	// for (let i = 0; i < pcts.length; i++) {
+	// 	if (pcts[i] === 0 ) { 
+	// 		continue;
+	// 	} else if (pcts[i] < 0) {
+	// 		break;// and raise an error
+	// 	} else {
+	// 		totalAllocation += pcts[i];
+	// 	}
+	// }
+	// return ([allocation, totalAllocation]);
+	// if (Math.round(totalAllocation) === 100) {
+	// 	return allocation;
+	// } else {
+	// 	return totalAllocation;
+	// }
 // };
 
 // const compareToTarget = (targetAls, holdingAls) => {

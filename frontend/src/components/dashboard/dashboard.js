@@ -23,11 +23,13 @@ export default class Dashboard extends React.Component {
 		const symbols = uniqSymbols(this.props.holdings);
 		symbols.forEach(function(symbol) {
 			props.fetchPrice(symbol);
+			// props.fetchAsset(symbol);
 		});
 	}
 
 	render() {
 		// const accounts = this.props.accounts;
+		// const assets = this.props.assets;
 		const holdings = this.props.holdings;
 		// const prices = this.props.prices;
 		const fakeprices = {
@@ -35,13 +37,13 @@ export default class Dashboard extends React.Component {
 		};
 
 		const displayDash = 
-			fakeprices === undefined || holdings === undefined  ? <LoadingBar/> : (
+			fakeprices === undefined || holdings === undefined ? <LoadingBar/> : (
 				<>
 					<div className="dashboard">
 						<Accounts />
 						<div className="placeholder">
 							<p>CHARTS</p>
-							<Algo holdings={holdings} prices={fakeprices}/>
+							<Algo	holdings={holdings} prices={fakeprices}/>
 						</div>
 					</div>
 				</>

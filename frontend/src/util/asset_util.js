@@ -4,6 +4,10 @@ export const fetchAsset = (symbol) => {
 	return axios.get(`api/assets/${symbol}`);
 };
 
+export const fetchAssetAl = (symbol) => {
+	return axios.get(`api/assets/al/${symbol}`);
+};
+
 // export const createAsset = (asset) => {
 // 	return axios.post(`api/assets/`, asset);
 // };
