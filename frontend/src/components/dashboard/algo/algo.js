@@ -23,7 +23,7 @@ export default class Algo extends Component {
 		switch(orders) {
 			case "":
 			displayOrders = (
-				<button 
+				<button className="algo-btn"
 					onClick={() => this.runAlgo(holdings, prices, assets)}
 				>ALGO</button>
 			)

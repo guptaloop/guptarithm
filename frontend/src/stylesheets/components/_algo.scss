@@ -1,3 +1,16 @@
+.algo-btn {
+		cursor: pointer;
+		font-family: $font-sans-serif;
+		font-size: 36px;
+		font-weight: 700;
+		color: $white;
+		background: $fa-blue;
+		padding: 12px 16px;
+		&:hover {
+				transform: scale(1.1);
+		}
+}
+
 .algo-orders{
 	display: flex;
 	// flex-direction: column;
