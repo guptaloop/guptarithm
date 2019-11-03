@@ -18,19 +18,43 @@ export default class Algo extends Component {
 		const holdings = this.props.holdings;
 		const prices = this.props.prices;
 		const orders = this.state.orders;
-		const displayOrders = orders === "" ? (
-			<button 
-				onClick={() => this.runAlgo(holdings, prices, assets)}
-			>ALGO</button>
-		) : (
-				<ul>
-					<li>
-						{'poopscoop'}
-					</li>
-				</ul>
-		);
 
-		console.log(orders);
+		let displayOrders;
+		switch(orders) {
+			case "":
+			displayOrders = (
+				<button 
+					onClick={() => this.runAlgo(holdings, prices, assets)}
+				>ALGO</button>
+			)
+			break;
+			default:
+				let sell = orders.sell;
+				let buy = orders.buy;
+				let sellSymbols = Object.keys(sell);
+				let buySymbols = Object.keys(buy);
+				// console.log(sells, buys);
+				displayOrders = (
+					<ul>
+						<span>
+							{sellSymbols.map(symbol => (
+								<li key={symbol}>
+									{`Sell ${sell[symbol]} shares of ${symbol}`}			
+								</li>
+							))}
+						</span>
+						<span>
+							{buySymbols.map(symbol => (
+								<li key={symbol}>
+									{`Buy ${buy[symbol]} shares of ${symbol}`}			
+								</li>
+							))}
+						</span>
+					</ul>
+				);
+				break;
+		};
+
 		return (
 			<>{displayOrders}</>	
 		);

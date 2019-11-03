@@ -76,10 +76,10 @@ const compareAllocations = (portValue, holdings, prices) => {
 };
 
 const recOrders = (portValue, holdings, prices, delta) => {
-	const whitelist = [
-		{ usStocks: { symbol: 'IVV', price: prices['IVV'] } },
-		{ forStocks: { symbol: 'VXUS', price: prices['VXUS']  } }
-	];
+	// const whitelist = [
+	// 	{ usStocks: { symbol: 'IVV', price: prices['IVV'] } },
+	// 	{ forStocks: { symbol: 'VXUS', price: prices['VXUS']  } }
+	// ];
 	const orders = { 
 		"sell": {}, 
 		"buy": {"VXUS": 0, "IVV": 0}
@@ -90,7 +90,7 @@ const recOrders = (portValue, holdings, prices, delta) => {
 		const holding = holdings[i];
 		if (holding.sellAll) {
 			sellAmount += (holding.shares * holding.price);
-			orders.sell[holding.symbol] = "All";
+			orders.sell[holding.symbol] = "all";
 		}
 	}
 	
