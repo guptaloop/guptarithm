@@ -33,23 +33,24 @@ export default class Algo extends Component {
 				let buy = orders.buy;
 				let sellSymbols = Object.keys(sell);
 				let buySymbols = Object.keys(buy);
-				// console.log(sells, buys);
 				displayOrders = (
-					<ul>
-						<span>
+					<ul className="algo-orders">
+						<div>
+						<h1>Sell Orders</h1>
 							{sellSymbols.map(symbol => (
 								<li key={symbol}>
-									{`Sell ${sell[symbol]} shares of ${symbol}`}			
+									{`sell ${sell[symbol]} shares of ${symbol}`}			
 								</li>
 							))}
-						</span>
-						<span>
+						</div>
+						<div>
+							<h1>Buy Orders</h1>
 							{buySymbols.map(symbol => (
 								<li key={symbol}>
-									{`Buy ${buy[symbol]} shares of ${symbol}`}			
+									{`buy ${buy[symbol]} shares of ${symbol}`}			
 								</li>
 							))}
-						</span>
+						</div>
 					</ul>
 				);
 				break;

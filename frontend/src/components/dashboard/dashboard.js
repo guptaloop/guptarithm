@@ -43,7 +43,7 @@ export default class Dashboard extends React.Component {
 				<>
 					<div className="dashboard">
 						<Accounts />
-						<div className="placeholder">
+						<div className="dash-right">
 							<p>CHARTS</p>
 							<Algo holdings={holdings} assets={assets} prices={fakeprices}/>
 						</div>
