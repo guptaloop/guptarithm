@@ -21,6 +21,8 @@ export default class Dashboard extends React.Component {
 	getPrices() {
 		const props = this.props;
 		const symbols = uniqSymbols(this.props.holdings);
+		// add my whitelist funds
+		symbols.push('IVV', 'VXUS');
 		symbols.forEach(function(symbol) {
 			// props.fetchPrice(symbol);
 			props.fetchAsset(symbol);
@@ -33,8 +35,8 @@ export default class Dashboard extends React.Component {
 		const holdings = this.props.holdings;
 		// const prices = this.props.prices;
 		const fakeprices = {
-			"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200"
-		};
+			"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200", 
+			"IVV": "135", "VXUS": "88" };
 
 		const displayDash = 
 			fakeprices === undefined || holdings === undefined ? <LoadingBar/> : (
