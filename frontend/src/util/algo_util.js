@@ -1,7 +1,7 @@
 import {fetchAssetAl} from '../util/asset_util';
 
 // this first method is called from the component, it loops through the holdings > calcs total PortValue and assigns other atts to the holding for easy use later.
-export const getPortfolioValue = (holdings, prices) => {
+export const getPortfolioValue = (holdings, prices, assets) => {
 	let portValue = 0;
 	if (holdings === undefined) {
 		return null;
@@ -14,21 +14,11 @@ export const getPortfolioValue = (holdings, prices) => {
 		portValue = portValue + (price * shares);
 			holding.price = parseFloat(price);
 			holding.value = price * shares;
-			setAllocation(holding);
+			holding["allocation"] = assets[holding.symbol]["allocation"];
 	}
 	// kicks off the next function, ultimately need to return this to the component
 	return getHoldingPercentages(
 		portValue, holdings, prices);
-};
-
-const setAllocation = (holding) => {
-	fetchAssetAl(holding.symbol)
-		.then(res => {
-			let allocation = res.data.allocation;
-			holding["allocation"] = allocation;
-		});
-		// returns to getPortfolioValue
-		return holding;
 };
 
 const getHoldingPercentages = (portValue, holdings, prices) => {
@@ -39,33 +29,34 @@ const getHoldingPercentages = (portValue, holdings, prices) => {
 		let shares = holding.shares;
 			holding.pct = (price * shares) / portValue;
 	}
-	// get
+	return getCurrentAllocation(portValue, holdings, prices);
 };
 
 
-// const getCurrentAllocation = (...holdings) => {
-// 	let allocation = {
-// 		usStocks: 0.00,
-// 		forStocks: 0.00,
-// 	 	bonds: 0.00,
-// 	 	indStocks: 0.00,
-// 	 	em: 0.00,
-// 	 	smallCap: 0.00,
-// 	 	other: 0.00,
-// 	};
+const getCurrentAllocation = (portValue, holdings, prices) => {
+	let currentAl = {
+		usStocks: 0.00,
+		forStocks: 0.00,
+	 	bonds: 0.00,
+	 	indStocks: 0.00,
+	 	em: 0.00,
+	 	smallCap: 0.00,
+	 	other: 0.00,
+	};
 
-// 	for (let i = 0; i < holdings.length; i++) {
-// 		let holding = holdings[i];
-// 		holding.allocation = getHoldingAllocation(holding);
-// 		let categories = Object.keys(holding.allocation);
+	for (let i = 0; i < holdings.length; i++) {
+		let holding = holdings[i];
+		// let categories = Object.keys(holding.allocation);
+		// console.log(categories);
 
-// 		for (let i = 0; i < categories.length; i++) {
-// 			let category = categories[i];
-// 			let holdingAl = holding.allocation[categories[i]];
-// 			let holdingPct = holding.pct;
-// 			allocation[category] += (holdingAl * holdingPct);
-// 		}
-// 	}
+		// for (let i = 0; i < categories.length; i++) {
+		// 	let category = categories[i];
+		// 	let holdingAl = holding.allocation[categories[i]];
+		// 	let holdingPct = holding.pct;
+		// 	allocation[category] += (holdingAl * holdingPct);
+		// }
+	}
+};
 	//check your work
 	// let pcts = Object.values(allocation);
 	// let totalAllocation = 0.0;

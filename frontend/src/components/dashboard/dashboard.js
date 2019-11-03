@@ -13,23 +13,23 @@ export default class Dashboard extends React.Component {
 	
 	componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id);
-		this.props.fetchHoldings(this.props.user.id);
+		this.props.fetchHoldings(this.props.user.id)
 		// this.props.fetchPrice("VFFVX");
-			// .then( () => this.getPrices() );
+			.then( () => this.getPrices() );
 	}
 
 	getPrices() {
 		const props = this.props;
 		const symbols = uniqSymbols(this.props.holdings);
 		symbols.forEach(function(symbol) {
-			props.fetchPrice(symbol);
-			// props.fetchAsset(symbol);
+			// props.fetchPrice(symbol);
+			props.fetchAsset(symbol);
 		});
 	}
 
 	render() {
 		// const accounts = this.props.accounts;
-		// const assets = this.props.assets;
+		const assets = this.props.assets;
 		const holdings = this.props.holdings;
 		// const prices = this.props.prices;
 		const fakeprices = {
@@ -43,7 +43,7 @@ export default class Dashboard extends React.Component {
 						<Accounts />
 						<div className="placeholder">
 							<p>CHARTS</p>
-							<Algo	holdings={holdings} prices={fakeprices}/>
+							<Algo holdings={holdings} assets={assets} prices={fakeprices}/>
 						</div>
 					</div>
 				</>

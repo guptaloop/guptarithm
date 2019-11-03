@@ -8,10 +8,13 @@ export default class Algo extends Component {
 	}
 	
 	render() {
+		const assets = this.props.assets;
 		const holdings = this.props.holdings;
 		const prices = this.props.prices;
 		return (
-			<div>{algoAPI.getPortfolioValue(holdings, prices)}</div>
+			<button 
+				onClick={() => algoAPI.getPortfolioValue(holdings, prices, assets)} 
+			>ALGO</button>
 		);
 	}
 }
