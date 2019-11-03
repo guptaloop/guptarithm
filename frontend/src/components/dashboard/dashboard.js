@@ -2,6 +2,7 @@ import React from 'react';
 import Accounts from './accounts/accounts_container';
 import {uniqSymbols} from '../../util/holding_util'
 import Algo from './algo/algo';
+import {LoadingBar} from './loading_bar';
 
 export default class Dashboard extends React.Component {
 	constructor(props) {
@@ -13,8 +14,8 @@ export default class Dashboard extends React.Component {
 	componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id);
 		this.props.fetchHoldings(this.props.user.id);
-		// .then( () => this.getPrices() );
 		// this.props.fetchPrice("VFFVX");
+			// .then( () => this.getPrices() );
 	}
 
 	getPrices() {
@@ -26,15 +27,28 @@ export default class Dashboard extends React.Component {
 	}
 
 	render() {
+		// const accounts = this.props.accounts;
+		const holdings = this.props.holdings;
+		// const prices = this.props.prices;
+		const fakeprices = {
+			"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200"
+		};
+
+		const displayDash = 
+			fakeprices === undefined || holdings === undefined  ? <LoadingBar/> : (
+				<>
+					<div className="dashboard">
+						<Accounts />
+						<div className="placeholder">
+							<p>CHARTS</p>
+							<Algo holdings={holdings} prices={fakeprices}/>
+						</div>
+					</div>
+				</>
+		);
+
 		return (
-			<div className="dashboard">
-				<Accounts />
-				{/* replace div below with components */}
-				<div className="placeholder">
-					<p>CHARTS</p>
-					<Algo />
-				</div>
-			</div>
+			<>{displayDash}</>
 		)
 	}
 }

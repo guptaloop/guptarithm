@@ -7,15 +7,20 @@ export default class Algo extends Component {
 		this.state = {};
 	}
 	
-	componentWillMount() {
+	// componentWillMount() {
 
-	}
+	// }
 
 	render() {
+		const holdings = this.props.holdings;
+		const prices = this.props.prices;
+		// const display = !prices || !holdings ? null : (
+		// 	<>
+		// 		{algoAPI.getPortfolioValue(prices, holdings)}
+		// 	</>
+		// );
 		return (
-			<div>
-				
-			</div>
-		)
+			<div>{algoAPI.getPortfolioValue(holdings, prices)}</div>
+		);
 	}
 }
