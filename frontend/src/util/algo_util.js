@@ -1,23 +1,28 @@
 export const getPortfolioValue = (holdings, prices) => {
-	let totalValue = 0;
-	if (holdings === undefined) {return null}
+	let portValue = 0;
+	if (holdings === undefined) {
+		return null;
+	}
 	for (let i = 0; i < holdings.length; i++) {
 		let sym = holdings[i].symbol;
 		let price = prices[sym];
 		let shares = holdings[i].shares;
-		totalValue = totalValue + (price * shares);
+		portValue = portValue + (price * shares);
 	}
-	// console.log(totalValue);
-	return totalValue;
+	return getHoldingPercentages(
+		portValue, holdings, prices);
 };
 
-// const getHoldingPercentages = (portfolioValue, ...holdings) => {
-// 	for (let i = 0; i < holdings.length; i++) {
-// 		let holding = holdings[i];
-// 		holding.pct = (holding.cur_price * holding.qty) / portfolioValue;
-// 	}
-// 	return holdings;
-// };
+const getHoldingPercentages = (portValue, holdings, prices) => {
+	for (let i = 0; i < holdings.length; i++) {
+		let holding = holdings[i];
+		let sym = holding.symbol;
+		let price = prices[sym];
+		let shares = holding.shares;
+		holding.pct = (price * shares) / portValue;
+	}
+	console.log(holdings);
+};
 
 // // this will be gathered from the API
 // const getHoldingAllocation = (holding) => {
