@@ -43,7 +43,7 @@ class Accounts extends React.Component {
 		return (
 			<div className="accounts-comp">
 				<span>
-					<h1>Retirement Portfolio - $71,430</h1>
+					<h1 className="header">Retirement Portfolio - $71,430</h1>
 					<button onClick={() =>
 						this.props.openAccountModal('addAccount')}>+ Add Account</button>
 				</span>

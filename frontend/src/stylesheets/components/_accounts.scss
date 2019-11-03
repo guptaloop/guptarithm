@@ -7,17 +7,25 @@
 
 	span {
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 8px;
 		button {
 			color: blue;
 			font-size: 14px;
 			font-weight: 600;
-			margin: 6px 50px 0px 0px;
+			margin-left: 12px;
 			&:hover { 
 				transform: scale(1.1);
 			}
 		}
+	}
+	.header{
+		display: flex;
+		justify-content: flex-start;
+		font-size: 26px;
+		font-weight: 700;
+		padding: 20px 0px 8px 0px; 
 	}
 	h1 {
 		display: flex;

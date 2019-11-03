@@ -1,6 +1,7 @@
 import React from 'react';
 import Accounts from './accounts/accounts_container';
 import {uniqSymbols} from '../../util/holding_util'
+import Algo from './algo/algo';
 
 export default class Dashboard extends React.Component {
 	constructor(props) {
@@ -11,14 +12,14 @@ export default class Dashboard extends React.Component {
 	
 	componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id);
-		this.props.fetchHoldings(this.props.user.id)
-			.then( () => this.getPrices() );
+		this.props.fetchHoldings(this.props.user.id);
+		// .then( () => this.getPrices() );
+		// this.props.fetchPrice("VFFVX");
 	}
 
 	getPrices() {
 		const props = this.props;
 		const symbols = uniqSymbols(this.props.holdings);
-		// const symbols = ["AAPL"];
 		symbols.forEach(function(symbol) {
 			props.fetchPrice(symbol);
 		});
@@ -31,7 +32,7 @@ export default class Dashboard extends React.Component {
 				{/* replace div below with components */}
 				<div className="placeholder">
 					<p>CHARTS</p>
-					<p>ALGO</p>
+					<Algo />
 				</div>
 			</div>
 		)
