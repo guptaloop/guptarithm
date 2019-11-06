@@ -1,8 +1,9 @@
 import React from 'react';
 import Accounts from './accounts/accounts_container';
-import {uniqSymbols} from '../../util/holding_util'
+import {uniqSymbols} from '../../util/holding_util';
 import Algo from './algo/algo';
-import {LoadingBar} from './loading_bar';
+import { LoadingBar } from './loading_bar';
+import AllocChart from './chart/chart';
 
 export default class Dashboard extends React.Component {
 	constructor(props) {
@@ -44,7 +45,7 @@ export default class Dashboard extends React.Component {
 					<div className="dashboard">
 						<Accounts />
 						<div className="dash-right">
-							<p>CHARTS</p>
+							<AllocChart />
 							<Algo holdings={holdings} assets={assets} prices={fakeprices}/>
 						</div>
 					</div>
