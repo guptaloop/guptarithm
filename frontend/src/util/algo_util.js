@@ -1,35 +1,120 @@
 
-export const getPortfolioValue = (holdings, prices, assets) => {
-	let portValue = 0;
-	if (holdings === undefined) {
-		return null;
-	}
-	for (let i = 0; i < holdings.length; i++) {
-		let holding = holdings[i];
-		let sym = holding.symbol;
-		let price = prices[sym];
-		let shares = holding.shares;
+export const getPortfolioValue = (holdings, prices, assets, chart=null) => {
+
+	if (chart !== null) {
+		// separate logic for generating the chart.
+		let newHoldings = prices;
+		let newPrices = assets;
+		let newAssets = holdings;
+		let portValue = 0;
+		if (holdings === undefined) {
+			return ([{ name: 'Group A', value: 400 }]);
+		}
+		for (let i = 0; i < newHoldings.length; i++) {
+			let holding = newHoldings[i];
+			let sym = holding.symbol;
+			let price = newPrices[sym];
+			let shares = holding.shares;
 			portValue = portValue + (price * shares);
 			// set price, value and allocation for each holding
 			holding.price = parseFloat(price);
 			holding.value = price * shares;
-			holding["allocation"] = assets[holding.symbol]["allocation"];
+			if (newAssets[sym] !== undefined) {
+				holding["allocation"] = newAssets[sym]["allocation"];
+			}
+		}
+		return getHoldingPercentages(
+			portValue, newHoldings, newPrices, chart);
+	} else if (chart === null) {
+
+		let portValue = 0;
+		if (holdings === undefined) {
+			return ([{ name: 'Group A', value: 400 }]);
+		}
+		for (let i = 0; i < holdings.length; i++) {
+			let holding = holdings[i];
+			let sym = holding.symbol;
+			let price = prices[sym];
+			let shares = holding.shares;
+				portValue = portValue + (price * shares);
+				// set price, value and allocation for each holding
+				holding.price = parseFloat(price);
+				holding.value = price * shares;
+				holding["allocation"] = assets[holding.symbol]["allocation"];
+		}
+		return getHoldingPercentages(
+			portValue, holdings, prices, chart);
 	}
-	return getHoldingPercentages(
-		portValue, holdings, prices);
 };
 
-const getHoldingPercentages = (portValue, holdings, prices) => {
+const getHoldingPercentages = (portValue, holdings, prices, chart=null) => {
 	for (let i = 0; i < holdings.length; i++) {
-		let holding = holdings[i];
+		let holding= holdings[i];
 		let sym = holding.symbol;
 		let price = prices[sym];
 		let shares = holding.shares;
 			holding.pct = (price * shares) / portValue;
 	}
-	return compareAllocations(portValue, holdings, prices);
+	if (chart !== null) {
+		return returnChartAllocations(holdings);
+	} else if (chart === null) {
+		return compareAllocations(portValue, holdings, prices);
+	}
 };
 
+const returnChartAllocations = (holdings) => {
+	const data = [
+		{ name: 'usStocks', value: 0.00 }, 
+		{ name: 'forStocks', value: 0.00 },
+		{ name: 'em', value: 0.00 }, 
+		{ name: 'smallCap', value: 0.00 },
+		{ name: 'bonds', value: 0.00 },
+		{ name: 'indStocks', value: 0.00 },
+		{ name: 'other', value: 0.00 }
+	];
+	
+	for(let i = 0; i < holdings.length; i++) {
+		let holding = holdings[i];
+		if (holding.allocation === undefined) {
+			return ([{ name: 'Group A', value: 400 }]);
+		} else {
+			let categories = Object.keys(holding.allocation);
+			
+			for (let i = 0; i < categories.length; i++) {
+				let category = categories[i];
+				let holdingAl = holding.allocation[categories[i]];
+				let holdingPct = holding.pct;
+				
+				switch(category) {
+					case ('usStocks'):
+						data[0].value += (holdingAl * holdingPct);
+						break;
+					case ('forStocks'):
+						data[1].value += (holdingAl * holdingPct);
+						break;
+					case ('em'):
+						data[2].value += (holdingAl * holdingPct);
+						break;
+					case ('smallCap'):
+						data[3].value += (holdingAl * holdingPct);
+						break;
+					case ('bonds'):
+						data[4].value += (holdingAl * holdingPct);
+						break;
+					case ('indStocks'):
+						data[5].value += (holdingAl * holdingPct);
+						break;
+					case ('other'):
+						data[6].value += (holdingAl * holdingPct);
+						break;
+					default:
+						break;
+				}
+			}
+		}
+	}
+	return data;
+};
 
 const compareAllocations = (portValue, holdings, prices) => {
 	let currentAl = {

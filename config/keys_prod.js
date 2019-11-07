@@ -1,5 +1,5 @@
 module.exports = {
 	mongoURI: process.env.MONGO_URI,
-	alphaVantage: process.env.ALPHA_VANTAGE,
+	IEX: process.env.IEX,
 	secretOrKey: process.env.SECRET_OR_KEY
 };

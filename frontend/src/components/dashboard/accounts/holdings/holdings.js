@@ -20,10 +20,10 @@ export default class Holdings extends Component {
 									<div>
 										<h2>{holding.symbol}</h2>
 										<h2>{holding.shares}</h2>
-										{/* <h2>${parseFloat(price).toFixed(2)}</h2>
-										<h2>${value}</h2> */}
-										<h2>$100</h2>
-										<h2>$100</h2>
+										<h2>${parseFloat(price).toFixed(2)}</h2>
+										<h2>${value}</h2>
+										{/* <h2>$100</h2>
+										<h2>$100</h2> */}
 									</div>
 								</li>
 							)

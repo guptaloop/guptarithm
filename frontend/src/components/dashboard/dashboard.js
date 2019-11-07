@@ -25,7 +25,7 @@ export default class Dashboard extends React.Component {
 		// add my whitelist funds
 		symbols.push('IVV', 'VXUS');
 		symbols.forEach(function(symbol) {
-			// props.fetchPrice(symbol);
+			props.fetchPrice(symbol.toLowerCase());
 			props.fetchAsset(symbol);
 		});
 	}
@@ -34,18 +34,18 @@ export default class Dashboard extends React.Component {
 		// const accounts = this.props.accounts;
 		const assets = this.props.assets;
 		const holdings = this.props.holdings;
-		// const prices = this.props.prices;
+		const prices = this.props.prices;
 		const fakeprices = {
 			"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200", 
 			"IVV": "135", "VXUS": "88" };
 
 		const displayDash = 
-			fakeprices === undefined || holdings === undefined ? <LoadingBar/> : (
+			prices === undefined || holdings === undefined ? <LoadingBar/> : (
 				<>
 					<div className="dashboard">
 						<Accounts />
 						<div className="dash-right">
-							<AllocChart />
+							<AllocChart holdings={holdings} assets={assets} prices={prices}/>
 							<Algo holdings={holdings} assets={assets} prices={fakeprices}/>
 						</div>
 					</div>
