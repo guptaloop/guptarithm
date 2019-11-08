@@ -64,15 +64,17 @@ const getHoldingPercentages = (portValue, holdings, prices, chart=null) => {
 
 const returnChartAllocations = (holdings) => {
 	const data = [
-		{ name: 'usStocks', value: 0.00 }, 
-		{ name: 'forStocks', value: 0.00 },
-		{ name: 'em', value: 0.00 }, 
-		{ name: 'smallCap', value: 0.00 },
-		{ name: 'bonds', value: 0.00 },
-		{ name: 'indStocks', value: 0.00 },
-		{ name: 'other', value: 0.00 }
+		// { name: 'usStocks', value: 0.00 }, 
+		// { name: 'forStocks', value: 0.00 },
+		// { name: 'em', value: 0.00 }, 
+		// { name: 'smallCap', value: 0.00 },
+		// { name: 'bonds', value: 0.00 },
+		// { name: 'indStocks', value: 0.00 },
+		// { name: 'other', value: 0.00 }
 	];
 	
+	const dataKeys = [];
+
 	for(let i = 0; i < holdings.length; i++) {
 		let holding = holdings[i];
 		if (holding.allocation === undefined) {
@@ -82,33 +84,19 @@ const returnChartAllocations = (holdings) => {
 			
 			for (let i = 0; i < categories.length; i++) {
 				let category = categories[i];
-				let holdingAl = holding.allocation[categories[i]];
-				let holdingPct = holding.pct;
-				
-				switch(category) {
-					case ('usStocks'):
-						data[0].value += (holdingAl * holdingPct);
-						break;
-					case ('forStocks'):
-						data[1].value += (holdingAl * holdingPct);
-						break;
-					case ('em'):
-						data[2].value += (holdingAl * holdingPct);
-						break;
-					case ('smallCap'):
-						data[3].value += (holdingAl * holdingPct);
-						break;
-					case ('bonds'):
-						data[4].value += (holdingAl * holdingPct);
-						break;
-					case ('indStocks'):
-						data[5].value += (holdingAl * holdingPct);
-						break;
-					case ('other'):
-						data[6].value += (holdingAl * holdingPct);
-						break;
-					default:
-						break;
+				let allocation = holding.allocation[categories[i]] * holding.pct;
+
+				if (dataKeys.includes(category)) {
+					data.forEach(el => {
+						if (el.name === category) {
+							el.value += allocation;
+							return;
+						}
+					});
+				}	else {
+					const dataPair = { name: category, value: allocation };
+					dataKeys.push(category);
+					data.push(dataPair);
 				}
 			}
 		}

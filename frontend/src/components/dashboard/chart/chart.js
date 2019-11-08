@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 import * as algoAPI from '../../../util/algo_util';
 
 
@@ -28,16 +28,23 @@ export default class AllocChart extends PureComponent {
 
 	render() {
 		const data = this.renderChart();
+		console.log(data);
+		// const data = [
+		// 	{ name: 'Group A', value: 400 },
+		// 	{ name: 'Group C', value: 1400 },
+		// 	{ name: 'Group B', value: 400 },
+		// 	// { name: 'Group D', value: 0 }
+		// ];
 		return (
 			<PieChart width={500} height={300} onMouseEnter={this.onPieEnter}>
 				<Pie
 					data={data}
 					// cx={120}
 					// cy={200}
-					innerRadius={60}
-					outerRadius={80}
+					innerRadius={40}
+					outerRadius={100}
 					fill="#8884d8"
-					paddingAngle={5}
+					paddingAngle={3}
 					dataKey="value"
 				>
 					{
