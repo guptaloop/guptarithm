@@ -63,16 +63,7 @@ const getHoldingPercentages = (portValue, holdings, prices, chart=null) => {
 };
 
 const returnChartAllocations = (holdings) => {
-	const data = [
-		// { name: 'usStocks', value: 0.00 }, 
-		// { name: 'forStocks', value: 0.00 },
-		// { name: 'em', value: 0.00 }, 
-		// { name: 'smallCap', value: 0.00 },
-		// { name: 'bonds', value: 0.00 },
-		// { name: 'indStocks', value: 0.00 },
-		// { name: 'other', value: 0.00 }
-	];
-	
+	const data = [];
 	const dataKeys = [];
 
 	for(let i = 0; i < holdings.length; i++) {
@@ -84,7 +75,7 @@ const returnChartAllocations = (holdings) => {
 			
 			for (let i = 0; i < categories.length; i++) {
 				let category = categories[i];
-				let allocation = holding.allocation[categories[i]] * holding.pct;
+				let allocation = parseFloat((holding.allocation[category] * holding.pct).toFixed(2));
 
 				if (dataKeys.includes(category)) {
 					data.forEach(el => {
