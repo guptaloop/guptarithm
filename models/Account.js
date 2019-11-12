@@ -13,7 +13,6 @@ const AccountSchema = new Schema({
 		shares: { type: Number, required: true },
 		// each holding has the asset info hash (stored in Asset collection)
 		asset: {
-			name: {	type: String, required: true, minlength: 3, maxlength: 50 },
 			type: {	type: String, required: true,
 				enum: ['ETF', 'Mutual Fund', 'Stock', 'Other']
 			},

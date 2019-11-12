@@ -39,7 +39,7 @@ class Accounts extends React.Component {
 									<h3>Value</h3>
 								</div>
 							</li>
-							<Holdings holdings={account.holdings} prices={prices} />
+							<Holdings holdings={account.holdings} prices={prices} 	fetchPrice={this.props.fetchPrice} />
 							<button className="add-holding-btn"
 								onClick={() => this.props.openHoldingModal(account._id)}
 							>+ Add Holding</button>

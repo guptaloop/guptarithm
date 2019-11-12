@@ -3,6 +3,25 @@
 	padding-left: 75px;
 }
 
+.greeting {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 100vw;
+	height: 80vh;
+	overflow: hidden;
+
+	button {
+		color: blue;
+		font-size: 24px;
+		font-weight: 600;
+		margin-left: 12px;
+		&:hover { 
+			transform: scale(1.1);
+		}
+	}
+}
+
 .dash-right {
 	display: flex;
 	flex-direction: column;

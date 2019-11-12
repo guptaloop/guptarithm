@@ -35,7 +35,6 @@ router.post('/',
 
 		const newAsset = new Asset({
 			symbol: req.body.symbol,
-			name: req.body.name,
 			type: req.body.type,
 			exp_ratio: req.body.exp_ratio,
 			allocation: {

@@ -41,19 +41,24 @@ export default class Dashboard extends React.Component {
 
 	render() {
 		const prices = this.props.prices;
+		const accounts = this.props.accounts;
 		
-		const displayDash = 
-			// prices === undefined ? <LoadingBar/> : (
-				<>
-					<div className="dashboard">
-						<Accounts accounts={this.props.accounts}/>
-						<div className="dash-right">
-							{/* <AllocChart prices={prices}/> */}
-							<Algo prices={prices}/>
-						</div>
-					</div>
-				</>
-		// );
+		const displayDash = accounts === undefined || accounts.length === 0 ? (
+			<div className="greeting">
+				<button onClick={() =>
+					this.props.openAccountModal('addAccount')}>+ Add Account</button>
+			</div>
+		) : (
+			<>
+			<div className="dashboard">
+				<Accounts accounts={this.props.accounts} fetchPrice={this.props.fetchPrice}/>
+				<div className="dash-right">
+					{/* <AllocChart prices={prices}/> */}
+					<Algo prices={prices}/>
+				</div>
+			</div>
+			</>
+		);
 
 		return (
 			<>{displayDash}</>

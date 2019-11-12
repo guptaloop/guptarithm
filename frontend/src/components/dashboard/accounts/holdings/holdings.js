@@ -11,11 +11,12 @@ export default class Holdings extends Component {
 		if (this.props.holdings.length > 0) {
 			const holdings = this.props.holdings;
 			const prices = this.props.prices;
+			const fetchPrice = this.props.fetchPrice;
 			return (
 				<ul>
 					{holdings.map(holding => {
-						console.log(holding);
-						const price = prices[holding.symbol];
+						const s = holding.symbol;
+						const price = prices[s] ? prices[s] : fetchPrice(s);
 						const value = Math.round(price * holding.shares).toLocaleString();
 						return (
 							<li className="holding">

@@ -56,7 +56,6 @@ router.put('/',
 			//below we format the newHolding data so that it can be pushed in to the Account's Holdings array
 			.then(asset => {
 				const assetInfo = {};
-					assetInfo.name = asset[0].name;
 					assetInfo.type = asset[0].type;
 					assetInfo.exp_ratio = asset[0].exp_ratio;
 					assetInfo.allocation = asset[0].allocation;

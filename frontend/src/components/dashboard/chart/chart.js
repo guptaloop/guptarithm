@@ -27,7 +27,6 @@ export default class AllocChart extends PureComponent {
 
 	render() {
 		const data = this.renderChart();
-		// console.log(data);
 
 		return (
 			<PieChart width={500} height={300} onMouseEnter={this.onPieEnter}>
