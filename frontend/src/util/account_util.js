@@ -19,5 +19,5 @@ export const getAccountValue = (account, prices) => {
 		accountValue += (holding.shares * prices[holding.symbol]);
 	});
 
-	return Math.round(accountValue).toLocaleString();
+	return Math.round(accountValue);
 };

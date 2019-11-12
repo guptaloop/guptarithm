@@ -3,10 +3,12 @@ import React from 'react';
 class Splash extends React.Component {
 
 	render() {
+		
 		return (
 			<>
 				<div className="hero-banner">
 				</div>
+
 				<div className="hero-image">
 					<p>Welcome to Guptarithm</p>
 					{/* <h1>The free investment algorithm</h1> */}

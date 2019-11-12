@@ -8,7 +8,7 @@ import {
 
 const mapStateToProps = (state) => ({
 	user: state.session.user,
-	accounts: state.entities.accounts,
+	// accounts: state.entities.accounts,
 	prices: state.entities.prices,
 });
 

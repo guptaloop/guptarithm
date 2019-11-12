@@ -21,16 +21,16 @@ class NavBar extends React.Component {
 				</div>
 			);
 		} else {
-			const demoUser = { username: "barack", password: "123456" }
+			const demoUser = { username: "barack", password: "123456" };
 			return (
 				<div className="navbar">
-					<button	onClick={() => this.props.openModal('login')}>
+					<button onClick={() => this.props.openModal('login')}>
 						Login</button>
 					<button onClick={() => this.props.openModal('signup')}>
 						Signup</button>
-					<button onClick={() => this.props.demoLogin(demoUser)} 								className="demo">Demo</button>
+					<button onClick={() => this.props.demoLogin(demoUser)} className="demo">Demo</button>
 				</div>
-			);
+			)
 		}
 	}
 

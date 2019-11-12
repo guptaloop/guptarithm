@@ -19,6 +19,9 @@ export default class Dashboard extends React.Component {
 	getPrices() {
 		const props = this.props;
 		const symbols = [];
+		// add user's whitelist funds
+		symbols.push('IVV', 'VXUS');
+
 		// loop through accounts and holdings to get all symbols owned
 		(this.props.accounts).forEach(function(account) {
 			(account.holdings).forEach(function(holding) {
@@ -29,33 +32,28 @@ export default class Dashboard extends React.Component {
 				}
 			});
 		});
-		// add my whitelist funds
-		symbols.push('IVV', 'VXUS');
-		// fill up the prices slice of state
+		
+		// price reducer => POJO with symbol: price as key: val
 		symbols.forEach(function(symbol) {
 			props.fetchPrice(symbol.toLowerCase());
 		});
 	}
 
 	render() {
-		const assets = this.props.assets;
 		const prices = this.props.prices;
-		// const fakeprices = {
-		// 	"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200", 
-		// 	"IVV": "135", "VXUS": "88" };
-
+		
 		const displayDash = 
-			prices === undefined ? <LoadingBar/> : (
+			// prices === undefined ? <LoadingBar/> : (
 				<>
 					<div className="dashboard">
-						<Accounts />
+						<Accounts accounts={this.props.accounts}/>
 						<div className="dash-right">
-							{/* <AllocChart assets={assets} prices={prices}/> */}
-							<Algo assets={assets} prices={prices}/>
+							{/* <AllocChart prices={prices}/> */}
+							<Algo prices={prices}/>
 						</div>
 					</div>
 				</>
-		);
+		// );
 
 		return (
 			<>{displayDash}</>

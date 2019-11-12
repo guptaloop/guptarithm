@@ -8,7 +8,6 @@ export const receivePrice = data => ({
 });
 
 export const fetchPrice = symbol => dispatch => {
-	console.log(symbol);
 	return (
 	APIUtil.fetchPrice(symbol)
 		.then(res => {
