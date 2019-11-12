@@ -6,7 +6,6 @@ const mapStateToProps = (state) => ({
 	user: state.session.user,
 	accounts: state.entities.accounts,
 	assets: state.entities.assets,
-	holdings: state.entities.holdings,
 	prices: state.entities.prices,
 	// // errors: state.errors.session
 });

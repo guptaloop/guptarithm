@@ -1,6 +1,5 @@
 import React from 'react';
 import Accounts from './accounts/accounts_container';
-import {uniqSymbols} from '../../util/holding_util';
 import Algo from './algo/algo';
 import { LoadingBar } from './loading_bar';
 import AllocChart from './chart/chart';
@@ -13,40 +12,46 @@ export default class Dashboard extends React.Component {
 	}
 	
 	componentWillMount() {
-		this.props.fetchAccounts(this.props.user.id);
-		this.props.fetchHoldings(this.props.user.id)
-		// this.props.fetchPrice("VFFVX");
+		this.props.fetchAccounts(this.props.user.id)
 			.then( () => this.getPrices() );
 	}
 
 	getPrices() {
 		const props = this.props;
-		const symbols = uniqSymbols(this.props.holdings);
+		const symbols = [];
+		// loop through accounts and holdings to get all symbols owned
+		(this.props.accounts).forEach(function(account) {
+			(account.holdings).forEach(function(holding) {
+				if (symbols.includes(holding.symbol)) {
+					return;
+				} else {
+					symbols.push(holding.symbol);
+				}
+			});
+		});
 		// add my whitelist funds
 		symbols.push('IVV', 'VXUS');
+		// fill up the prices slice of state
 		symbols.forEach(function(symbol) {
 			props.fetchPrice(symbol.toLowerCase());
-			props.fetchAsset(symbol);
 		});
 	}
 
 	render() {
-		// const accounts = this.props.accounts;
 		const assets = this.props.assets;
-		const holdings = this.props.holdings;
 		const prices = this.props.prices;
-		const fakeprices = {
-			"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200", 
-			"IVV": "135", "VXUS": "88" };
+		// const fakeprices = {
+		// 	"VFFVX": "50", "AAPL": "250", "MSFT": "100", "AMZN": "1200", 
+		// 	"IVV": "135", "VXUS": "88" };
 
 		const displayDash = 
-			prices === undefined || holdings === undefined ? <LoadingBar/> : (
+			prices === undefined ? <LoadingBar/> : (
 				<>
 					<div className="dashboard">
 						<Accounts />
 						<div className="dash-right">
-							<AllocChart holdings={holdings} assets={assets} prices={prices}/>
-							<Algo holdings={holdings} assets={assets} prices={fakeprices}/>
+							{/* <AllocChart assets={assets} prices={prices}/> */}
+							<Algo assets={assets} prices={prices}/>
 						</div>
 					</div>
 				</>

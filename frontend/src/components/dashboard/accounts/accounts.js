@@ -1,5 +1,6 @@
 import React from 'react';
 import HoldingsContainer from './holdings/holdings_container';
+import {getAccountValue} from '../../../util/account_util';
 
 class Accounts extends React.Component {
 	constructor(props) {
@@ -16,7 +17,7 @@ class Accounts extends React.Component {
 							<li key={account._id} className="account">
 								<div>
 									<h1>{account.custodian} {account.type} - *{account.last4}</h1>
-									<h2>$400,000</h2>
+									<h2>${getAccountValue(account, this.props.prices)}</h2>
 								</div>
 								<div>
 									<h3>Symbol</h3>
@@ -25,7 +26,7 @@ class Accounts extends React.Component {
 									<h3>Value</h3>
 								</div>
 							</li>
-							<HoldingsContainer account={account._id} />
+							<HoldingsContainer holdings={account.holdings} />
 							<button onClick={() =>
 								this.props.openHoldingModal(account._id)}
 								className="add-holding-btn"

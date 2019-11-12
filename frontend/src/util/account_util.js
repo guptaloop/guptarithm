@@ -4,10 +4,20 @@ export const fetchAccounts = (userId) => {
 	return axios.get(`api/accounts/user/${userId}`, userId);
 };
 
-export const createAccount = (account) => {
+export const createAccount = account => {
 	return axios.post(`api/accounts/`, account);
 };
 
-// export const deleteAccount = (accountId) => {
-// 	return axios.post(`api/accounts/${accountId}`, accountId);
-// };
+// NEW
+export const createHolding = holding => {
+	return axios.put(`api/accounts/`, holding);
+};
+
+export const getAccountValue = (account, prices) => {
+	let accountValue = 0;
+	(account.holdings).forEach(function(holding) {
+		accountValue += (holding.shares * prices[holding.symbol]);
+	});
+
+	return Math.round(accountValue).toLocaleString();
+};

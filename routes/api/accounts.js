@@ -21,6 +21,7 @@ router.get('/:id', (req, res) => {
 		}));
 });
 
+// create new Account
 router.post('/',
 	passport.authenticate('jwt', { session: false }),
 	(req, res) => {
@@ -40,6 +41,37 @@ router.post('/',
 		newAccount
 			.save()
 			.then(account => res.json(account));
+	}
+);
+
+// create new Holding
+router.put('/',
+	passport.authenticate('jwt', { session: false }),
+	(req, res) => {
+		
+		// find the Asset data related to the new holding
+		Asset.find({ symbol: req.body.symbol })
+			// logic to see if the asset exists in the db will be handled on the Frontend by trying to retrieve the asset via actions / utils
+			
+			//below we format the newHolding data so that it can be pushed in to the Account's Holdings array
+			.then(asset => {
+				const assetInfo = {};
+					assetInfo.name = asset[0].name;
+					assetInfo.type = asset[0].type;
+					assetInfo.exp_ratio = asset[0].exp_ratio;
+					assetInfo.allocation = asset[0].allocation;
+				const newHolding = {
+					symbol: req.body.symbol,
+					shares: req.body.shares,
+					asset: assetInfo
+				};
+				Account.findById(req.body.account)
+					.then(account => {
+						account.holdings.push(newHolding);
+						account.save()
+							.then(account => res.json(account));
+					});
+			});
 	}
 );
 
