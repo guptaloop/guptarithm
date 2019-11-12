@@ -7,11 +7,15 @@ export default class Holdings extends Component {
 	}
 
 	renderHoldings() {
+		// holdings & prices props are passed in from the Accounts component
 		if (this.props.holdings.length > 0) {
+			const holdings = this.props.holdings;
+			const prices = this.props.prices;
 			return (
 				<ul>
-					{(this.props.holdings).map(holding => {
-						const price = this.props.prices[holding.symbol];
+					{holdings.map(holding => {
+						console.log(holding);
+						const price = prices[holding.symbol];
 						const value = Math.round(price * holding.shares).toLocaleString();
 						return (
 							<li className="holding">
@@ -32,7 +36,6 @@ export default class Holdings extends Component {
 	}
 
 	render() {
-		// console.log(this.props.holdings);
 		return (
 			<div>
 				{this.renderHoldings()}

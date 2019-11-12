@@ -15,7 +15,7 @@ export const createHolding = holding => {
 
 export const getAccountValue = (account, prices) => {
 	let accountValue = 0;
-	(account.holdings).forEach(function(holding) {
+	(account.holdings).forEach(holding => {
 		accountValue += (holding.shares * prices[holding.symbol]);
 	});
 

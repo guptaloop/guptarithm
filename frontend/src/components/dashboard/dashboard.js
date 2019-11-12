@@ -23,8 +23,8 @@ export default class Dashboard extends React.Component {
 		symbols.push('IVV', 'VXUS');
 
 		// loop through accounts and holdings to get all symbols owned
-		(this.props.accounts).forEach(function(account) {
-			(account.holdings).forEach(function(holding) {
+		(this.props.accounts).forEach(account => {
+			(account.holdings).forEach(holding => {
 				if (symbols.includes(holding.symbol)) {
 					return;
 				} else {
@@ -34,7 +34,7 @@ export default class Dashboard extends React.Component {
 		});
 		
 		// price reducer => POJO with symbol: price as key: val
-		symbols.forEach(function(symbol) {
+		symbols.forEach(symbol => {
 			props.fetchPrice(symbol.toLowerCase());
 		});
 	}
