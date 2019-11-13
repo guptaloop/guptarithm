@@ -13,8 +13,7 @@ export default class Dashboard extends React.Component {
 	
 	UNSAFE_componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id)
-			// .then( () => this.getPrices() );
-			.then( () => this.props.fetchPrice('ivv') );
+			.then( () => this.getPrices() );
 	}
 
 	getPrices() {
