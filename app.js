@@ -11,6 +11,7 @@ const db = require("./config/keys").mongoURI;
 // import routes here
 const accounts = require("./routes/api/accounts");
 const assets = require("./routes/api/assets");
+const prices = require("./routes/api/prices");
 const users = require("./routes/api/users");
 
 const app = express();
@@ -37,6 +38,7 @@ require("./config/passport")(passport);
 // initial routes here, tries to match first arg, then will send the objects we are importing above from the routes/api folder
 app.use("/api/accounts", accounts);
 app.use("/api/assets", assets);
+app.use("/api/prices", prices);
 app.use("/api/users", users);
 
 // app will run on Heroku || localhost:5000

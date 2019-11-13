@@ -6,6 +6,7 @@ const PriceAPIReducer = (state = {}, action) => {
 	Object.freeze(state);
 	switch (action.type) {
 		case RECEIVE_PRICE:
+			console.log(action);
 			const symbol = action.data.symbol;
 			const price = action.data.latestPrice;
 			return Object.assign(

@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/price_api_util';
+import axios from 'axios';
 
 export const RECEIVE_PRICE = "RECEIVE_PRICE";
 
@@ -9,10 +10,11 @@ export const receivePrice = data => ({
 
 export const fetchPrice = symbol => dispatch => {
 	return (
-	APIUtil.fetchPrice(symbol)
+	// APIUtil.fetchPrice(symbol)
+	axios.get(`api/prices/${symbol}`)
 		.then(res => {
-			const data = res.data;
-			dispatch(receivePrice(data));
+			console.log(res);
+			dispatch(receivePrice(res));
 		})
 	);
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import Accounts from './accounts/accounts_container';
 import Algo from './algo/algo';
-import { LoadingBar } from './loading_bar';
-import AllocChart from './chart/chart';
+// import { LoadingBar } from './loading_bar';
+// import AllocChart from './chart/chart';
 
 export default class Dashboard extends React.Component {
 	constructor(props) {
@@ -11,9 +11,10 @@ export default class Dashboard extends React.Component {
 		this.getPrices = this.getPrices.bind(this);
 	}
 	
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.props.fetchAccounts(this.props.user.id)
-			.then( () => this.getPrices() );
+			// .then( () => this.getPrices() );
+			.then( () => this.props.fetchPrice('ivv') );
 	}
 
 	getPrices() {
@@ -32,7 +33,6 @@ export default class Dashboard extends React.Component {
 				}
 			});
 		});
-		
 		// price reducer => POJO with symbol: price as key: val
 		symbols.forEach(symbol => {
 			props.fetchPrice(symbol.toLowerCase());

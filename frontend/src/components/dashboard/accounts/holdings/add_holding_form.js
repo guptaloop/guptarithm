@@ -40,6 +40,7 @@ export default class AddHoldingForm extends Component {
 		this.props.createHolding(holding)
 			.then(() => {
 				if (this.props.errors.length === 0) {
+					this.props.fetchPrice(holding.symbol);
 					this.props.closeModal();
 				}
 			});

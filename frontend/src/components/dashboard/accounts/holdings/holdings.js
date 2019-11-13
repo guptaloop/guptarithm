@@ -15,11 +15,10 @@ export default class Holdings extends Component {
 			return (
 				<ul>
 					{holdings.map(holding => {
-						const s = holding.symbol;
-						const price = prices[s] ? prices[s] : fetchPrice(s);
+						const price = prices[holding.symbol];
 						const value = Math.round(price * holding.shares).toLocaleString();
 						return (
-							<li className="holding">
+							<li key={holding._id} className="holding">
 								<div>
 									<h2>{holding.symbol}</h2>
 									<h2>{holding.shares}</h2>
