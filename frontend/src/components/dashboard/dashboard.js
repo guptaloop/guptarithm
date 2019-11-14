@@ -34,7 +34,7 @@ export default class Dashboard extends React.Component {
 		});
 		// price reducer => POJO with symbol: price as key: val
 		symbols.forEach(symbol => {
-			props.fetchPrice(symbol.toLowerCase());
+			props.fetchPrice(symbol);
 		});
 	}
 
@@ -50,7 +50,7 @@ export default class Dashboard extends React.Component {
 		) : (
 			<>
 			<div className="dashboard">
-				<Accounts accounts={this.props.accounts} fetchPrice={this.props.fetchPrice}/>
+				<Accounts accounts={this.props.accounts} />
 				<div className="dash-right">
 					{/* <AllocChart prices={prices}/> */}
 					<Algo prices={prices}/>

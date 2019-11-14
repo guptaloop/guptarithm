@@ -14,6 +14,14 @@ router.get('/:symbol', (req, res) => {
 		}));
 });
 
+router.get('/', (req, res) => {
+	Asset.find()
+		.then(assets => {
+			const symbols = assets.map(el => el.symbol);
+			return res.json(symbols);
+		});
+});
+
 // get a specific asset's allocation by its symbol
 router.get('/al/:symbol', (req, res) => {
 	Asset.findOne({symbol: req.params.symbol })

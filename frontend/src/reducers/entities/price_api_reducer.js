@@ -7,7 +7,7 @@ const PriceAPIReducer = (state = {}, action) => {
 	switch (action.type) {
 		case RECEIVE_PRICE:
 			const symbol = action.data.symbol;
-			const price = action.data.latestPrice;
+			const price = action.data.price;
 			return Object.assign(
 				{}, state, { [symbol]: price }
 			);

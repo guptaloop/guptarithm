@@ -16,8 +16,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
 	createHolding: holding => dispatch(createHolding(holding)),
 	fetchAsset: symbol => dispatch(fetchAsset(symbol)),
-	closeModal: () => dispatch(closeModal()),
 	fetchPrice: symbol => dispatch(fetchPrice(symbol)),
+	closeModal: () => dispatch(closeModal()),
 });
 
 export default withRouter(
