@@ -163,3 +163,34 @@
   font-size: 14px;
   font-weight: 800;
 }
+
+.asset-search-dne {
+	width: 425px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-image: radial-gradient($fa-blue, $teal);
+
+		h1{
+			display: flex;
+			// justify-content: flex-start;
+			font-size: 16px;
+			font-weight: 500;
+			color: white;
+			padding: 16px 16px 16px 16px;
+			margin-bottom: 12px;
+		}
+		button {
+			width: 186px;
+			height: 50px;
+			font-size: 16px;
+			font-weight: bold;
+			background: rgb(15, 180, 143);
+			color: white;
+			&:hover { 
+				background: $teal;
+			}
+		}
+}

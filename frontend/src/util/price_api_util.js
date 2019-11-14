@@ -17,3 +17,18 @@ export const fetchPrice = symbol => {
 	// 	 `https://marketdata.websol.barchart.com/getQuote.json?apikey=a57149ccf206b50529f1a79252c20e73&symbols=AAPL%2CGOOG`
 	// );
 };
+
+// headers:
+// access - control - allow - credentials: "true"
+// access - control - allow - headers: "Origin, X-Requested-With, Content-Type, Accept"
+// access - control - allow - methods: "GET, OPTIONS"
+// access - control - allow - origin: "*"
+// content - encoding: "gzip"
+// content - type: "application/json; charset=utf-8"
+// date: "Wed, 13 Nov 2019 03:54:18 GMT"
+// iexcloud - messages - used: "1"
+// iexcloud - premium - messages - used: "0"
+// server: "nginx"
+// status: "200"
+// strict - transport - security: "max-age=15768000"
+// x - content - type - options: "nosniff"

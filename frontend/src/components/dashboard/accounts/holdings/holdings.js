@@ -11,7 +11,7 @@ export default class Holdings extends Component {
 		if (this.props.holdings.length > 0) {
 			const holdings = this.props.holdings;
 			const prices = this.props.prices;
-			const fetchPrice = this.props.fetchPrice;
+			// const fetchPrice = this.props.fetchPrice;
 			return (
 				<ul>
 					{holdings.map(holding => {
