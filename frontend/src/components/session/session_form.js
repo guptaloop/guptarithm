@@ -10,11 +10,11 @@ class SessionForm extends React.Component {
 		this.clearedErrors = false;
 	}
 
-	componentDidMount() {
+	UNSAFE_componentDidMount() {
 		this.checkFormType();
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		this.setState({ errors: nextProps.errors });
 	}
 
@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
 		}
 	}
 
-	componentDidUpdate(prevProps) {
+	UNSAFE_componentDidUpdate(prevProps) {
 		if (this.props.formType !== prevProps.formType) {
 			this.checkFormType();
 			this.props.clearErrors();

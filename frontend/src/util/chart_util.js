@@ -24,6 +24,10 @@ const chartAllocations = (holdings) => {
 	holdings.forEach(holding => {
 		let categories = Object.keys(holding.asset.allocation);
 		categories.forEach(category => {
+			if (category === 'bonds' || category === 'usStocks') {
+				console.log(category, holding.asset.allocation[category]);
+				console.log(category, holding.pct);
+			}
 			const allocation = parseFloat(
 				(holding.asset.allocation[category] * holding.pct).toFixed(2)
 			);
@@ -42,6 +46,33 @@ const chartAllocations = (holdings) => {
 			}
 		});
 	});
-	
+	return formatDataKeys(data);
+};
+
+const formatDataKeys = data => {
+	data.forEach(dataPair => {
+		switch (dataPair.name) {
+			case "indStocks":
+				dataPair.name = "Stocks";
+				break;
+			case "usStocks":
+				dataPair.name = "US Equity";
+				break;
+			case "forStocks":
+				dataPair.name = "Foreign Equity";
+				break;
+			case "bonds":
+				dataPair.name = "Fixed Income";
+				break;
+			case "eM":
+				dataPair.name = "Emerging Markets";
+				break;
+			case "smallCap":
+				dataPair.name = "US Small Cap";
+				break;
+			default:
+				break;
+		}
+	});
 	return data;
 };
