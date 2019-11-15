@@ -70,31 +70,23 @@ const recOrders = (portValue, holdings, prices, delta) => {
 		"sell": {}, 
 		"buy": {"VXUS": 0, "IVV": 0}
 	};
+	
 	let sellAmount = 0;
-
+	
 	holdings.forEach(holding => {
 		if (holding.sellAll) {
 			sellAmount += (holding.value);
 			orders.sell[holding.symbol] = "all";
 		}
 	});
-	
-	if (sellAmount === portValue) {
-			sellAmount -= 50; // account for commissions
-		const vxusBuyAmt = 0.45 * portValue;
-		const vxusQty = Math.floor(vxusBuyAmt / prices['VXUS']);
-			orders.buy['VXUS'] += vxusQty;
-		const ivvBuyAmt = 0.55 * portValue;
-		const ivvQty = Math.floor(ivvBuyAmt / prices['IVV']);
-			orders.buy['IVV'] += ivvQty;
-	} else { // figure out how much of target classes need to be sold
-		const vxusBuyAmt = (-delta['forStocks'] * portValue) / 100;
-		const vxusQty = Math.floor(vxusBuyAmt / prices['VXUS']);
-			orders.buy['VXUS'] += vxusQty;
-		const ivvBuyAmt = (-delta['usStocks'] * portValue) / 100;
-		const ivvQty = Math.floor(ivvBuyAmt / prices['IVV']);
-			orders.buy['IVV'] += ivvQty;
-		// recBuyAmounts(key, delta[key], whitelist);
-	}
+
+	// handles when target classes are ALL underweight
+	const vxusBuyAmt = (-delta['forStocks'] * portValue) / 100;
+	const vxusQty = Math.floor(vxusBuyAmt / prices['VXUS']);
+		orders.buy['VXUS'] += vxusQty;
+	const ivvBuyAmt = (-delta['usStocks'] * portValue) / 100;
+	const ivvQty = Math.floor(ivvBuyAmt / prices['IVV']);
+		orders.buy['IVV'] += ivvQty;
+
 	return orders;
 };
