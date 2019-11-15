@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 85vh;
-	width: 50vw;
+	width: 35vw;
 	padding-left: 20px;
 
 	span {
@@ -20,25 +20,35 @@
 			}
 		}
 	}
+	
 	.header{
 		display: flex;
-		justify-content: flex-start;
+		flex-direction: row;
+		align-items: space-between;
 		font-size: 26px;
 		font-weight: 700;
+		width: 100%;
 		padding: 20px 0px 8px 0px; 
+		h1 {
+			display: flex;
+			font-size: 26px;
+			font-weight: 700;
+			padding: 20px 0px 8px 0px; 
+		}
+		h2 {
+			display: flex;
+			margin-left: 75px;
+			color: green;
+			font-size: 26px;
+			font-weight: 700;
+			padding: 20px 0px 8px 0px; 
+		}
 	}
-	h1 {
-		display: flex;
-		justify-content: flex-start;
-		font-size: 26px;
-		font-weight: 700;
-		padding: 20px 0px 16px 0px; 
-	}
-	h2 {
-		font-size: 20px;
-		font-weight: 700;
-		padding: 16px 16px 16px 16px; 
-	}
+	// h2 {
+	// 	font-size: 20px;
+	// 	font-weight: 700;
+	// 	padding: 16px 16px 16px 16px; 
+	// }
 }
 
 .account {
@@ -50,13 +60,13 @@
 	div {
 		justify-content: space-between; 
 		display: flex;
-		width: 65%;
+		width: 80%;
 	}
 	div:nth-child(2) {
 		display: flex;
 		justify-content: space-between; 
-		width: 60%;
-		padding: 0px 16px 16px 24px;
+		width: 75%;
+		padding: 0px 16px 6px 24px;
 		h3 {
 			font-size: 14px;
 			font-weight: 700;

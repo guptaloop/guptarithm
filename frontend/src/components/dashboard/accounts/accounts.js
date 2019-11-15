@@ -59,9 +59,10 @@ class Accounts extends React.Component {
 			return (
 				<div className="accounts-comp">
 					<span>
-						<h1 className="header">
-							Retirement Portfolio - ${this.getPortValue(accounts, prices)}
-						</h1>
+						<div className="header">
+							<h1>Retirement Portfolio</h1>
+							<h2>${this.getPortValue(accounts, prices)}</h2>
+						</div>
 						<button onClick={() =>
 							this.props.openAccountModal('addAccount')}>+ Add Account</button>
 					</span>
