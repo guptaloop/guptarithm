@@ -8,14 +8,19 @@ export default class Algo extends Component {
 		this.runAlgo = this.runAlgo.bind(this);
 	}
 	
-	runAlgo(holdings, prices, assets) {
-		const orders = algoAPI.getPortfolioValue(holdings, prices, assets);
+	runAlgo(accounts, prices) {
+		let holdings = [];
+		accounts.forEach(account => {
+			(account.holdings).forEach(holding => {
+				holdings.push(holding);
+			});
+		});
+		const orders = algoAPI.getPortfolioValue(holdings, prices);
 		this.setState({ 'orders': orders });
 	}
 
 	render() {
-		const assets = this.props.assets;
-		const holdings = this.props.holdings;
+		const accounts = this.props.accounts;
 		const prices = this.props.prices;
 		const orders = this.state.orders;
 
@@ -24,7 +29,7 @@ export default class Algo extends Component {
 			case "":
 			displayOrders = (
 				<button className="algo-btn"
-					onClick={() => this.runAlgo(holdings, prices, assets)}
+					onClick={() => this.runAlgo(accounts, prices)}
 				>ALGO</button>
 			)
 			break;

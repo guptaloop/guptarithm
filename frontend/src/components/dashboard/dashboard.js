@@ -50,10 +50,10 @@ export default class Dashboard extends React.Component {
 		) : (
 			<>
 			<div className="dashboard">
-				<Accounts accounts={this.props.accounts} />
+				<Accounts accounts={accounts} />
 				<div className="dash-right">
 					{/* <AllocChart prices={prices}/> */}
-					<Algo prices={prices}/>
+							<Algo prices={prices} accounts={accounts}/>
 				</div>
 			</div>
 			</>
