@@ -57,6 +57,11 @@
 		justify-content: space-between; 
 		width: 60%;
 		padding: 0px 16px 16px 24px;
+		h3 {
+			font-size: 14px;
+			font-weight: 700;
+			width: 60px;
+		}
 	}
 	h1 {
 		font-size: 18px;
@@ -68,10 +73,6 @@
 		font-size: 18px;
 		font-weight: 700;
 		padding: 16px 16px 16px 16px; 
-	}
-	h3 {
-		font-size: 14px;
-		font-weight: 700;
 	}
 }
 

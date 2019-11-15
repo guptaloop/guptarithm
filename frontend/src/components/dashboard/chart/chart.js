@@ -22,9 +22,7 @@ export default class AllocChart extends PureComponent {
 				});
 			});
 		}
-		const data = chartAPI.getChartData(holdings, prices);
-		console.log(data);
-		return data;
+		return chartAPI.getChartData(holdings, prices);
 	}
 
 	render() {
