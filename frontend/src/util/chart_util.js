@@ -24,10 +24,6 @@ const chartAllocations = (holdings) => {
 	holdings.forEach(holding => {
 		let categories = Object.keys(holding.asset.allocation);
 		categories.forEach(category => {
-			if (category === 'bonds' || category === 'usStocks') {
-				console.log(category, holding.asset.allocation[category]);
-				console.log(category, holding.pct);
-			}
 			const allocation = parseFloat(
 				(holding.asset.allocation[category] * holding.pct).toFixed(2)
 			);
@@ -54,21 +50,27 @@ const formatDataKeys = data => {
 		switch (dataPair.name) {
 			case "indStocks":
 				dataPair.name = "Stocks";
+				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "usStocks":
 				dataPair.name = "US Equity";
+				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "forStocks":
 				dataPair.name = "Foreign Equity";
+				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "bonds":
 				dataPair.name = "Fixed Income";
+				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "eM":
 				dataPair.name = "Emerging Markets";
+				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "smallCap":
 				dataPair.name = "US Small Cap";
+				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			default:
 				break;

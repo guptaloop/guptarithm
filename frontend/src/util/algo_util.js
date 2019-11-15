@@ -35,7 +35,8 @@ const compareAllocations = (portValue, holdings, prices) => {
 	holdings.forEach(holding => {
 		let categories = Object.keys(holding.asset.allocation);
 
-		if (categories.includes('bonds') || categories.includes('other')) {
+		if (categories.includes('bonds') || categories.includes('other') || 						categories.includes('eM') || categories.includes('smallCap')) 
+		{
 			currentAllocation.other += (holding.pct);
 			holding['sellAll'] = true;
 		} else if (categories.includes('indStocks')) {
@@ -87,15 +88,13 @@ const recOrders = (portValue, holdings, prices, delta) => {
 		const ivvQty = Math.floor(ivvBuyAmt / prices['IVV']);
 			orders.buy['IVV'] += ivvQty;
 	} else { // figure out how much of target classes need to be sold
-		// for (var key in delta) {
-		// 	if ((key === 'usStocks' || 'forStocks') && Math.abs(delta[key]) >= 0.005) {
-		// 		if (delta[key] > 0) {
-		// 			// recSellAmounts(key, delta[key], whitelist);
-		// 		} else if (delta[key] < 0) {
-		// 			// recBuyAmounts(key, delta[key], whitelist);
-		// 		}
-		// 	}
-		// }
+		const vxusBuyAmt = (-delta['forStocks'] * portValue) / 100;
+		const vxusQty = Math.floor(vxusBuyAmt / prices['VXUS']);
+			orders.buy['VXUS'] += vxusQty;
+		const ivvBuyAmt = (-delta['usStocks'] * portValue) / 100;
+		const ivvQty = Math.floor(ivvBuyAmt / prices['IVV']);
+			orders.buy['IVV'] += ivvQty;
+		// recBuyAmounts(key, delta[key], whitelist);
 	}
 	return orders;
 };

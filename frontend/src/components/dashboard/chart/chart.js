@@ -22,20 +22,22 @@ export default class AllocChart extends PureComponent {
 				});
 			});
 		}
-		return chartAPI.getChartData(holdings, prices);
+		const data = chartAPI.getChartData(holdings, prices);
+		console.log(data);
+		return data;
 	}
 
 	render() {
 		const data = this.renderChart();
 
 		return (
-			<PieChart width={600} height={400} onMouseEnter={this.onPieEnter}>
+			<PieChart width={450} height={300} onMouseEnter={this.onPieEnter}>
 				<Pie
 					data={data}
 					cx="50%"
 					cy="50%"
-					innerRadius={60}
-					outerRadius={120}
+					innerRadius={50}
+					outerRadius={100}
 					fill="#8884d8"
 					paddingAngle={4}
 					dataKey="value"
@@ -47,7 +49,7 @@ export default class AllocChart extends PureComponent {
 					}
 				</Pie>
 				<Tooltip />
-				<Legend verticalAlign="top" height={60} />
+				<Legend verticalAlign="bottom" height={60} />
 			</PieChart>
 		);
 	}
