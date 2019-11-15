@@ -1,105 +1,31 @@
 
 export const getPortfolioValue = (holdings, prices, chart=null) => {
-	
-	// separate logic for generating the chart.
-	// if (chart !== null) {
-	// 	let newHoldings = prices;
-	// 	let newPrices = assets;
-	// 	let newAssets = holdings;
-	// 	let portValue = 0;
-	// 	if (holdings === undefined) {
-	// 		return ([{ name: 'Group A', value: 400 }]);
-	// 	}
-	// 	for (let i = 0; i < newHoldings.length; i++) {
-	// 		let holding = newHoldings[i];
-	// 		let sym = holding.symbol;
-	// 		let price = newPrices[sym];
-	// 		let shares = holding.shares;
-	// 		portValue = portValue + (price * shares);
-	// 		// set price, value and allocation for each holding
-	// 		holding.price = parseFloat(price);
-	// 		holding.value = price * shares;
-	// 		if (newAssets[sym] !== undefined) {
-	// 			holding["allocation"] = newAssets[sym]["allocation"];
-	// 		}
-	// 	}
-	// 	return getHoldingPercentages(
-	// 		portValue, newHoldings, newPrices, chart);
-	// } else if (chart === null) {
 
-		let portValue = 0;
-		if (holdings === undefined) {
-			return ([{ name: 'Group A', value: 400 }]);
-		}
-		holdings.forEach(holding => {
-			let shares = holding.shares;
-			let symbol = holding.symbol;
-			let price = prices[symbol];
-				holding.price = parseFloat(price);
-				holding.value = price * shares;
-				portValue += holding.value;
-		});
-
-		return getHoldingPercentages(portValue, holdings, prices, chart);
-	// }
-};
-
-const getHoldingPercentages = (portValue, holdings, prices, chart=null) => {
-
+	let portValue = 0;
+	// determine portfolio value, and set some attributes for holdings
+	holdings.forEach(holding => {
+		let shares = holding.shares;
+		let symbol = holding.symbol;
+		let price = prices[symbol];
+			holding.price = parseFloat(price);
+			holding.value = price * shares;
+			portValue += holding.value;
+	});
+	// set the holding percentages of the total portfolio value
 	holdings.forEach(holding => {
 		holding.pct = (holding.value / portValue);
 	});
-
 	if (chart !== null) {
-		return returnChartAllocations(holdings);
-	} else if (chart === null) {
+		return [portValue, holdings];
+	} else {
 		return compareAllocations(portValue, holdings, prices);
 	}
-
-};
-
-const returnChartAllocations = (holdings) => {
-	const data = [];
-	const dataKeys = [];
-
-	for(let i = 0; i < holdings.length; i++) {
-		let holding = holdings[i];
-		if (holding.allocation === undefined) {
-			return ([{ name: 'Group A', value: 400 }]);
-		} else {
-			let categories = Object.keys(holding.allocation);
-			
-			for (let i = 0; i < categories.length; i++) {
-				let category = categories[i];
-				let allocation = parseFloat((holding.allocation[category] * holding.pct).toFixed(2));
-
-				if (dataKeys.includes(category)) {
-					data.forEach(el => {
-						if (el.name === category) {
-							el.value += allocation;
-							return;
-						}
-					});
-				}	else {
-					const dataPair = { name: category, value: allocation };
-					dataKeys.push(category);
-					data.push(dataPair);
-				}
-			}
-		}
-	}
-	return data;
 };
 
 const compareAllocations = (portValue, holdings, prices) => {
 	let currentAllocation = {
-		usStocks: 0.00,
-		forStocks: 0.00,
-		em: 0.00,
-		smallCap: 0.00,
-		bonds: 0.00,
-		indStocks: 0.00,
-	 	other: 0.00,
+		usStocks: 0.00,	forStocks: 0.00, eM: 0.00,
+		smallCap: 0.00, bonds: 0.00, indStocks: 0.00, other: 0.00
 	};
 	const targetAllocation = { usStocks: 55, forStocks: 45 };
 	const delta = { usStocks: 0, forStocks: 0 };

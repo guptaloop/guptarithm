@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts';
-import * as algoAPI from '../../../util/algo_util';
+import * as chartAPI from '../../../util/chart_util';
 
 const COLORS = ['#00C49F', '#FFBB28', '#FF8042', '#0088FE'];
 
@@ -11,18 +11,23 @@ export default class AllocChart extends PureComponent {
 		this.renderChart = this.renderChart.bind(this);
 	}
 	
-	
 	componentWillReceiveProps(prevProps) {
 		this.setState({assets: prevProps.assets});
 	}
 
 	renderChart() {
-		const assets = this.props.assets;
-		const holdings = this.props.holdings;
 		const prices = this.props.prices;
-		return (
-			algoAPI.getPortfolioValue(assets, holdings, prices, true)
-		);
+		
+		let holdings = [];
+		if (this.props.accounts.length > 0) {
+			(this.props.accounts).forEach(account => {
+				(account.holdings).forEach(holding => {
+					holdings.push(holding);
+				});
+			});
+		}
+		
+		return chartAPI.getChartData(holdings, prices);
 	}
 
 	render() {
