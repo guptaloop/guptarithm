@@ -1,31 +1,55 @@
-.algo-btn {
-		cursor: pointer;
-		font-family: $font-sans-serif;
-		font-size: 36px;
-		font-weight: 700;
-		color: $white;
-		background: $fa-blue;
-		padding: 12px 16px;
-		&:hover {
-				transform: scale(1.1);
-		}
+.run-algo-modal {
+	width: 850px;
+  height: 588px;
+	background-image: radial-gradient($fa-blue, $teal);
 }
 
-.algo-orders{
-	display: flex;
-	// flex-direction: column;
+.algo-btn {
+	cursor: pointer;
+	font-family: $font-sans-serif;
+	font-size: 36px;
+	font-weight: 700;
+	color: $white;
+	background: $fa-blue;
+	padding: 12px 16px;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
 
+
+.orders-modal {
+	width: 800px;
+	height: 580px;
+	background-image: radial-gradient($fa-blue, $teal);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
 	h1{
 		font-size: 28px;
 		font-weight: 900;
+		padding-top: 54px;
+		padding-bottom: 40px;
 	}
-	div{
-		margin-left: 12px;
+	.orders {
+		display: flex;
+		flex-direction: row;
+		div {
+			padding: 36px;
+		}
+		h2{
+			font-size: 24px;
+			font-weight: 900;
+			justify-content: center;
+		}
+		li{
+			// width: 300px;
+			height: 20px;
+			font-size: 20px;
+			padding: 6px 6px 6px 6px;
+			font-weight: 400;
+		}
 	}
-	li{
-		width: 300px;
-		height: 20px;
-		padding: 6px 0px 6px 6px;
-		font-weight: 300;
-	}
+
 }

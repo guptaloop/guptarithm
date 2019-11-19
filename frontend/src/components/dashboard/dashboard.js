@@ -1,6 +1,6 @@
 import React from 'react';
 import Accounts from './accounts/accounts_container';
-import Algo from './algo/algo';
+// import Algo from './algo/algo';
 // import { LoadingBar } from './loading_bar';
 import AllocChart from './chart/chart';
 
@@ -53,7 +53,7 @@ export default class Dashboard extends React.Component {
 				<Accounts accounts={accounts} />
 				<div className="dash-right">
 					<AllocChart prices={prices} accounts={accounts}/>
-					<Algo prices={prices} accounts={accounts}/>
+					{/* <Algo prices={prices} accounts={accounts}/> */}
 				</div>
 			</div>
 			</>

@@ -1,4 +1,5 @@
 import React from 'react';
+import AlgoContainer from '../dashboard/algo/algo_container';
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -16,7 +17,10 @@ class NavBar extends React.Component {
 		if (this.props.loggedIn) {
 			return (
 				<div className="navbar-authd">
-					<button className="navbar-link" onClick={this.logoutUser}>
+					<h2>Welcome, {this.props.user.username}!</h2>
+					<button onClick={() => this.props.openModal('runAlgo')}
+						>Run Algorithm</button>
+					<button onClick={this.logoutUser}>
 						Logout</button>
 				</div>
 			);

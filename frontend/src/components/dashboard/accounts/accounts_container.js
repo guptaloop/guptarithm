@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
 	createAccount: (account) => dispatch(createAccount(account)),
 	closeModal: () => dispatch(closeModal()),
-	openAccountModal: () => dispatch(openModal("addAccount")),
+	openAccountModal: (modal) => dispatch(openModal(modal)),
 	openHoldingModal: accountId => 
 		dispatch(openHoldingModal("addHolding", accountId)),
 });

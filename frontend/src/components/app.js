@@ -11,7 +11,7 @@ import Footer from './footer/footer';
 const App = () => (
 	<div className="flex">
 		<Modal />
-		<header className="nav-header">
+		<header>
 			<NavBarContainer />
 		</header>
 		<main>

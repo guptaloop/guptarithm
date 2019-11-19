@@ -30,10 +30,15 @@
     font-family: $font-sans-serif;
     background-color: $fa-blue;
     height: 50px;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 30px;
+    padding: 10px 60px;
 
+    h2 {
+        font-size: 16px;
+        font-weight: 700;
+        color: $white;
+    }
     button {
         cursor: pointer;
         font-size: 16px;
