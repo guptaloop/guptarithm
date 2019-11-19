@@ -61,7 +61,7 @@ const formatDataKeys = data => {
 				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "bonds":
-				dataPair.name = "Fixed Income";
+				dataPair.name = "Bonds";
 				dataPair.value = parseFloat((dataPair.value).toFixed(2));
 				break;
 			case "eM":

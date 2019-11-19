@@ -28,7 +28,7 @@ export default class AllocChart extends PureComponent {
 	render() {
 		const data = this.renderChart();
 		const pieChart = (
-			<PieChart width={450} height={300} onMouseEnter={this.onPieEnter}>
+			<PieChart width={550} height={350} onMouseEnter={this.onPieEnter}>
 				<Pie
 					data={data}
 					cx="50%"
@@ -46,7 +46,9 @@ export default class AllocChart extends PureComponent {
 					}
 				</Pie>
 				<Tooltip />
-				<Legend verticalAlign="bottom" height={60} />
+				<Legend 
+					layout="vertical" verticalAlign="middle" align="right" height={100}
+				/>
 			</PieChart>
 		);
 
@@ -55,20 +57,24 @@ export default class AllocChart extends PureComponent {
 				allocation[pair.name] = pair.value;
 			});
 		
-		let stocks = allocation["Stocks"] ? "Investing in individual company stocks is extremely risky, we recommend diversifying your assets (don't put your eggs in one basket!)" : null;
-		let eM = allocation["Emerging Markets"] ? "Emerging Markets is a risky asset class for your portfolio, we recommend reallocating to Large Cap US or Foreign funds" : null;
-		let bonds = allocation["Fixed Income"] ? "Fixed Income is too conservative for your portfolio, you are likely missing out on significant returns by taking less risk here." : null;
-		let smallCap = allocation["Small Cap"] ? "Small Cap is a risky asset class for your portfolio, we recommend reallocating to Large Cap US or Foreign funds." : null;
-		let other = allocation["Other"] ? "We are unable to classify some of your assets, it is likely these assets are not appropriate for your portfolio." : null;
+		let stocks = allocation["Stocks"] ? `Stock-picking is extremely risky. Don't put your eggs in one basket - diversify!` : null;
+		let eM = allocation["Emerging Markets"] ? "Emerging Markets is risky for your portfolio. We recommend reallocating to broad market equity ETFs like IVV (US) or VXUS (Foreign)." : null;
+		let bonds = allocation["Bonds"] ? "Bonds are very conservative (less risk = less return). You're young! Take on more risk now to get higher returns." : null;
+		let smallCap = allocation["Small Cap"] ? "Small Cap is a risky asset class for your portfolio. We recommend reallocating to broad market equity ETFs like IVV (US) or VXUS (Foreign)." : null;
+		let other = allocation["Other"] ? "We are unable to classify some of your assets, it is likely these investments are not appropriate for your retirement portfolio." : null;
+		let US = allocation["US Equity"] < 55 ? "US Equity funds are a great asset class to invest in, but it looks like you're underallocated. Run the algorithm to see trade recs." : "US Equity funds are a great asset class to invest in, but it looks like you're overallocated. Run the algorithm to see trade recs.";
+		let foreign = allocation["Foreign Equity"] < 45 ? "Foreign Equity funds are a great asset class to invest in, but it looks like you're underallocated. Run the algorithm to see trade recs." : "Foreign Equity funds are a great asset class to invest in, but it looks like you're overallocated. Run the algorithm to see trade recs.";
 
 		const analysis = (
 			<div className="analysis">
 				<h1>Asset Allocation Analysis</h1>
 				<h2>{stocks}</h2>
 				<h2>{eM}</h2>
-				<h2>{bonds}</h2>
 				<h2>{smallCap}</h2>
+				<h2>{bonds}</h2>
 				<h2>{other}</h2>
+				<h2>{US}</h2>
+				<h2>{foreign}</h2>
 			</div>
 		);
 		return (
