@@ -11,18 +11,16 @@
 	a {
 		margin-right: 24px;
 		margin-left: 24px;
+		color: $fa-blue;
 	}
 	a:hover {
-		color: $fa-blue;
+		color: black;
 	}
 	h3 {
 		padding: 12px;
 		font-size: 14px;
+		font-weight: 600;
+		font-size: 14px;
+		padding: 10px 5px;
 	}
-}
-
-.disclaimer {
-	font-family: $font-sans-serif;
-	font-size: 12px;
-	padding: 10px 5px;
 }

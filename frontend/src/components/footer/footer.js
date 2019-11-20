@@ -16,7 +16,7 @@ class Footer extends React.Component {
 					</a>
 				</div>
 				<h3>
-					This site is intended for educational purposes only!
+					Disclaimer: this site is intended for educational purposes only!
 				</h3>
 			</div>
 		);
