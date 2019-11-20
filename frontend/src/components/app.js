@@ -21,9 +21,6 @@ const App = () => (
 				<ProtectedRoute exact path="/accounts" component={Dashboard} />
 			</Switch>
 		</main>
-		{/* <footer>
-			<Footer />
-		</footer> */}
 	</div>
 );
 

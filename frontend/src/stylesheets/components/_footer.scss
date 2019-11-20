@@ -1,12 +1,24 @@
 .footer {
-	font-family: $font-sans-serif;
 	height: 30px;
 	width: 100%;
-	padding: 10px 20px;
-	background: $purple;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	position: absolute;
+	align-items: center;
+	font-family: $font-sans-serif;
+	padding: 10px 20px;
+	margin-top: 54px;
+	a {
+		margin-right: 24px;
+		margin-left: 24px;
+	}
+	a:hover {
+		color: $fa-blue;
+	}
+	h3 {
+		padding: 12px;
+		font-size: 14px;
+	}
 }
 
 .disclaimer {

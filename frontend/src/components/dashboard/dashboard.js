@@ -3,6 +3,7 @@ import Accounts from './accounts/accounts_container';
 // import Algo from './algo/algo';
 // import { LoadingBar } from './loading_bar';
 import AllocChart from './chart/chart';
+import Footer from '../footer/footer';
 
 export default class Dashboard extends React.Component {
 	constructor(props) {
@@ -20,7 +21,7 @@ export default class Dashboard extends React.Component {
 		const props = this.props;
 		const symbols = [];
 		// add user's whitelist funds
-		symbols.push('IVV', 'VXUS');
+		symbols.push('IVV', 'VEA');
 
 		// loop through accounts and holdings to get all symbols owned
 		(this.props.accounts).forEach(account => {
@@ -53,7 +54,7 @@ export default class Dashboard extends React.Component {
 				<Accounts accounts={accounts} />
 				<div className="dash-right">
 					<AllocChart prices={prices} accounts={accounts}/>
-					{/* <Algo prices={prices} accounts={accounts}/> */}
+					<Footer />
 				</div>
 			</div>
 			</>

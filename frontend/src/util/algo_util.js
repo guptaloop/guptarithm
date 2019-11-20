@@ -35,7 +35,9 @@ const compareAllocations = (portValue, holdings, prices) => {
 	holdings.forEach(holding => {
 		let categories = Object.keys(holding.asset.allocation);
 
-		if (categories.includes('bonds') || categories.includes('other') || 						categories.includes('eM') || categories.includes('smallCap')) 
+		if (
+			categories.includes('bonds') || categories.includes('other') || 					categories.includes('eM') || categories.includes('smallCap')
+		)
 		{
 			currentAllocation.other += (holding.pct);
 			holding['sellAll'] = true;
@@ -62,13 +64,9 @@ const compareAllocations = (portValue, holdings, prices) => {
 };
 
 const recOrders = (portValue, holdings, prices, delta) => {
-	// const whitelist = [
-	// 	{ usStocks: { symbol: 'IVV', price: prices['IVV'] } },
-	// 	{ forStocks: { symbol: 'VXUS', price: prices['VXUS']  } }
-	// ];
 	const orders = { 
 		"sell": {}, 
-		"buy": {"VXUS": 0, "IVV": 0}
+		"buy": {"VEA": 0, "IVV": 0}
 	};
 	
 	let sellAmount = 0;
@@ -81,9 +79,9 @@ const recOrders = (portValue, holdings, prices, delta) => {
 	});
 
 	// handles when target classes are ALL underweight
-	const vxusBuyAmt = (-delta['forStocks'] * portValue) / 100;
-	const vxusQty = Math.floor(vxusBuyAmt / prices['VXUS']);
-		orders.buy['VXUS'] += vxusQty;
+	const veaBuyAmt = (-delta['forStocks'] * portValue) / 100;
+	const veaQty = Math.floor(veaBuyAmt / prices['VEA']);
+		orders.buy['VEA'] += veaQty;
 	const ivvBuyAmt = (-delta['usStocks'] * portValue) / 100;
 	const ivvQty = Math.floor(ivvBuyAmt / prices['IVV']);
 		orders.buy['IVV'] += ivvQty;
