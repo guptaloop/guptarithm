@@ -57,17 +57,17 @@ export default class AllocChart extends PureComponent {
 				allocation[pair.name] = pair.value;
 			});
 		
-		let stocks = allocation["Stocks"] ? `Stock-picking is extremely risky. Don't put your eggs in one basket - diversify!` : null;
+		let stocks = allocation["Stocks"] ? `Stocks are extremely risky. You might as well go to Vegas and play craps. Don't crap out by putting your eggs in one basket - diversify instead!` : null;
 		let eM = allocation["Emerging Markets"] ? "Emerging Markets is risky for your portfolio. We recommend reallocating to broad market equity ETFs like IVV (US) or VEA (Foreign)." : null;
-		let bonds = allocation["Bonds"] ? "Bonds are very conservative (less risk = less return). You're young! Take on more risk now to get higher returns." : null;
+		let bonds = allocation["Bonds"] ? "Bonds are way too conservative. They're for investors your parents' age. You're young! Take on more risk now to get higher returns." : null;
 		let smallCap = allocation["Small Cap"] ? "Small Cap is a risky asset class for your portfolio. We recommend reallocating to broad market equity ETFs like IVV (US) or VEA (Foreign)." : null;
 		let other = allocation["Other"] ? "We are unable to classify some of your assets, it is likely these investments are not appropriate for your retirement portfolio." : null;
-		let US = allocation["US Equity"] < 55 ? "US Equity funds are a great asset class to invest in, but it looks like you're underallocated. Run the algorithm (top) to see trade recs." : "US Equity funds are a great asset class to invest in, but it looks like you're overallocated. Run the algorithm (top) to see trade recs.";
-		let foreign = allocation["Foreign Equity"] < 45 ? "Foreign Equity funds are a great asset class to invest in, but it looks like you're underallocated. Run the algorithm (top) to see trade recs." : "Foreign Equity funds are a great asset class to invest in, but it looks like you're overallocated. Run the algorithm (top) to see trade recs.";
+		let US = allocation["US Equity"] < 55 ? "US Equity funds are a great asset class to invest in, but it looks like you're underallocated. Run the guptarithm (top) to see trade recs." : "US Equity funds are a great asset class to invest in, but it looks like you're overallocated. Run the guptarithm (top) to see trade recs.";
+		let foreign = allocation["Foreign Equity"] < 45 ? "Foreign Equity funds are a great asset class to invest in, but it looks like you're underallocated. Run the guptarithm (top) to see trade recs." : "Foreign Equity funds are a great asset class to invest in, but it looks like you're overallocated. Run the guptarithm (top) to see trade recs.";
 
 		const analysis = (
 			<div className="analysis">
-				<h1>Asset Allocation Analysis</h1>
+				<h1>Deep Dive</h1>
 				<h2>{stocks}</h2>
 				<h2>{eM}</h2>
 				<h2>{smallCap}</h2>
@@ -78,7 +78,8 @@ export default class AllocChart extends PureComponent {
 			</div>
 		);
 		return (
-			<div>
+			<div className="aa-div">
+				<h1 className="aa-header">Asset Allocation Analysis</h1>
 				{pieChart}
 				{analysis}
 			</div>

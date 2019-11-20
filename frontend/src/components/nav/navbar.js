@@ -18,8 +18,9 @@ class NavBar extends React.Component {
 			return (
 				<div className="navbar-authd">
 					<h2>Welcome, {this.props.user.username}!</h2>
-					<button onClick={() => this.props.openModal('runAlgo')}
-						>Run Algorithm</button>
+					<button className="run-algo"
+						onClick={() => this.props.openModal('runAlgo')}
+					>Run Guptarithm</button>
 					<button onClick={this.logoutUser}>
 						Logout</button>
 				</div>

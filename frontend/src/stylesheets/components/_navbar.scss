@@ -39,6 +39,17 @@
         font-weight: 700;
         color: $white;
     }
+    .run-algo {
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 700;
+        color: $white;
+        background: none;
+        padding: 8px 12px;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
     button {
         cursor: pointer;
         font-size: 16px;
