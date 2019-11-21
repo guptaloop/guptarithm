@@ -6,7 +6,7 @@ import AddAccountFormContainer
 	from './dashboard/accounts/add_account_form_container';
 import AddHoldingFormContainer 
 	from './dashboard/accounts/holdings/add_holding_form_container';
-import AlgoContainer from './dashboard/algo/algo_container';
+import AlgoContainer from './algo/algo_container';
 import { withRouter } from 'react-router-dom';
 
 function Modal({ modal, closeModal }) {

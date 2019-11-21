@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as algoAPI from '../../../util/algo_util';
+import * as algoAPI from '../../util/algo_util';
 import {quotes} from './quotes';
 
 export default class Algo extends Component {
