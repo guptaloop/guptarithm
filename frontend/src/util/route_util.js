@@ -8,7 +8,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
 		!loggedIn ? (
 			<Component {...props} />
 		) : (
-			// Redirect to the accounts page if the user is authenticated
+			// Redirect to the dashboard if the user is authenticated
 			<Redirect to="/dash" />
 		)
 	)} />
