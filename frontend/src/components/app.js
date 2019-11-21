@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import Modal from './modal';
-import NavBarContainer from './nav/navbar_container';
+import NavBarContainer from './navbar/navbar_container';
 import Splash from './splash/splash';
 import Dashboard from './dashboard/dashboard_container';
 
