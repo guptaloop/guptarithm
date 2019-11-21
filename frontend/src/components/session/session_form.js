@@ -4,14 +4,33 @@ import 'react-awesome-button/dist/styles.css';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: '', password: '', errors: {} };
+		this.state = { username: '', password: '', formType: '', errors: {} };
 		this.handleAuth = this.handleAuth.bind(this);
 		this.renderErrors = this.renderErrors.bind(this);
 		this.clearedErrors = false;
 	}
 
+	UNSAFE_componentDidMount() {
+		this.checkFormType();
+	}
+
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		this.setState({ errors: nextProps.errors });
+	}
+
+	checkFormType() {
+		if (this.props.formType === 'login') {
+			this.setState({ formType: "Login" });
+		} else if (this.props.formType === 'signup') {
+			this.setState({ formType: "Signup" });
+		}
+	}
+
+	UNSAFE_componentDidUpdate(prevProps) {
+		if (this.props.formType !== prevProps.formType) {
+			this.checkFormType();
+			this.props.clearErrors();
+		}
 	}
 
 	handleUpdate(field) {
@@ -20,8 +39,7 @@ class SessionForm extends React.Component {
 
 	handleAuth(e) {
 		e.preventDefault();
-
-		const auth = this.props.formType === 'signup' ? 
+		const auth = this.state.formType === 'Signup' ? 
 			this.props.signup : this.props.login;
 
 		let user = {
@@ -52,7 +70,7 @@ class SessionForm extends React.Component {
 	render() {
 		const altButtonStyle = this.props.formType === 'login' ? 
 			{ top: '320px' } : { top: '320px' }
-		console.log(this.props);
+
 		return (
 			<>
 				<div className="session-form-container">

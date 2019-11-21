@@ -7,7 +7,7 @@ class Footer extends React.Component {
 			<div className="footer">
 				<div>
 					<a className="github"
-						href="https://github.com/guptaloop/guptarithm">
+						href="https://github.com/guptaloop/Ravenhood">
 						<i className="fab fa-3x fa-github" />
 					</a>
 					<a className="linkedin"
