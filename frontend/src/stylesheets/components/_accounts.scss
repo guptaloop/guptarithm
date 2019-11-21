@@ -1,9 +1,10 @@
 .accounts-comp {
 	display: flex;
 	flex-direction: column;
-	height: 85vh;
-	width: 35vw;
-	padding-left: 20px;
+	// height: 85vh;
+	// width: 35%;
+	width: 500px;
+	padding-left: 40px;
 
 	span {
 		display: flex;
@@ -11,12 +12,12 @@
 		align-items: flex-start;
 		margin-bottom: 8px;
 		button {
-			color: blue;
+			color: $fa-blue;
 			font-size: 14px;
 			font-weight: 600;
 			margin-left: 12px;
 			&:hover { 
-				transform: scale(1.1);
+				transform: scale(1.155);
 			}
 		}
 	}
@@ -28,7 +29,7 @@
 		font-size: 26px;
 		font-weight: 700;
 		width: 100%;
-		padding: 20px 0px 8px 0px; 
+		padding: 20px 0px 0px 0px; 
 		h1 {
 			display: flex;
 			font-size: 26px;
@@ -44,18 +45,12 @@
 			padding: 20px 0px 8px 0px; 
 		}
 	}
-	// h2 {
-	// 	font-size: 20px;
-	// 	font-weight: 700;
-	// 	padding: 16px 16px 16px 16px; 
-	// }
 }
 
 .account {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	// padding: 16px;
 	
 	div {
 		justify-content: space-between; 
@@ -66,7 +61,7 @@
 		display: flex;
 		justify-content: space-between; 
 		width: 75%;
-		padding: 0px 16px 6px 24px;
+		padding: 0px 30px 6px 30px;
 		h3 {
 			font-size: 14px;
 			font-weight: 700;
@@ -89,9 +84,9 @@
 .add-holding-btn {
 	font-size: 14px;
 	font-weight: 600;
-	color: blue;
-	margin: 20px 0px 20px 36px;
+	color: $fa-blue;
+	margin: 10px 0px 20px 36px;
 	&:hover { 
-		transform: scale(1.1);
+		transform: scale(1.15);
 	}
 }

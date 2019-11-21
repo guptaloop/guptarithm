@@ -1,26 +1,45 @@
 .run-algo-modal {
-	width: 850px;
-  height: 588px;
+	width: 650px;
+  height: 350px;
 	background-image: radial-gradient($fa-blue, $teal);
-}
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-.algo-btn {
-	cursor: pointer;
-	font-family: $font-sans-serif;
-	font-size: 36px;
-	font-weight: 700;
-	color: $white;
-	background: $fa-blue;
-	padding: 12px 16px;
-	&:hover {
-		transform: scale(1.1);
+
+	p {
+		font-size: 18px;
+		font-style: italic;
+		font-weight: 500;
+		color: $white;
+		padding: 0px 48px 0px 48px;
+	}
+	h3{
+		font-size: 18px;
+		font-style: italic;
+		font-weight: 500;
+		color: $white;
+		margin-left: 250px;
+		padding: 6px 48px 48px 48px;
+	}
+	button {
+		cursor: pointer;
+		font-family: $font-sans-serif;
+		font-size: 22px;
+		font-weight: 700;
+		color: $white;
+		background: $dark-purple;
+		padding: 12px 16px;
+		&:hover {
+			transform: scale(1.1);
+		}
 	}
 }
 
-
 .orders-modal {
 	width: 800px;
-	height: 580px;
+	height: 550px;
 	background-image: radial-gradient($fa-blue, $teal);
 	display: flex;
 	flex-direction: column;

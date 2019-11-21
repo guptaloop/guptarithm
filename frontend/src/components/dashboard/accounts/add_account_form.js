@@ -50,7 +50,7 @@ export default class AddAccountForm extends Component {
 						<input
 							value={this.state.type}
 							onChange={this.handleUpdate('type')}
-							placeholder="e.g. Roth IRA, IRA"
+							placeholder="401k, IRA, Roth IRA"
 						/>
 						<p>Last 4 of Account #</p>
 						<input

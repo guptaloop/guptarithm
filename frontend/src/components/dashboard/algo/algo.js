@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as algoAPI from '../../../util/algo_util';
+import {quotes} from './quotes';
 
 export default class Algo extends Component {
 	constructor(props) {
@@ -23,26 +24,23 @@ export default class Algo extends Component {
 		const accounts = this.props.accounts;
 		const prices = this.props.prices;
 		const orders = this.state.orders;
-		console.log('orders: ', this.state.orders);
+		const idx = Math.floor(Math.random() * quotes.length);
+
 		let displayOrders;
 		switch(orders) {
 			case "":
 			displayOrders = (
 				<div className="run-algo-modal">
-					<button className="algo-btn"
-						onClick={() => this.runAlgo(accounts, prices)}
-					>ALGO</button>
+					<p>"{quotes[idx][0]}"</p>
+					<h3>– {quotes[idx][1]}</h3>
+					<button onClick={() => this.runAlgo(accounts, prices)}>
+						Run Guptarithm
+					</button>
 				</div>
 			)
 			break;
 			// case {}: // no trades needed, portfolio is balanced
-			// displayOrders = (
-			// 	<div className="run-algo-modal">
-			// 		<button className="algo-btn"
-			// 			onClick={() => this.runAlgo(accounts, prices)}
-			// 		>ALGO</button>
-			// 	</div>
-			// )
+			// displayOrders = ()
 			// break;
 			default:
 				let sell = orders.sell;

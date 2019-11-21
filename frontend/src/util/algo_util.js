@@ -69,11 +69,11 @@ const recOrders = (portValue, holdings, prices, delta) => {
 		"buy": {"VEA": 0, "IVV": 0}
 	};
 	
-	let sellAmount = 0;
+	// let sellAmount = 0;
 	
 	holdings.forEach(holding => {
 		if (holding.sellAll) {
-			sellAmount += (holding.value);
+			// sellAmount += (holding.value);
 			orders.sell[holding.symbol] = "all";
 		}
 	});

@@ -4,8 +4,8 @@
     height: 50px;
     justify-content: flex-end;
     align-items: center;
-    padding: 10px 30px;
-    margin-top: 40px;
+    padding: 70px 65px;
+    // margin-top: 60px;
 
     button {
         cursor: pointer;
@@ -32,7 +32,7 @@
     height: 50px;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 60px;
+    padding: 10px 100px;
 
     h2 {
         font-size: 16px;
@@ -46,8 +46,9 @@
         color: $white;
         background: none;
         padding: 8px 12px;
+        border: 2px solid $white;
         &:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
     }
     button {
