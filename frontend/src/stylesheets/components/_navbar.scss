@@ -1,11 +1,10 @@
-.navbar {
+.navbar-splash {
     display: flex;
     font-family: $font-sans-serif;
     height: 50px;
     justify-content: flex-end;
     align-items: center;
-    padding: 70px 65px;
-    // margin-top: 60px;
+    padding: 60px 55px;
 
     button {
         cursor: pointer;
@@ -22,10 +21,10 @@
         background: $fa-blue;
         margin-left: 16px;
         padding: 12px 16px;
-    }   
+    }
 }
 
-.navbar-authd {
+.navbar-dash {
     display: flex;
     font-family: $font-sans-serif;
     background-color: $fa-blue;

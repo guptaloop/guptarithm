@@ -15,7 +15,7 @@ class NavBar extends React.Component {
 	getLinks() {
 		if (this.props.loggedIn) {
 			return (
-				<div className="navbar-authd">
+				<div className="navbar-dash">
 					<h2>Welcome, {this.props.user.username}!</h2>
 					<button onClick={() => this.props.openModal('runAlgo')}
 						className="run-algo"
@@ -27,7 +27,7 @@ class NavBar extends React.Component {
 		} else {
 			const demoUser = { username: "Malia_Obama", password: "123456" };
 			return (
-				<div className="navbar">
+				<div className="navbar-splash">
 					<button onClick={() => this.props.openModal('login')}>
 						Login</button>
 					<button onClick={() => this.props.openModal('signup')}>

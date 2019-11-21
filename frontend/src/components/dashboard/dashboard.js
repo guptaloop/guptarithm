@@ -1,8 +1,6 @@
 import React from 'react';
 import Accounts from './accounts/accounts_container';
-// import Algo from './algo/algo';
-// import { LoadingBar } from './loading_bar';
-import AllocChart from './chart/chart';
+import AllocChart from './asset_allocation/chart';
 import Footer from '../footer/footer';
 
 export default class Dashboard extends React.Component {

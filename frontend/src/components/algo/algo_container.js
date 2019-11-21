@@ -7,9 +7,5 @@ const mapStateToProps = state => ({
 	prices: state.entities.prices
 });
 
-const mapDispatchToProps = dispatch => ({
-	// modal dispatches
-});
-
 export default withRouter(
-	connect(mapStateToProps, mapDispatchToProps)(Algo));
+	connect(mapStateToProps, null)(Algo));
