@@ -68,6 +68,9 @@ export default class Algo extends Component {
 								))}
 							</div>
 						</div>
+						<h3>
+							Disclaimer: this site is intended for educational purposes only!
+						</h3>
 					</ul>
 				);
 				break;
