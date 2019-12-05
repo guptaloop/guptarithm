@@ -16,3 +16,18 @@ guptarithm is a **free & secure** full-stack (MERN) application that uses an **i
   * **Portfolio Allocation** - users see a pie chart that breaks down where their assets are invested, with analysis for more detail
   * **Investment Algorithm** - with the click of a button users will get personalized trade recommendations to keep their retirement portfolios balanced
 
+  <p align="center">
+    <img src="./gifs/splash_signup.gif" align="center">
+  </p>
+
+  <p align="center">
+    <img src="./gifs/accounts.gif" align="center">
+  </p>
+  
+  <p align="center">
+    <img src="./gifs/holdings.gif" align="center">
+  </p>
+  
+  <p align="center">
+    <img src="./gifs/algo.gif" align="center">
+  </p>
