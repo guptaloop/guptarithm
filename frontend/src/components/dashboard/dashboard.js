@@ -24,9 +24,7 @@ export default class Dashboard extends React.Component {
 		// loop through accounts and holdings to get all symbols owned
 		(this.props.accounts).forEach(account => {
 			(account.holdings).forEach(holding => {
-				if (symbols.includes(holding.symbol)) {
-					return;
-				} else {
+				if (!symbols.includes(holding.symbol)) {
 					symbols.push(holding.symbol);
 				}
 			});

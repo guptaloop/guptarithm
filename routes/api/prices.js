@@ -1,13 +1,32 @@
 const express = require("express");
 const router = express.Router();
+const request = require('request');
 
 const Price = require('../../models/Price');
 
-router.get('/:symbol', (req, res) => {
-	// :symbol must be CAPS
-	Price.findOne({ symbol: req.params.symbol })
-		.then(price => res.json(price));
+router.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	next();
 });
+
+router.get('/:symbol', (req, res) => {
+	request(
+		{	url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=sk_7ec0dc7305f34972831c339e4fde04ee` },
+		(error, response, body) => {
+			if (error || response.statusCode !== 200) {
+				return res.status(500).json({ type: 'error', message: err.message });
+			}
+
+			res.json(JSON.parse(body));
+		}
+	)
+});
+
+// router.get('/:symbol', (req, res) => {
+// 	// :symbol must be CAPS
+// 	Price.findOne({ symbol: req.params.symbol })
+// 		.then(price => res.json(price));
+// });
 
 // get ALL symbols from prices table
 router.get('/', (req, res) => {
