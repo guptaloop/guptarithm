@@ -19,14 +19,8 @@ router.get('/:symbol', (req, res) => {
 
 			res.json(JSON.parse(body));
 		}
-	)
+	);
 });
-
-// router.get('/:symbol', (req, res) => {
-// 	// :symbol must be CAPS
-// 	Price.findOne({ symbol: req.params.symbol })
-// 		.then(price => res.json(price));
-// });
 
 // get ALL symbols from prices table
 router.get('/', (req, res) => {
