@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const request = require('request');
+const keys = require('../../config/keys');
 
 const Price = require('../../models/Price');
 
@@ -9,14 +10,14 @@ router.use((req, res, next) => {
 	next();
 });
 
-router.get('/:symbol', (req, res) => {
+router.get('/:symbols', (req, res) => {
 	request(
-		{	url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=sk_7ec0dc7305f34972831c339e4fde04ee` },
+		// {	url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=sk_7ec0dc7305f34972831c339e4fde04ee` },
+		{ url: `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&types=quote&token=${keys.IEX}` },
 		(error, response, body) => {
 			if (error || response.statusCode !== 200) {
-				return res.status(500).json({ type: 'error', message: err.message });
+				return res.status(500).json({ type: 'error', message: error.message });
 			}
-
 			res.json(JSON.parse(body));
 		}
 	);

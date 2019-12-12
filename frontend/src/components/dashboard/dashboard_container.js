@@ -2,7 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import { fetchAccounts } from '../../actions/account_actions';
-import { fetchPrice } from '../../actions/price_api_actions';
+import { fetchPrices } from '../../actions/price_api_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchAccounts: userId => dispatch(fetchAccounts(userId)),
-	fetchPrice: symbol => dispatch(fetchPrice(symbol)),
+	fetchPrices: symbol => dispatch(fetchPrices(symbol)),
 	closeModal: () => dispatch(closeModal()),
 	openAccountModal: () => dispatch(openModal("addAccount")),
 });

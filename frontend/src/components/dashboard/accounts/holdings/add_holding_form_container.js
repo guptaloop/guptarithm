@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AddHoldingForm from './add_holding_form';
 import { createHolding } from '../../../../actions/account_actions';
 import { fetchAsset } from '../../../../actions/asset_actions';
-import { fetchPrice } from '../../../../actions/price_api_actions';
+import { fetchPrices } from '../../../../actions/price_api_actions';
 import { closeModal } from '../../../../actions/modal_actions';
 
 const mapStateToProps = (state) => ({
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
 	createHolding: holding => dispatch(createHolding(holding)),
 	fetchAsset: symbol => dispatch(fetchAsset(symbol)),
-	fetchPrice: symbol => dispatch(fetchPrice(symbol)),
+	fetchPrices: symbol => dispatch(fetchPrices(symbol)),
 	closeModal: () => dispatch(closeModal()),
 });
 

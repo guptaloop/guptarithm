@@ -12,25 +12,25 @@ export const assetAnalysis = allocation => {
 	
 	switch(true) {
 	case allocation["US Equity"] < 55:
-		analysis.US = "US Equity is the right asset class to invest in, but you're UNDER allocated. Let's remedy that - click on View Trade Recs for help.";
+		analysis.US = "US Equity is the right asset class to invest in, but you're UNDER allocated. Let's fix that - click on View Trade Recs for help.";
 		break;
 	case allocation["US Equity"] > 55:
-		analysis.US = "US Equity is the right asset class to invest in, but you're OVER allocated. Let's remedy that - click on View Trade Recs for help.";
+		analysis.US = "US Equity is the right asset class to invest in, but you're OVER allocated. Let's fix that - click on View Trade Recs for help.";
 		break;
 	default:
-		analysis.US = "US Equity is missing from your portfolio. Let's remedy that - click on View Trade Recs for help.";
+		analysis.US = "US Equity is missing from your portfolio. Let's fix that - click on View Trade Recs for help.";
 		break;
 	}
 
 	switch (true) {
 	case allocation["Foreign Equity"] < 45:
-		analysis.foreign = "Foreign Equity is the right asset class to invest in, but you're UNDER allocated. Let's remedy that - click on View Trade Recs for help.";
+		analysis.foreign = "Foreign Equity is the right asset class to invest in, but you're UNDER allocated. Let's fix that - click on View Trade Recs for help.";
 		break;
 	case allocation["Foreign Equity"] > 45:
-		analysis.foreign = "Foreign Equity is the right asset class to invest in, but you're OVER allocated. Let's remedy that - click on View Trade Recs for help.";
+		analysis.foreign = "Foreign Equity is the right asset class to invest in, but you're OVER allocated. Let's fix that - click on View Trade Recs for help.";
 		break;
 	default:
-		analysis.foreign = "Foreign Equity is missing from your portfolio. Let's remedy that - click on View Trade Recs for help.";
+		analysis.foreign = "Foreign Equity is missing from your portfolio. Let's fix that - click on View Trade Recs for help.";
 		break;
 	}
 

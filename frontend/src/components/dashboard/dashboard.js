@@ -29,10 +29,7 @@ export default class Dashboard extends React.Component {
 				}
 			});
 		});
-		// price reducer => POJO with symbol: price as key: val
-		symbols.forEach(symbol => {
-			props.fetchPrice(symbol);
-		});
+		props.fetchPrices(symbols);
 	}
 
 	render() {
