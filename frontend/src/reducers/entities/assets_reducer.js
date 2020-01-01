@@ -6,8 +6,9 @@ const AssetsReducer = (state = {}, action) => {
 	Object.freeze(state);
 	switch (action.type) {
 		case RECEIVE_ASSET:
-			return Object.assign({}, state, 
-				{ [action.asset.data.symbol]: action.asset.data} );
+			return Object.assign(
+				{}, state, { [action.asset.data.symbol]: action.asset.data }
+			);
 		default:
 			return state;
 	}

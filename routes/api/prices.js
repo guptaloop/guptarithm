@@ -10,10 +10,12 @@ router.use((req, res, next) => {
 	next();
 });
 
-router.get('/:symbols', (req, res) => {
+router.get('/:symbol', (req, res) => {
 	request(
-		// {	url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=sk_7ec0dc7305f34972831c339e4fde04ee` },
-		{ url: `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&types=quote&token=${keys.IEX}` },
+		// url for 1 stock per request
+		{ url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=${keys.IEX}` },
+		// url for batch request
+		// { url: `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&types=quote&token=${keys.IEX}` },
 		(error, response, body) => {
 			if (error || response.statusCode !== 200) {
 				return res.status(500).json({ type: 'error', message: error.message });

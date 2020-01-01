@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const fetchPrices = symbols => {
-	return axios.get(`api/prices/${symbols}`);
+export const fetchPrices = symbol => {
+	return axios.get(`api/prices/${symbol}`);
 };

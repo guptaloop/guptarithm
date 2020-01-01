@@ -29,7 +29,10 @@ export default class Dashboard extends React.Component {
 				}
 			});
 		});
-		props.fetchPrices(symbols);
+		// logic for 1 api call per symbol. 
+		symbols.forEach(symbol => {
+			props.fetchPrices(symbol);
+		});
 	}
 
 	render() {
