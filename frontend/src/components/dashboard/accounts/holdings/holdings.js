@@ -14,7 +14,7 @@ export default class Holdings extends Component {
 			return (
 				<ul>
 					{holdings.map(holding => {
-						const price = prices[holding.symbol] ? prices[holding.symbol] : 100;
+						const price = prices[holding.symbol];
 						const value = Math.round(price * holding.shares).toLocaleString();
 						return (
 							<li key={holding._id} className="holding">
