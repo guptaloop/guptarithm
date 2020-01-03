@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/account_util';
-import {fetchPrices} from '../actions/price_api_actions';
+import {fetchPricesFromDB} from '../actions/price_api_actions';
 
 export const RECEIVE_ALL_ACCOUNTS = "RECEIVE_ALL_ACCOUNTS";
 
@@ -23,7 +23,7 @@ export const createHolding = holding => dispatch => (
 		.then(holding => {
 			const holdings = holding.data.holdings;
 			const idx = holdings.length - 1;
-			fetchPrices(holdings[idx].symbol);
+			fetchPricesFromDB(holdings[idx].symbol);
 			dispatch(fetchAccounts(holding.data.user));
 		})
 );

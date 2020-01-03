@@ -31,7 +31,7 @@ export default class Dashboard extends React.Component {
 		});
 		// logic for 1 api call per symbol. 
 		symbols.forEach(symbol => {
-			props.fetchPrices(symbol);
+			props.fetchPrice(symbol);
 		});
 	}
 

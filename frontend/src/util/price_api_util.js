@@ -8,12 +8,15 @@ export const updatePrice = symbol => {
 	return axios.put(`api/prices/`);
 };
 
+export const fetchPriceFromDB = symbol => {
+	return axios.get(`api/prices/price/${symbol}`);
+};
+
 export const updatePrices = () => {
 	axios.get(`api/prices/`)
 		.then(res => {
 			// get all the stock symbols from the Price collection, store as an array in symbols below
 			const symbols = res.data;
-
 			symbols.forEach(symbol => {
 				fetchPrices(symbol)
 					.then(res => {

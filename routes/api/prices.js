@@ -39,6 +39,11 @@ router.get('/', (req, res) => {
 		});
 });
 
+router.get('/price/:symbol', (req, res) => {
+	Price.findOne({ symbol: req.params.symbol })
+		.then(price => res.json(price));
+});
+
 // update Price for individual security, by its symbol
 router.put('/', (req, res) => {
 	// req.body => ['AAPL', 500.55]

@@ -7,9 +7,9 @@ export const receivePrice = data => ({
 	data
 });
 
-export const fetchPrices = symbol => dispatch => {
+export const fetchPricesFromDB = symbol => dispatch => {
 	return (
-	APIUtil.fetchPrices(symbol)
+	APIUtil.fetchPriceFromDB(symbol)
 		.then(res => {
 			const data = res.data;
 			dispatch(receivePrice(data));
