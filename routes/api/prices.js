@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const request = require('request');
 const keys = require('../../config/keys');
+const MongooseQueue = require('mongoose-queue').MongooseQueue;
 
 const Price = require('../../models/Price');
 
@@ -11,18 +12,22 @@ router.use((req, res, next) => {
 });
 
 router.get('/:symbol', (req, res) => {
-	request(
-		// url for 1 stock per request
-		{ url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=${keys.IEX}` },
-		// url for batch request
-		// { url: `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&types=quote&token=${keys.IEX}` },
-		(error, response, body) => {
-			if (error || response.statusCode !== 200) {
-				return res.status(500).json({ type: 'error', message: error.message });
+	const queue = new MongooseQueue('Price', 'guptarithm-price-api');
+	queue.add('Price', function (err, jobId) {
+		request(
+			// url for 1 stock per request
+			{ url: `https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?token=${keys.IEX}` },
+			// url for batch request
+			// { url: `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&types=quote&token=${keys.IEX}` },
+			(error, response, body) => {
+				if (error || response.statusCode !== 200) {
+					return res.status(500).json({ type: 'error', message: error.message });
+				}
+				res.json(JSON.parse(body));
 			}
-			res.json(JSON.parse(body));
-		}
-	);
+		);
+	});
+	// console.log(queue);
 });
 
 // get ALL symbols from prices table
