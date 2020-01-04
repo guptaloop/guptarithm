@@ -49,6 +49,7 @@ router.put('/', (req, res) => {
 	// req.body => ['AAPL', 500.55]
 	Price.findOne({ symbol: req.body[0] })
 		.then(price => {
+			price.date = new Date();
 			price.price = req.body[1];
 			price.save()
 				.then(price => res.json(price));

@@ -15,20 +15,12 @@ export const fetchPriceFromDB = symbol => {
 export const updatePrices = () => {
 	axios.get(`api/prices/`)
 		.then(res => {
-			// get all the stock symbols from the Price collection, store as an array in symbols below
-			const symbols = res.data;
+			const symbols = res.data; // all symbols from Price table as an array.
 			symbols.forEach(symbol => {
-				fetchPrices(symbol)
+				fetchPrices(symbol) // fetchPrice from the IEX API
 					.then(res => {
 						const price = res.data.latestPrice;
-						axios.put(`api/prices/`, [symbol, price]);
-					})
-					.catch(err => {
-						fetchPrices(symbol)
-							.then(res => {
-								const price = res.data.latestPrice;
-								axios.put(`api/prices/`, [symbol, price]);
-							});
+						axios.put(`api/prices/`, [symbol, price]); // update Price in table
 					});
 			});
 		});
