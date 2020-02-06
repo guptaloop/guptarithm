@@ -1,63 +1,66 @@
-import React from 'react';
+// React - Redux
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+// Components
 import Accounts from './accounts/accounts_container';
 import AllocChart from './asset_allocation/chart';
 import Footer from '../footer/footer';
+// Actions
+import { fetchAccounts } from '../../actions/account_actions';
+import { fetchPricesFromDB } from '../../actions/price_api_actions';
+import { openModal } from '../../actions/modal_actions';
 
-export default class Dashboard extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-		this.getPrices = this.getPrices.bind(this);
-	}
-	
-	UNSAFE_componentWillMount() {
-		this.props.fetchAccounts(this.props.user.id)
-			.then( () => this.getPrices() );
-	}
+const Dashboard = () => {
 
-	getPrices() {
-		const props = this.props;
-		const symbols = [];
-		// add user's whitelist funds
-		symbols.push('IVV', 'VEA');
+	// MSTP
+	const userId = useSelector(state => state.session.user.id);
+	const accounts = useSelector(state => state.entities.accounts);
+	const prices = useSelector(state => state.entities.prices);
 
-		// loop through accounts and holdings to get all symbols owned
-		(this.props.accounts).forEach(account => {
+	// create state
+	const [symbols] = useState(['IVV', 'VEA']);
+
+	// function to add unique investments by symbol to symbols
+	if (accounts.length > 0) {
+		accounts.forEach(account => {
 			(account.holdings).forEach(holding => {
 				if (!symbols.includes(holding.symbol)) {
 					symbols.push(holding.symbol);
 				}
 			});
 		});
-		// logic for 1 api call per symbol. 
+	}
+
+	// MDTP
+	const dispatch = useDispatch();
+
+	// Hook - replaces old lifecycle methods
+	useEffect( () => {
+		dispatch(fetchAccounts(userId));
+
 		symbols.forEach(symbol => {
-			props.fetchPrice(symbol);
+			dispatch(fetchPricesFromDB(symbol));
 		});
-	}
+	}, [userId, symbols.length]);
 
-	render() {
-		const prices = this.props.prices;
-		const accounts = this.props.accounts;
-		
-		const displayDash = accounts === undefined || accounts.length === 0 ? (
-			<div className="greeting">
-				<button onClick={() =>
-					this.props.openAccountModal('addAccount')}>+ Add Account</button>
+	const displayDash = accounts.length === 0 ? (
+		<div className="greeting">
+			<button onClick={() =>
+				dispatch(openModal('addAccount'))}>+ Add Account</button>
+		</div>
+	) : (
+		<div className="dashboard">
+			<Accounts accounts={accounts} />
+			<div className="dash-right">
+				<AllocChart prices={prices} accounts={accounts}/>
+				<Footer />
 			</div>
-		) : (
-			<>
-			<div className="dashboard">
-				<Accounts accounts={accounts} />
-				<div className="dash-right">
-					<AllocChart prices={prices} accounts={accounts}/>
-					<Footer />
-				</div>
-			</div>
-			</>
-		);
+		</div>
+	);
 
-		return (
-			<>{displayDash}</>
-		)
-	}
-}
+	return (
+		<div>{displayDash}</div>
+	)
+};
+
+export default Dashboard;
