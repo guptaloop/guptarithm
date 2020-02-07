@@ -13,6 +13,8 @@ export const fetchPriceFromDB = symbol => {
 };
 
 export const updatePrices = () => {
+	// const req = ['TSLA', '100'];
+	// axios.post(`api/prices/`, req);
 	axios.get(`api/prices/`)
 		.then(res => {
 			const symbols = res.data; // all symbols from Price table as an array.

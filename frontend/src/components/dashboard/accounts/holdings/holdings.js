@@ -1,46 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Holdings extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+const Holdings = (props) => {
+	const holdings = props.holdings;
+	const prices = props.prices;
 
-	renderHoldings() {
+	return (
 		// holdings & prices props are passed in from the Accounts component
-		if (this.props.holdings.length > 0) {
-			const holdings = this.props.holdings;
-			const prices = this.props.prices;
-			return (
+		(holdings.length > 0) ? (
 				<ul>
 					{holdings.map(holding => {
-						const price = prices[holding.symbol];
+						const price = parseFloat(prices[holding.symbol]).toFixed(2);
 						const value = Math.round(price * holding.shares).toLocaleString();
 						return (
 							<li key={holding._id} className="holding">
 								<div>
 									<h2>{holding.symbol}</h2>
 									<h2>{holding.shares}</h2>
-									<h2>${parseFloat(price).toFixed(2)}</h2>
+									<h2>${price}</h2>
 									<h2>${value}</h2>
-									{/* <button >✏️</button>
-									<button >❌</button> */}
 								</div>
+									<button >✏️</button>
+									<button >❌</button>
 							</li>
 						)
 					})}
 				</ul>
-			)
-		} else {
-			return null;
-		}
-	}
-
-	render() {
-		return (
-			<div>
-				{this.renderHoldings()}
-			</div>
+		) : (
+			null
 		)
-	}
+	);
 }
+
+export default Holdings;

@@ -18,7 +18,6 @@ export const getAccountValue = (account, prices) => {
 	(account.holdings).forEach(holding => {
 		accountValue += (holding.shares * prices[holding.symbol]);
 	});
-
 	return Math.round(accountValue);
 };
 
@@ -27,6 +26,5 @@ export const getPortValue = (accounts, prices) => {
 	accounts.forEach(account => {
 		portValue += getAccountValue(account, prices);
 	});
-	const rounded = Math.round(portValue);
-	return rounded.toLocaleString();
+	return portValue.toLocaleString();
 };
