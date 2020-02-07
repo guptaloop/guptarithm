@@ -21,3 +21,12 @@ export const getAccountValue = (account, prices) => {
 
 	return Math.round(accountValue);
 };
+
+export const getPortValue = (accounts, prices) => {
+	let portValue = 0;
+	accounts.forEach(account => {
+		portValue += getAccountValue(account, prices);
+	});
+	const rounded = Math.round(portValue);
+	return rounded.toLocaleString();
+};

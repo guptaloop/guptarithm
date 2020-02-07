@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // Components
-import Accounts from './accounts/accounts_container';
+import Accounts from './accounts/accounts';
 import AllocChart from './asset_allocation/chart';
 import Footer from '../footer/footer';
 // Actions
@@ -41,7 +41,7 @@ const Dashboard = () => {
 		symbols.forEach(symbol => {
 			dispatch(fetchPricesFromDB(symbol));
 		});
-	}, [userId, symbols.length]);
+	}, [accounts.length, symbols.length]);
 
 	const displayDash = accounts.length === 0 ? (
 		<div className="greeting">
