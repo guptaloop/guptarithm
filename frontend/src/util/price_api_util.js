@@ -12,6 +12,10 @@ export const fetchPriceFromDB = symbol => {
 	return axios.get(`api/prices/price/${symbol}`);
 };
 
+export const logSymbols = () => {
+	axios.get(`api/prices/`);
+};
+
 export const updatePrices = () => {
 	// const req = ['TSLA', '100'];
 	// axios.post(`api/prices/`, req);

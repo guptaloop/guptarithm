@@ -45,8 +45,9 @@ const Dashboard = () => {
 
 	const displayDash = accounts.length === 0 ? (
 		<div className="greeting">
-			<button onClick={() =>
-				dispatch(openModal('addAccount'))}>+ Add Account</button>
+			<button 
+				onClick={() => dispatch(openModal('addAccount'))}
+			>+ Add Account</button>
 		</div>
 	) : (
 		<div className="dashboard">

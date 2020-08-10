@@ -34,6 +34,7 @@ router.get('/:symbol', (req, res) => {
 router.get('/', (req, res) => {
 	Price.find()
 		.then(prices => {
+			// prices.forEach(el => console.log(el.symbol));
 			const symbols = prices.map(el => el.symbol);
 			return res.json(symbols);
 		});

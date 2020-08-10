@@ -25,7 +25,7 @@ class NavBar extends React.Component {
 				</div>
 			);
 		} else {
-			const demoUser = { username: "Malia_Obama", password: "123456" };
+			const demoUser = { username: "Kurt_Russell", password: "123456" };
 			return (
 				<div className="navbar-splash">
 					<button onClick={() => this.props.openModal('login')}>

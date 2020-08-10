@@ -1,10 +1,11 @@
 import React from 'react';
-// import { updatePrices } from '../../util/price_api_util';
+import { updatePrices, logSymbols } from '../../util/price_api_util';
 
 class Splash extends React.Component {
 
 	render() {
 		// updatePrices();
+		// logSymbols();
 		return (
 			<div className="hero-banner">
 				<div className="hero-image">
