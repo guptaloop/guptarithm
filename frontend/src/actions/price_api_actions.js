@@ -16,3 +16,13 @@ export const fetchPricesFromDB = symbol => dispatch => {
 		})
 	);
 };
+
+export const fetchPriceFromIEX = symbol => dispatch => {
+	return (
+	APIUtil.fetchPriceFromIEX(symbol)
+		.then(res => {
+			const data = res.data;
+			dispatch(receivePrice(data));
+		})
+	);
+};

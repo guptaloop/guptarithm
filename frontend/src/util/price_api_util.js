@@ -16,6 +16,10 @@ export const logSymbols = () => {
 	axios.get(`api/prices/`);
 };
 
+export const fetchPriceFromIEX = symbol => {
+	return axios.get(`api/prices/${symbol}`);
+};
+
 export const updatePrices = () => {
 	// const req = ['TSLA', '100'];
 	// axios.post(`api/prices/`, req);

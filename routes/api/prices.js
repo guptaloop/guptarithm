@@ -7,6 +7,7 @@ const MongooseQueue = require('mongoose-queue').MongooseQueue;
 const Price = require('../../models/Price');
 
 router.use((req, res, next) => {
+	req.header('Access-Control-Allow-Headers', '*');
 	res.header('Access-Control-Allow-Origin', '*');
 	next();
 });

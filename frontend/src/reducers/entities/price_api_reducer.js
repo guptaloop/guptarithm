@@ -8,7 +8,7 @@ const PriceAPIReducer = (state = {}, action) => {
 		case RECEIVE_PRICE:
 
 			const symbol = action.data.symbol;
-			const price = action.data.price;
+			const price = action.data.iexRealtimePrice;
 			
 			return Object.assign( {}, state, { [symbol]: price } );
 
