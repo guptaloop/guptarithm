@@ -7,7 +7,7 @@ import AllocChart from './asset_allocation/chart';
 import Footer from '../footer/footer';
 // Actions
 import { fetchAccounts } from '../../actions/account_actions';
-import { fetchPricesFromDB, fetchPriceFromIEX } from '../../actions/price_api_actions';
+import { fetchPricesFromDB } from '../../actions/price_api_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const Dashboard = () => {
@@ -37,13 +37,10 @@ const Dashboard = () => {
 	// Hook - replaces old lifecycle methods
 	useEffect( () => {
 		dispatch(fetchAccounts(userId));
-		
-		// console.log(symbols); // checks out
 
-		dispatch(fetchPriceFromIEX('IVV'));
-		// symbols.forEach(symbol => {
-			// dispatch(fetchPricesFromDB(symbol));
-		// });
+		symbols.forEach(symbol => {
+			dispatch(fetchPricesFromDB(symbol));
+		});
 	}, [accounts.length, symbols.length]);
 
 	const displayDash = accounts.length === 0 ? (

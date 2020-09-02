@@ -7,16 +7,15 @@ const PriceAPIReducer = (state = {}, action) => {
 	switch (action.type) {
 		case RECEIVE_PRICE:
 
-			// logic for single stock price requests.
 			const symbol = action.data.symbol;
-			const price = action.data.iexRealtimePrice;
+			const price = action.data.price;
+			
 			return Object.assign( {}, state, { [symbol]: price } );
 
 			// logic for batch price requests.
 			// const symbols = Object.keys(action.data);
 			// const priceObj = {};
 			// symbols.forEach(symbol => {
-			// 	console.log(action.data[symbol]);
 			// 	priceObj[symbol] = action.data[symbol].quote.latestPrice;
 			// });
 			// return Object.assign( {}, state, priceObj );
