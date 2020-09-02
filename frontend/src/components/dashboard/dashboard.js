@@ -37,11 +37,13 @@ const Dashboard = () => {
 	// Hook - replaces old lifecycle methods
 	useEffect( () => {
 		dispatch(fetchAccounts(userId));
-		console.log(symbols);
-		symbols.forEach(symbol => {
+		
+		// console.log(symbols); // checks out
+
+		dispatch(fetchPriceFromIEX('IVV'));
+		// symbols.forEach(symbol => {
 			// dispatch(fetchPricesFromDB(symbol));
-			dispatch(fetchPriceFromIEX(symbol));
-		});
+		// });
 	}, [accounts.length, symbols.length]);
 
 	const displayDash = accounts.length === 0 ? (
