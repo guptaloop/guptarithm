@@ -17,10 +17,9 @@ export const fetchPricesFromDB = symbol => dispatch => {
 	);
 };
 
-export const fetchPriceFromIEX = symbols => dispatch => {
-	console.log(symbols);
+export const fetchPriceFromIEX = str => dispatch => {
 	return (
-	APIUtil.fetchPriceFromIEX(symbols)
+	APIUtil.fetchPriceFromIEX(str)
 		.then(res => {
 			const data = res.data;
 			dispatch(receivePrice(data));
