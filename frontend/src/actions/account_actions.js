@@ -2,10 +2,21 @@ import * as APIUtil from '../util/account_util';
 import {fetchPricesFromDB} from '../actions/price_api_actions';
 
 export const RECEIVE_ALL_ACCOUNTS = "RECEIVE_ALL_ACCOUNTS";
+export const RECEIVE_ACCOUNT_ERRORS = "RECEIVE_ACCOUNT_ERRORS";
+export const CLEAR_ACCOUNT_ERRORS = 'CLEAR_ACCOUNT_ERRORS';
 
 export const receiveAccounts = accounts => ({
 	type: RECEIVE_ALL_ACCOUNTS,
 	accounts
+});
+
+export const receiveErrors = errors => ({
+	type: RECEIVE_ACCOUNT_ERRORS,
+	errors
+});
+
+export const clearErrors = () => ({
+	type: CLEAR_ACCOUNT_ERRORS
 });
 
 export const fetchAccounts = userId => dispatch => (
@@ -15,7 +26,12 @@ export const fetchAccounts = userId => dispatch => (
 
 export const createAccount = account => dispatch => (
 	APIUtil.createAccount(account)
-		.then((account) => dispatch(fetchAccounts(account.data.user)))
+		.then(account => {
+			dispatch(fetchAccounts(account.data.user))
+		})
+		.catch(err => {
+			dispatch(receiveErrors(err.response.data));	
+		})
 );
 
 export const createHolding = holding => dispatch => (

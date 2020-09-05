@@ -1,5 +1,5 @@
 import React from 'react';
-import { updatePrices, logSymbols } from '../../util/price_api_util';
+// import { updatePrices, logSymbols } from '../../util/price_api_util';
 
 class Splash extends React.Component {
 
