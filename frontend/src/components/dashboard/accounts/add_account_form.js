@@ -7,10 +7,17 @@ export default class AddAccountForm extends Component {
 			custodian: '',
 			type: '',
 			last4: '',
+			errors: {}
 		};
 		this.handleNewAccount = this.handleNewAccount.bind(this);
+		this.renderErrors = this.renderErrors.bind(this);
+		this.clearedErrors = false;
 	}
 	
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		this.setState({ errors: nextProps.errors });
+	}
+
 	handleUpdate(field) {
 		return e => this.setState({
 			[field]: e.currentTarget.value
@@ -25,13 +32,28 @@ export default class AddAccountForm extends Component {
 			type: this.state.type,
 			last4: this.state.last4,
 		};
-		// this.props.createAccount(account, this.props.history)
-		this.props.createAccount(account)
-			.then(() => {
-				if (this.props.errors.length === 0) {
+		this.props.createAccount(account, this.props.history)
+		.then(() => {
+				if (this.state.errors.length === 0 || Object.keys(this.state.errors).length === 0) {
 					this.props.closeModal();
 				}
 			});
+	}
+
+	renderErrors() {
+		if (this.state.errors.text) {
+			return (
+				<ul>
+					{this.state.errors.text.map((error, i) => (
+						<li key={`error-${i}`}>{error}</li>
+					))}
+				</ul>
+			);
+		} else {
+			return (
+				""
+			);
+		}
 	}
 
 	render() {
@@ -60,6 +82,7 @@ export default class AddAccountForm extends Component {
 						/>
 						<br></br>
 						<input className="submit" type="submit"/>
+					<span className='form-errors'>{this.renderErrors()}</span>
 					</div>
 				</form>
 			</div>

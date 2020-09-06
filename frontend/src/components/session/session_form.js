@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-awesome-button/dist/styles.css';
 
-class SessionForm extends React.Component {
+export default class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { username: '', password: '', errors: {} };
@@ -41,9 +41,7 @@ class SessionForm extends React.Component {
 		return (
 			<ul>
 				{Object.keys(this.state.errors).map((error, i) => (
-					<li key={`error-${i}`}>
-						{this.state.errors[error]}
-					</li>
+					<li key={`error-${i}`}>{this.state.errors[error]}</li>
 				))}
 			</ul>
 		);
@@ -83,7 +81,7 @@ class SessionForm extends React.Component {
 									</>
 								}
 							</div>
-							<span className='session-errors'>{this.renderErrors()}</span>
+							<span className='form-errors'>{this.renderErrors()}</span>
 						</div>
 					</form>
 				</div>
@@ -91,5 +89,3 @@ class SessionForm extends React.Component {
 		);
 	}
 }
-
-export default SessionForm;

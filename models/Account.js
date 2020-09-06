@@ -5,7 +5,8 @@ const AccountSchema = new Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
 	date: { type: Date, default: Date.now	},
 	custodian: { type: String, required: true, min: 3, max: 20	},
-	type: { type: String,	required: true, enum: ["Roth IRA", "IRA", "401k"]	},
+	type: { type: String,	required: true },
+	// type: { type: String,	required: true, enum: ["Roth IRA", "IRA", "401k"]	},
 	last4: { type: String, min: 4, max: 4, required: true },
 	// holdings array of holding objects
 	holdings: [{

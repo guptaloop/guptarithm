@@ -27,7 +27,8 @@ export const fetchAccounts = userId => dispatch => (
 export const createAccount = account => dispatch => (
 	APIUtil.createAccount(account)
 		.then(account => {
-			dispatch(fetchAccounts(account.data.user))
+			dispatch(clearErrors());
+			dispatch(fetchAccounts(account.data.user));
 		})
 		.catch(err => {
 			dispatch(receiveErrors(err.response.data));	
