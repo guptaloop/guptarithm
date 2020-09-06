@@ -8,6 +8,10 @@ export const createAccount = account => {
 	return axios.post(`api/accounts/`, account);
 };
 
+export const deleteAccount = accountId => {
+	return axios.delete(`api/accounts/${accountId}`);
+};
+
 // NEW
 export const createHolding = holding => {
 	return axios.put(`api/accounts/`, holding);

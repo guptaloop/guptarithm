@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import SessionFormContainer from './session/session_form_container';
 import AddAccountFormContainer 
 	from './dashboard/accounts/add_account_form_container';
+import DeleteAccountFormContainer 
+	from './dashboard/accounts/delete_account_form_container';
 import AddHoldingFormContainer 
 	from './dashboard/accounts/holdings/add_holding_form_container';
 import AlgoContainer from './algo/algo_container';
@@ -27,6 +29,10 @@ function Modal({ modal, closeModal }) {
 		case 'addAccount':
 			component = <AddAccountFormContainer
 				closeModal={closeModal} formType="addAccount" />;
+			break;
+		case 'deleteAccount':
+			component = <DeleteAccountFormContainer
+				closeModal={closeModal} formType="deleteAccount" />;
 			break;
 		case 'addHolding':
 			component = <AddHoldingFormContainer

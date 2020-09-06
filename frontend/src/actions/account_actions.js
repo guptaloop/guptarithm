@@ -35,6 +35,16 @@ export const createAccount = account => dispatch => (
 		})
 );
 
+export const deleteAccount = (accountId, userId) => dispatch => (
+	APIUtil.deleteAccount(accountId)
+		.then(() => {
+			dispatch(fetchAccounts(userId));
+		})
+		.catch(err => {
+			dispatch(receiveErrors(err.response.data));	
+		})
+);
+
 export const createHolding = holding => dispatch => (
 	APIUtil.createHolding(holding)
 		.then(holding => {

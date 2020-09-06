@@ -19,8 +19,8 @@ const Holdings = (props) => {
 									<h2>${price}</h2>
 									<h2>${value}</h2>
 								</div>
-									<button >✏️</button>
-									<button >❌</button>
+								<button >✏️</button>
+								<button >❌</button>
 							</li>
 						)
 					})}

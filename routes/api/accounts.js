@@ -76,7 +76,10 @@ router.put('/',
 
 router.delete('/:id', (req, res) => {
 	Account.findById(req.params.id)
-		.then(account => account.delete())
+		.then(account => {
+			account.delete()
+			res.json()
+		})
 		.catch(err => res.status(404).json({
 			json: err, noaccountfound: 'This account does not exist'
 		}));

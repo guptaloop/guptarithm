@@ -1,11 +1,13 @@
 // React - Redux
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // Components
 import Holdings from './holdings/holdings';
 
 import { getAccountValue, getPortValue } from '../../../util/account_util';
-import { openHoldingModal, openModal } from '../../../actions/modal_actions';
+import { 
+	openHoldingModal, openModal, openDeleteAccountModal 
+} from '../../../actions/modal_actions';
 
 
 const Accounts = (props) => {
@@ -20,9 +22,14 @@ const Accounts = (props) => {
 			{accounts.map(account => (
 				<div key={account._id}>
 					<li className="account">
-						<div>
+						<div className="account-row">
 							<h1>{account.custodian} {account.type} - *{account.last4}</h1>
 							<h2>${getAccountValue(account, prices).toLocaleString()}</h2>
+							<button >✏️</button>
+							<button onClick={() => {
+								dispatch(openDeleteAccountModal('deleteAccount', account._id))
+							}
+							}>❌</button>
 						</div>
 						<div>
 							{/* HEADERS for holdings table */}

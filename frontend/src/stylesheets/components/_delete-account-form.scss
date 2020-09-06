@@ -1,0 +1,45 @@
+.delete-account-div {
+  width: 500px;
+  height: 250px;
+  background-image: radial-gradient($fa-blue, $teal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+  }
+}
+
+.delete-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  justify-content: space-between;
+  margin-top: 5%;
+
+  button {
+    width: 125px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    background: rgb(15, 180, 143);
+    color: white;
+    &:hover { 
+      background: $teal;
+    }
+  }
+}
+
+.add-account-errors {
+  color: orange;
+  font-size: 14px;
+  font-weight: 800;
+}
