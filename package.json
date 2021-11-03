@@ -41,7 +41,7 @@
     "react-vis": "^1.11.7",
     "recharts": "^1.8.5",
     "request": "^2.88.0",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
